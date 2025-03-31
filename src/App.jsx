@@ -3,7 +3,7 @@ import React from "react";
 function CardMenu() {
   return (
     <div className="menu-card">
-      <h2>하아</h2>
+      <h2>commit 돼라</h2>
     </div>
   );
 }
