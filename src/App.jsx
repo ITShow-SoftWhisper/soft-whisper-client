@@ -1,11 +1,18 @@
 import React from "react";
 
+function CardMenu() {
+  return (
+    <div className="menu-card">
+      <h2>하아</h2>
+    </div>
+  );
+}
+
 function App() {
   return (
-    <div>
-      <div>Hello, react world!</div>
-      <div>seoyoun test</div>
-    </div>
+    <main>
+      <div className="menu-container"></div>
+    </main>
   );
 }
 
