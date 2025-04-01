@@ -1,8 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
+
+.jua-regular {
+  font-family: "Jua", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #00000084;
+  transition: color 0.2s ease;
+}
+
 html,
 body {
   height: 100vh;
   margin: 0;
-  z-index: 1;
   background-color: #cfe0ff;
 }
 
@@ -23,7 +32,6 @@ body {
   padding-left: 5%;
   padding-right: 5%;
   box-sizing: border-box;
-  z-index: 2;
 }
 
 .menu-card {
@@ -35,59 +43,21 @@ body {
   border-radius: 40px;
   width: 18%;
   height: 60%;
-  transition: transform 0.2s ease;
-  animation: hoverAnimation 3s forwards;
+  transition: transform 0.3s ease;
   background: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(6px);
+}
+
+.menu-card.hovered {
+  transform: scale(1.1);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+}
+
+.menu-card.hovered .jua-regular {
+  color: #000000;
 }
 
 .menu-img {
   width: 80%;
   height: auto;
-}
-
-@keyframes hoverAnimation {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  20% {
-    transform: scale(1.1);
-  }
-  70% {
-    transform: scale(1.1);
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-.menu-card:nth-child(1) {
-  animation-delay: 0s;
-}
-
-.menu-card:nth-child(2) {
-  animation-delay: 3.5s;
-}
-
-.menu-card:nth-child(3) {
-  animation-delay: 7s;
-}
-
-.menu-card:nth-child(4) {
-  animation-delay: 10.5s;
-}
-
-.menu-card:nth-child(5) {
-  animation-delay: 14s;
-}
-
-@keyframes loopAnimation {
-  0% {
-    animation-delay: 0s;
-  }
-  100% {
-    animation-delay: 17.5s;
-  }
 }
