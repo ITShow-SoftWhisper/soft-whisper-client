@@ -1,5 +1,11 @@
 function Book() {
-  return <div>Book</div>;
+  return (
+    <div>
+      <div>
+        Book page
+      </div>
+    </div>
+  )
 }
 
 export default Book;
