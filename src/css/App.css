@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
+
+.jua-regular {
+  font-family: "Jua", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #00000084;
+  transition: color 0.5s ease;
+}
+
+html,
+body {
+  height: 100vh;
+  margin: 0;
+  background-color: #cfe0ff;
+}
+
+body {
+  background-image: url("./assets/card-inner-test.png");
+  background-size: 45%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.main-container {
+  width: 100%;
+  height: 100vh;
+  padding-left: 5%;
+  padding-right: 5%;
+  box-sizing: border-box;
+}
+
+.card-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 2.5%;
+  box-sizing: border-box;
+}
+
+.menu-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  border: 2px solid #ffffff;
+  border-radius: 40px;
+  width: 30%;
+  height: 55%;
+  transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+  background: rgba(255, 255, 255, 0.218);
+  backdrop-filter: blur(4px);
+  text-decoration: none;
+  color: inherit;
+}
+
+.menu-card.hovered {
+  transform: translateY(-35px);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+}
+
+.menu-card.hovered .jua-regular {
+  color: #000000;
+}
+
+.menu-img {
+  width: 80%;
+  height: auto;
+}

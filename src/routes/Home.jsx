@@ -5,7 +5,7 @@ import Lucky from "../assets/lucky.png";
 import Taro from "../assets/taro.png";
 import Weather from "../assets/weather.png";
 import CardMenu from "../components/CardMenu";
-import "../App.css";
+import "../css/App.css";
 
 const cardData = [
   { id: "book", title: "오늘의 책 운세", imgSrc: Book, backgroundImage: Book },
