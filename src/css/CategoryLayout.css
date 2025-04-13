@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
+
+.jua-regular {
+  font-family: "Jua", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 6%;
+}
+
+.phrase-text {
+  margin: 0;
+}
+
+.animation-content {
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image {
+  width: 65%;
+}
+
+.start-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 15%;
+}
+
+.start-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 55%;
+  width: 220px;
+}
+
+.start-button p {
+  font-size: 140%;
+  margin-top: 11%;
+}
+
+.result-sharing-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 20%;
+  height: 15%;
+}
+
+.result-sharing-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50%;
+  width: 300px;
+}
+
+.result-sharing-button p {
+  font-size: 145%;
+  margin-top: 9%;
+}
+
+.back-home {
+  font-size: 90%;
+  margin: 0;
+}
