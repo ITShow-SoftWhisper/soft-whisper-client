@@ -26,6 +26,7 @@ function CategoryLayout({
   categoryPhraseText, // 페이지 카테고리별 문구
   categoryButtonText, // 페이지 카테고리별 버튼 문구
   backgroundColor, // 페이지 카테고리별 배경색
+  backgroundColor2,
   buttonColor, // 페이지 카테고리별 버튼색
   buttonHoverColor, // // 페이지 카테고리별 버튼 hover색
 }) {
@@ -59,7 +60,7 @@ function CategoryLayout({
   }, [buttonIsClick, navigate]);
 
   return (
-    <div className="container" style={{ backgroundColor: backgroundColor }}>
+    <div className="container" style={{ background: `linear-gradient(280deg, ${backgroundColor}, ${backgroundColor2})` }}>
       <h1 className="phrase-text jua-regular" style={{ color: "#000" }}>
         {categoryPhraseText}
       </h1>
