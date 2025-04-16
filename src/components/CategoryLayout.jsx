@@ -11,12 +11,31 @@ const ResultSharingButton = styled.button`
   border: none;
   outline: none;
   border-radius: 2px;
-  background-color: ${(props) => props.buttoncolor};
+  background-color: ${(props) => props.buttonColor};
   transition: background-color 0.3s;
 
   &:hover {
-    background-color: ${(props) => props.hovercolor};
+    background-color: ${(props) => props.hoverColor};
     cursor: pointer;
+  }
+`;
+
+const StartButton = styled.button`
+  border: 2px solid ${(props) => props.buttonColor};
+  border-radius: 50px;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  p {
+    font-family: "Jua", sans-serif;
+    color: ${(props) => props.buttonColor};
+  }
+
+  &:hover {
+    border-color: ${(props) => props.hoverColor};
+    color: ${(props) => props.hoverColor};
   }
 `;
 
@@ -60,7 +79,7 @@ function CategoryLayout({
   }, [buttonIsClick, navigate]);
 
   return (
-    <div className="container" style={{ background: `linear-gradient(280deg, ${backgroundColor}, ${backgroundColor2})` }}>
+    <div className="container" style={{ background: `linear-gradient(320deg, ${backgroundColor}, ${backgroundColor2}` }}>
       <h1 className="phrase-text jua-regular" style={{ color: "#000" }}>
         {categoryPhraseText}
       </h1>
@@ -77,11 +96,11 @@ function CategoryLayout({
           <ResultSharingButton
             className="result-sharing-button"
             onClick={handleShareClick}
-            buttoncolor={buttonColor}
-            hovercolor={buttonHoverColor}
+            buttonColor={buttonColor}
+            hoverColor={buttonHoverColor}
           >
             <p className="jua-regular" style={{ color: "#fff" }}>
-              결과 공유하기
+              이메일로 결과 공유하기
             </p>
           </ResultSharingButton>
           <p className="back-home">아무곳이나 클릭하여 홈으로 돌아가기</p>
@@ -89,22 +108,15 @@ function CategoryLayout({
       ) : (
         // false이면 운세보기 버튼을 보여줌
         <div className="start-content">
-          <button
+          <StartButton
             className="start-button"
-            style={{
-              border: "2px solid",
-              borderRadius: "50px",
-              borderColor: buttonColor,
-              outline: "none",
-              backgroundColor: "#00000000",
-              cursor: "pointer",
-            }}
+            buttonColor={buttonColor}
+            hoverColor={buttonHoverColor}
             onClick={handleStartClick}
           >
-            <p className="jua-regular" style={{ color: buttonColor }}>
-              {categoryButtonText}
-            </p>
-          </button>
+            <p className="jua-regular">{categoryButtonText}</p>
+          </StartButton>
+
         </div>
       )}
     </div>
