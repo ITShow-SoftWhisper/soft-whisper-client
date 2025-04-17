@@ -27,9 +27,22 @@
   justify-content: center;
 }
 
+@keyframes floatImage {
+  0% {
+    transform: translateY(20px);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+  100% {
+    transform: translateY(20px);
+  }
+}
+
 .image {
   height: 90%;
   width: auto;
+  animation: floatImage 2.5s ease-in-out infinite;
 }
 
 .start-content {
