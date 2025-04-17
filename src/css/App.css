@@ -40,6 +40,18 @@ body {
   box-sizing: border-box;
 }
 
+@keyframes float {
+  0% {
+    transform: translateY(-40px);
+  }
+  50% {
+    transform: translateY(-25px);
+  }
+  100% {
+    transform: translateY(-40px);
+  }
+}
+
 .menu-card {
   display: flex;
   flex-direction: column;
@@ -49,16 +61,16 @@ body {
   border-radius: 40px;
   width: 30%;
   height: 55%;
-  transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
   background: rgba(255, 255, 255, 0.218);
   backdrop-filter: blur(4px);
   text-decoration: none;
   color: inherit;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
 
 .menu-card.hovered {
-  transform: translateY(-35px);
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+  animation: float 2s ease-in-out infinite;
 }
 
 .menu-card.hovered .jua-regular {
