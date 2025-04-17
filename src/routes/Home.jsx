@@ -37,7 +37,9 @@ function Home() {
   useEffect(() => {
     if (isManualHover) return;
 
-    let index = 0;
+    setHoverIndex(0);
+
+    let index = 1;
     const interval = setInterval(() => {
       setHoverIndex(index);
       index = (index + 1) % cardData.length;
