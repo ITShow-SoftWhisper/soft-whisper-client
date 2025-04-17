@@ -31,13 +31,18 @@ const StartButton = styled.button`
   p {
     font-family: "Jua", sans-serif;
     color: ${(props) => props.buttonColor};
+    transition: color 0.3s ease;
   }
 
   &:hover {
     border-color: ${(props) => props.hoverColor};
+  }
+
+  &:hover p {
     color: ${(props) => props.hoverColor};
   }
 `;
+
 
 function CategoryLayout({
   imgSrc, // 페이지별 image 경로
