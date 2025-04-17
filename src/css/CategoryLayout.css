@@ -29,13 +29,13 @@
 
 @keyframes floatImage {
   0% {
-    transform: translateY(20px);
+    transform: translateY(25px);
   }
   50% {
-    transform: translateY(5px);
+    transform: translateY(0px);
   }
   100% {
-    transform: translateY(20px);
+    transform: translateY(25px);
   }
 }
 
