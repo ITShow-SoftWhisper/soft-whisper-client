@@ -12,7 +12,7 @@ function TaroAnimation() {
 const backgroundColor = "#E4CFFF";
 const backgroundColor2 = "#C79CFF";
 const buttonColor = "#D468FF";
-const buttonHoverColor = "#cb49ff";
+const buttonHoverColor = "#c039f5";
 
 function Taro() {
   return (

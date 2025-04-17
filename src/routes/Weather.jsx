@@ -14,7 +14,7 @@ function WeatherAnimation() {
 const backgroundColor = "#EBEBEB";
 const backgroundColor2 = "#D6D6D6";
 const buttonColor = "#414141";                      
-const buttonHoverColor = "#535353";
+const buttonHoverColor = "#747474";
 
 function Weather() {
   return (
