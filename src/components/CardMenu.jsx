@@ -13,7 +13,7 @@ function CardMenu({
   return (
     <Link
       to={`/${id}`}
-      className={`menu-card ${isHovered ? "hovered" : ""}`}
+      className={`menu-card ${isHovered ? "menu-card-hovered" : ""}`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
