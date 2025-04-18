@@ -43,7 +43,7 @@ function Home() {
     const interval = setInterval(() => {
       setHoverIndex(index);
       index = (index + 1) % cardData.length;
-    }, 3000);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, [isManualHover]);
