@@ -8,7 +8,7 @@ function WeatherInfoInput({ input, setInput, onSubmit, isFadingOut }) {
         <input
           className="city-input jua-regular"
           type="text"
-          placeholder="도시 이름을 입력하세요 (예 : 서울)"
+          placeholder="도시 이름을 입력하세요 (예 : 서울특별시)"
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
