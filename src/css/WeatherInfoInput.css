@@ -1,0 +1,64 @@
+.jua-regular {
+  font-family: "Jua", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  background-color: #00000059;
+}
+
+.weather-info-input {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 15px;
+
+  border: none;
+  border-radius: 4px;
+  padding: 30px;
+
+  width: 25%;
+  /* height: 140px; */
+
+  background-color: #a4cce9;
+}
+
+.city-input {
+  text-align: center;
+  height: 50px;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+  font-size: 15px;
+  color: #000;
+}
+
+.submit-button {
+  display: grid;
+  place-content: center;
+  height: 50px;
+  border: none;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 15px;
+  padding-top: 5px;
+  background-color: #3eaaf7;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: rgb(27, 157, 251);
+}
