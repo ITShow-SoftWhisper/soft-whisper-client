@@ -3,7 +3,7 @@ import Book from "../assets/book.png";
 import Fortune from "../assets/fortune.png";
 import Lucky from "../assets/lucky.png";
 import Taro from "../assets/taro.png";
-import Weather from "../assets/weather.png";
+import Weather from "../assets/weather/littleBlurry.png";
 import CardMenu from "../components/CardMenu";
 import "../css/App.css";
 
