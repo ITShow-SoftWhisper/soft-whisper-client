@@ -43,7 +43,6 @@ const StartButton = styled.button`
   }
 `;
 
-
 function CategoryLayout({
   imgSrc, // 페이지별 image 경로
   animationComponent, // 페이지별 애니메이션 컴포넌트 (Weather.jsx 참고)
@@ -52,7 +51,8 @@ function CategoryLayout({
   backgroundColor, // 페이지 카테고리별 배경색
   backgroundColor2,
   buttonColor, // 페이지 카테고리별 버튼색
-  buttonHoverColor, // // 페이지 카테고리별 버튼 hover색
+  buttonHoverColor, // 페이지 카테고리별 버튼 hover색
+  resultShow, // 애니메이션이 끝나면 result-sharing-content을 보여줌
 }) {
   const [buttonIsClick, setButtonIsClick] = useState(false); // 버튼 클릭 여부 (false -> 카테고리별 버든 문구, true -> 홈으로 돌아가기)
   const navigate = useNavigate();
@@ -67,7 +67,7 @@ function CategoryLayout({
   };
 
   useEffect(() => {
-    if (!buttonIsClick) return; // 운세를 보기 전이면 아무 동작도 실행하지 않고 return
+    if (!buttonIsClick || !resultShow) return; // 운세를 보기 전이면 아무 동작도 실행하지 않고 return
 
     // Home페이지로 이동
     const handleAnywhereClick = () => {
@@ -81,37 +81,26 @@ function CategoryLayout({
     return () => {
       window.removeEventListener("click", handleAnywhereClick);
     };
-  }, [buttonIsClick, navigate]);
+  }, [buttonIsClick, resultShow, navigate]);
 
   return (
-    <div className="container" style={{ background: `linear-gradient(320deg, ${backgroundColor}, ${backgroundColor2}` }}>
+    <div
+      className="container"
+      style={{
+        background: `linear-gradient(320deg, ${backgroundColor}, ${backgroundColor2}`,
+      }}
+    >
       <h1 className="phrase-text jua-regular" style={{ color: "#000" }}>
         {categoryPhraseText}
       </h1>
       <div className="animation-content">
-        {/* true이면 애니메이션, false이면 이미지만 보여줌 (이미지 움직이는 애니메이션 코드 추가 예정) */}
         {buttonIsClick ? (
           animationComponent
         ) : (
           <img src={imgSrc} className="image" />
         )}
       </div>
-      {buttonIsClick ? ( // true이면 결과공유 버튼을 보여줌
-        <div className="result-sharing-content">
-          <ResultSharingButton
-            className="result-sharing-button"
-            onClick={handleShareClick}
-            buttonColor={buttonColor}
-            hoverColor={buttonHoverColor}
-          >
-            <p className="jua-regular" style={{ color: "#fff" }}>
-              이메일로 결과 공유하기
-            </p>
-          </ResultSharingButton>
-          <p className="back-home">아무곳이나 클릭하여 홈으로 돌아가기</p>
-        </div>
-      ) : (
-        // false이면 운세보기 버튼을 보여줌
+      {!buttonIsClick ? (
         <div className="start-content">
           <StartButton
             className="start-button"
@@ -121,8 +110,24 @@ function CategoryLayout({
           >
             <p className="jua-regular">{categoryButtonText}</p>
           </StartButton>
-
         </div>
+      ) : (
+        buttonIsClick &&
+        resultShow && (
+          <div className="result-sharing-content">
+            <ResultSharingButton
+              className="result-sharing-button"
+              onClick={handleShareClick}
+              buttonColor={buttonColor}
+              hoverColor={buttonHoverColor}
+            >
+              <p className="jua-regular" style={{ color: "#fff" }}>
+                이메일로 결과 공유하기
+              </p>
+            </ResultSharingButton>
+            <p className="back-home">아무곳이나 클릭하여 홈으로 돌아가기</p>
+          </div>
+        )
       )}
     </div>
   );
