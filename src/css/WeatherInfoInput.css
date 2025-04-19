@@ -12,6 +12,40 @@
   height: 100vh;
   z-index: 9999;
   background-color: #00000059;
+  opacity: 1;
+}
+.weather-animation-container {
+  opacity: 0;
+}
+.result-sharing-content {
+  opacity: 0;
+}
+
+@keyframes fadetest {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+.fade-out {
+  transition: all 0.5s;
+  opacity: 0;
+}
+.fade-in {
+  transition: all 3s;
+  opacity: 1;
+}
+
+.fade-in2 {
+  animation-name: fadetest;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+  animation-delay: 1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
 }
 
 .weather-info-input {
@@ -30,7 +64,6 @@
   padding: 30px;
 
   width: 25%;
-  /* height: 140px; */
 
   background-color: #a4cce9;
 }

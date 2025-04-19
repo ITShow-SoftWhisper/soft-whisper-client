@@ -94,14 +94,32 @@ function CategoryLayout({
         {categoryPhraseText}
       </h1>
       <div className="animation-content">
-        {buttonIsClick ? (
-          animationComponent
-        ) : (
+        {buttonIsClick && <>{animationComponent}</>}
+
+        {!buttonIsClick && !resultShow && (
           <img src={imgSrc} className="image" />
         )}
       </div>
-      {!buttonIsClick ? (
-        <div className="start-content">
+
+      {buttonIsClick && resultShow ? (
+        <div
+          // className="result-sharing-content"
+          className={`result-sharing-content ${resultShow && "fade-in2"}`}
+        >
+          <ResultSharingButton
+            className="result-sharing-button"
+            onClick={handleShareClick}
+            buttonColor={buttonColor}
+            hoverColor={buttonHoverColor}
+          >
+            <p className="jua-regular" style={{ color: "#fff" }}>
+              이메일로 결과 공유하기
+            </p>
+          </ResultSharingButton>
+          <p className="back-home">아무곳이나 클릭하여 홈으로 돌아가기</p>
+        </div>
+      ) : (
+        <div className={`start-content ${buttonIsClick ? "hide-content" : ""}`}>
           <StartButton
             className="start-button"
             buttonColor={buttonColor}
@@ -111,23 +129,6 @@ function CategoryLayout({
             <p className="jua-regular">{categoryButtonText}</p>
           </StartButton>
         </div>
-      ) : (
-        buttonIsClick &&
-        resultShow && (
-          <div className="result-sharing-content">
-            <ResultSharingButton
-              className="result-sharing-button"
-              onClick={handleShareClick}
-              buttonColor={buttonColor}
-              hoverColor={buttonHoverColor}
-            >
-              <p className="jua-regular" style={{ color: "#fff" }}>
-                이메일로 결과 공유하기
-              </p>
-            </ResultSharingButton>
-            <p className="back-home">아무곳이나 클릭하여 홈으로 돌아가기</p>
-          </div>
-        )
       )}
     </div>
   );

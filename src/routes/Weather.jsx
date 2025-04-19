@@ -60,7 +60,6 @@ function WeatherAnimation({ setResultShow, setCategoryPhraseText }) {
   const [weather, setWeather] = useState("");
   const [showInput, setShowInput] = useState(true);
   const [isFadingOut, setIsFadingOut] = useState(false);
-  const [loading, setLoading] = useState(false);
 
   const fetchWeather = () => {
     if (!input) return;
@@ -68,7 +67,6 @@ function WeatherAnimation({ setResultShow, setCategoryPhraseText }) {
     setIsFadingOut(true);
     setTimeout(() => {
       setShowInput(false);
-      setLoading(true);
     }, 500);
 
     fetch(
@@ -83,18 +81,15 @@ function WeatherAnimation({ setResultShow, setCategoryPhraseText }) {
         console.log(data.weather);
         const mapped = weatherMap[original];
 
-        setTimeout(() => {
-          if (mapped) {
-            setWeather(mapped);
-            setCategoryPhraseText(mapped.phrase);
-            setResultShow(true);
-          } else {
-            setWeather("unsupported");
-            setCategoryPhraseText("날씨를 알 수 없어요.");
-          }
+        if (mapped) {
+          setWeather(mapped);
+          setCategoryPhraseText(mapped.phrase);
           setResultShow(true);
-          setLoading(false);
-        }, 1500);
+        } else {
+          setWeather("unsupported");
+          setCategoryPhraseText("날씨를 알 수 없어요.");
+        }
+        setResultShow(true);
       })
       .catch((err) => {
         alert(err.message);
@@ -103,27 +98,16 @@ function WeatherAnimation({ setResultShow, setCategoryPhraseText }) {
   };
 
   const resetState = () => {
-    setTimeout(() => {
-      setIsFadingOut(false);
-      setShowInput(true);
-      setLoading(false);
-      setWeather("");
-      setResultShow(false);
-      setInput("");
-      setCategoryPhraseText("오늘의 날씨운 보기");
-    }, 1);
+    setIsFadingOut(false);
+    setShowInput(true);
+    setWeather("");
+    setResultShow(false);
+    setInput("");
+    setCategoryPhraseText("오늘의 날씨운 보기");
   };
 
   return (
-    <div
-      className="weather-animation-container"
-      style={{
-        height: "100%",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
+    <>
       {showInput && (
         <WeatherInfoInput
           input={input}
@@ -132,18 +116,25 @@ function WeatherAnimation({ setResultShow, setCategoryPhraseText }) {
           isFadingOut={isFadingOut}
         />
       )}
-
-      {loading && <p>운세 알아보는 중...</p>}
-
-      {!loading && weather && (
-        <img
-          className="image"
-          src={weather.image}
-          alt="weather"
-          style={{ height: "80%", width: "auto" }}
-        />
-      )}
-    </div>
+      <div
+        className={`weather-animation-container ${isFadingOut && "fade-in"}`}
+        style={{
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        {weather && (
+          <img
+            className="image"
+            src={weather.image}
+            alt="weather"
+            style={{ height: "80%", width: "auto" }}
+          />
+        )}
+      </div>
+    </>
   );
 }
 

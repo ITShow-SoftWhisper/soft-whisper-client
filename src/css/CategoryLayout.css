@@ -51,6 +51,9 @@
   justify-content: center;
   height: 15%;
 }
+.hide-content {
+  opacity: 0;
+}
 
 .start-button {
   display: flex;
