@@ -20,6 +20,7 @@ const ResultSharingButton = styled.button`
   }
 `;
 
+// 시작 버튼 스타일 컴포넌트
 const StartButton = styled.button`
   border: 2px solid ${(props) => props.buttonColor};
   border-radius: 50px;
@@ -43,6 +44,7 @@ const StartButton = styled.button`
   }
 `;
 
+// 카테고리별 페이지 레이아웃 컴포넌트
 function CategoryLayout({
   imgSrc, // 페이지별 image 경로
   animationComponent, // 페이지별 애니메이션 컴포넌트 (Weather.jsx 참고)
@@ -54,34 +56,37 @@ function CategoryLayout({
   buttonHoverColor, // 페이지 카테고리별 버튼 hover색
   resultShow, // 애니메이션이 끝나면 result-sharing-content을 보여줌
 }) {
-  const [buttonIsClick, setButtonIsClick] = useState(false); // 버튼 클릭 여부 (false -> 카테고리별 버든 문구, true -> 홈으로 돌아가기)
-  const navigate = useNavigate();
+  const [buttonIsClick, setButtonIsClick] = useState(false); // 버튼 클릭 여부 상태 (false: 시작 전, true: 시작 후)
+  const navigate = useNavigate(); // 페이지 이동을 위한 훅
 
+  // 시작 버튼 클릭 시 호출되는 함수
   const handleStartClick = (e) => {
-    setButtonIsClick(true);
+    setButtonIsClick(true); // 버튼 클릭 상태 true로 설정
     e.stopPropagation(); // 상태반전 외에 아무 동작도 실행하지 않음
   };
 
+  // 결과 공유 버튼 클릭 시 호출되는 함수 (기능 추가 예정)
   const handleShareClick = (e) => {
-    e.stopPropagation(); // 결과공유 외에 아무 동작도 실행하지 않음 (추가 코드 필요)
+    e.stopPropagation(); // 결과공유 외에 아무 동작도 실행하지 않음 (기능 추가 예정)
   };
 
+  // 애니메이션이 끝났고 버튼을 클릭했을 경우, 아무 곳이나 클릭하면 홈으로 이동
   useEffect(() => {
-    if (!buttonIsClick || !resultShow) return; // 운세를 보기 전이면 아무 동작도 실행하지 않고 return
+    if (!buttonIsClick || !resultShow) return; // 운세 보기 전이면 아무 동작도 실행하지 않음
 
-    // Home페이지로 이동
+    // 클릭 시 홈으로 이동하는 함수
     const handleAnywhereClick = () => {
-      navigate("/");
+      navigate("/"); // 홈으로 이동
     };
 
-    // 아무곳이나 누르면 handleAnywhereClick함수 호출
+    // window에 클릭 이벤트 리스너 등록
     window.addEventListener("click", handleAnywhereClick);
 
-    // 이벤트 중복 호출 방지
+    // cleanup 함수로 이벤트 중복 호출 방지
     return () => {
       window.removeEventListener("click", handleAnywhereClick);
     };
-  }, [buttonIsClick, resultShow, navigate]);
+  }, [buttonIsClick, resultShow, navigate]); // 의존성: 버튼 클릭 상태, 결과 표시 여부, navigate
 
   return (
     <div
@@ -90,22 +95,25 @@ function CategoryLayout({
         background: `linear-gradient(320deg, ${backgroundColor}, ${backgroundColor2}`,
       }}
     >
+      {/* 카테고리별 문구 출력 */}
       <h1 className="phrase-text jua-regular" style={{ color: "#000" }}>
         {categoryPhraseText}
       </h1>
+
+      {/* 애니메이션 또는 이미지 보여주는 영역 */}
       <div className="animation-content">
+        {/* 버튼을 클릭한 경우 애니메이션 컴포넌트 출력 */}
         {buttonIsClick && <>{animationComponent}</>}
 
+        {/* 버튼 클릭 전이면 이미지 출력 */}
         {!buttonIsClick && !resultShow && (
           <img src={imgSrc} className="image" />
         )}
       </div>
 
+      {/* 버튼 클릭 & 결과 보여줄 준비 완료 시 */}
       {buttonIsClick && resultShow ? (
-        <div
-          // className="result-sharing-content"
-          className={`result-sharing-content ${resultShow && "fade-in2"}`}
-        >
+        <div className={`result-sharing-content ${resultShow && "fade-in2"}`}>
           <ResultSharingButton
             className="result-sharing-button"
             onClick={handleShareClick}
@@ -119,6 +127,7 @@ function CategoryLayout({
           <p className="back-home">아무곳이나 클릭하여 홈으로 돌아가기</p>
         </div>
       ) : (
+        // 버튼 클릭 전, 시작 버튼 보여줌
         <div className={`start-content ${buttonIsClick ? "hide-content" : ""}`}>
           <StartButton
             className="start-button"
