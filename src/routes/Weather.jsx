@@ -6,8 +6,9 @@ import rain from "../assets/weather/rain.png";
 import blurry from "../assets/weather/blurry.png";
 import littleBlurry from "../assets/weather/littleBlurry.png";
 import snow from "../assets/weather/snow.png";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../css/CategoryLayout.css";
+import "../css/WeatherAnimation.css";
 
 const weatherMap = {
   "clear sky": { image: sunny, phrase: "오늘의 날씨는 맑아요!" },
@@ -55,11 +56,24 @@ const weatherMap = {
   "heavy shower snow": { image: snow, phrase: "오늘은 눈이 와요." },
 };
 
+const fortunes = [
+  "오늘은 당신이 그동안 애써 외면해왔던 내면의 목소리에 귀 기울여야 할 시기입니다. 반복되는 일상 속에서 잊고 지낸 당신만의 진짜 목표와 가치가 천천히 떠오를 것이며, 그 깨달음은 앞으로의 방향을 결정짓는 나침반이 되어줄 것입니다. 주변의 조언보다는 자신의 직관을 믿고, 오늘 하루는 조용한 산책이나 일기 쓰기처럼 스스로와 대화하는 시간을 가져보는 것이 좋습니다.",
+
+  "가장 가까운 사람일수록 때로는 가장 큰 오해의 대상이 되기 쉽습니다. 오늘 하루만큼은 상대의 말에 감정을 덧입히지 말고 있는 그대로 들어보세요. 그 속에 당신이 미처 몰랐던 진심이 담겨 있을 수 있습니다. 특히 갈등이 있었던 관계가 있다면, 지금이 바로 그 오해를 풀고 진정한 관계로 나아갈 수 있는 결정적인 순간입니다.",
+
+  "눈앞에 있는 작은 문제에 너무 매몰되지 마세요. 지금 보이는 장애물은 당신을 성장시키기 위한 장치일 뿐이며, 오히려 이 시기를 지나고 나면 그 모든 경험이 더 넓은 시야와 깊은 통찰로 바뀌어 있을 것입니다. 오늘 당신이 마주한 고민은 단기적인 실패처럼 보일 수 있지만, 장기적으로는 당신의 인생의 흐름을 바꾸는 귀중한 자산이 될 수 있습니다.",
+
+  "계속 달려오기만 했던 당신에게 오늘은 잠시 멈추어 숨 고르기를 허락해주는 날입니다. 멈춘다고 해서 실패가 아니며, 오히려 멈춤 속에서 진짜 에너지와 집중력이 회복될 수 있다는 사실을 기억하세요. 괜찮으니 잠깐 손을 놓고, 마음이 가는 대로 흘러가 보세요. 휴식 속에서 삶의 방향성이 자연스럽게 정리될 수 있습니다.",
+
+  "지금 당신이 고민하고 있는 선택지는 단순한 길의 갈림이 아니라 삶의 질을 결정짓는 중요한 지점입니다. 빠른 선택보다는 신중함을, 타인의 의견보다는 당신 내면의 직감을 믿는 것이 옳습니다. 잠시 외부의 소음을 차단하고, 차분히 혼자 있는 시간을 가져보세요. 그 안에서 명확한 확신과 함께 올바른 결정이 자연스럽게 떠오를 것입니다.",
+];
+
 function WeatherAnimation({ setResultShow, setCategoryPhraseText }) {
   const [input, setInput] = useState("");
   const [weather, setWeather] = useState("");
   const [showInput, setShowInput] = useState(true);
   const [isFadingOut, setIsFadingOut] = useState(false);
+  const [showFortune, setShowFortune] = useState(false);
 
   const fetchWeather = () => {
     if (!input) return;
@@ -67,7 +81,7 @@ function WeatherAnimation({ setResultShow, setCategoryPhraseText }) {
     setIsFadingOut(true);
     setTimeout(() => {
       setShowInput(false);
-    }, 500);
+    }, 5000);
 
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=792ff3066b1a91e7e54aabf9de16f2ee&units=metric&lang=en`
@@ -84,12 +98,10 @@ function WeatherAnimation({ setResultShow, setCategoryPhraseText }) {
         if (mapped) {
           setWeather(mapped);
           setCategoryPhraseText(mapped.phrase);
-          setResultShow(true);
         } else {
           setWeather("unsupported");
           setCategoryPhraseText("날씨를 알 수 없어요.");
         }
-        setResultShow(true);
       })
       .catch((err) => {
         alert(err.message);
@@ -105,6 +117,27 @@ function WeatherAnimation({ setResultShow, setCategoryPhraseText }) {
     setInput("");
     setCategoryPhraseText("오늘의 날씨운 보기");
   };
+
+  const getrandomFortune = () => {
+    const randomIndex = Math.floor(Math.random() * fortunes.length);
+    return fortunes[randomIndex];
+  };
+
+  useEffect(() => {
+    if (weather && isFadingOut) {
+      const timeout = setTimeout(() => {
+        setShowFortune(true);
+      }, 1000);
+
+      return () => clearTimeout(timeout);
+    }
+  }, [weather, isFadingOut]);
+
+  useEffect(() => {
+    if (showFortune) {
+      setResultShow(true);
+    }
+  }, [showFortune, setResultShow]);
 
   return (
     <>
@@ -123,15 +156,35 @@ function WeatherAnimation({ setResultShow, setCategoryPhraseText }) {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          columnGap: "5%",
         }}
       >
-        {weather && (
-          <img
-            className="image"
-            src={weather.image}
-            alt="weather"
-            style={{ height: "80%", width: "auto" }}
-          />
+        <div
+          className="moveContent"
+          style={{ display: "flex", alignItems: "center", height: "100%" }}
+        >
+          {weather && (
+            <img
+              className={`image ${isFadingOut && "fade-in-image"}`}
+              src={weather.image}
+              alt="weather"
+              style={{ height: "80%", width: "auto" }}
+            />
+          )}
+        </div>
+        {showFortune && (
+          <p
+            className="jua-regular fortune"
+            style={{
+              width: "30%",
+              height: "80%",
+              fontSize: "130%",
+              lineHeight: "1.5",
+              padding: "4% 0 0",
+            }}
+          >
+            {getrandomFortune()}
+          </p>
         )}
       </div>
     </>
