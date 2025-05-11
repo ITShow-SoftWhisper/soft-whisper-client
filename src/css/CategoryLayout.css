@@ -29,13 +29,13 @@
 
 @keyframes floatImage {
   0% {
-    transform: translateY(25px);
+    transform: translateY(10px);
   }
   50% {
-    transform: translateY(0px);
+    transform: translateY(-10px);
   }
   100% {
-    transform: translateY(25px);
+    transform: translateY(10px);
   }
 }
 
@@ -51,6 +51,7 @@
   justify-content: center;
   height: 15%;
 }
+
 .hide-content {
   opacity: 0;
 }
