@@ -3,13 +3,13 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-30px);
+    transform: translateX(-65%);
   }
 }
 
 .moveContent {
-  animation: moveContent 2.5s ease-in-out forwards;
-  animation-delay: 1s;
+  position: absolute;
+  animation: moveContent 2.5s 1s ease-in-out forwards;
 }
 
 @keyframes fadeInText {
@@ -26,5 +26,10 @@
 .fortune {
   opacity: 0;
   animation: fadeInText 1s ease forwards;
-  animation-delay: 1s;
+  animation-delay: 2.5s;
+}
+
+.weather-animation-container {
+  display: grid;
+  place-items: center;
 }
