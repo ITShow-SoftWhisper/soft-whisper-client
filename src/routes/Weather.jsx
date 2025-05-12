@@ -6,7 +6,7 @@ import rain from "../assets/weather/rain.png";
 import blurry from "../assets/weather/blurry.png";
 import littleBlurry from "../assets/weather/littleBlurry.png";
 import snow from "../assets/weather/snow.png";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import "../css/CategoryLayout.css";
 import "../css/WeatherAnimation.css";
 
@@ -74,6 +74,7 @@ function WeatherAnimation({ setResultShow, setCategoryPhraseText }) {
   const [showInput, setShowInput] = useState(true);
   const [isFadingOut, setIsFadingOut] = useState(false);
   const [showFortune, setShowFortune] = useState(false);
+  const [fortune, setFortune] = useState("");
 
   const fetchWeather = () => {
     if (!input) return;
@@ -116,6 +117,7 @@ function WeatherAnimation({ setResultShow, setCategoryPhraseText }) {
     setResultShow(false);
     setInput("");
     setCategoryPhraseText("오늘의 날씨운 보기");
+    setShowFortune(false);
   };
 
   const getrandomFortune = () => {
@@ -126,6 +128,7 @@ function WeatherAnimation({ setResultShow, setCategoryPhraseText }) {
   useEffect(() => {
     if (weather && isFadingOut) {
       const timeout = setTimeout(() => {
+        setFortune(getrandomFortune());
         setShowFortune(true);
       }, 1000);
 
@@ -160,18 +163,26 @@ function WeatherAnimation({ setResultShow, setCategoryPhraseText }) {
         }}
       >
         <div
-          className="moveContent"
-          style={{ display: "flex", alignItems: "center", height: "100%" }}
-        >
-          {weather && (
+          style={{
+            display: "flex",
+            alignItems: "center",
+            height: "100%",
+            width: "30%",
+          }}
+        ></div>
+        {weather && (
+          <div
+            className="moveContent"
+            style={{ display: "grid", placeItems: "center", height: "100%" }}
+          >
             <img
               className={`image ${isFadingOut && "fade-in-image"}`}
               src={weather.image}
               alt="weather"
-              style={{ height: "80%", width: "auto" }}
+              style={{ height: "40%", width: "auto" }}
             />
-          )}
-        </div>
+          </div>
+        )}
         {showFortune && (
           <p
             className="jua-regular fortune"
@@ -183,7 +194,7 @@ function WeatherAnimation({ setResultShow, setCategoryPhraseText }) {
               padding: "4% 0 0",
             }}
           >
-            {getrandomFortune()}
+            {fortune}
           </p>
         )}
       </div>
