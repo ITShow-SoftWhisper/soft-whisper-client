@@ -55,6 +55,7 @@ function CategoryLayout({
   buttonColor, // 페이지 카테고리별 버튼색
   buttonHoverColor, // 페이지 카테고리별 버튼 hover색
   resultShow, // 애니메이션이 끝나면 result-sharing-content을 보여줌
+  onCategoryButtonClick = () => {}, // 기본값으로 빈 함수 설정
 }) {
   const [buttonIsClick, setButtonIsClick] = useState(false); // 버튼 클릭 여부 상태 (false: 시작 전, true: 시작 후)
   const navigate = useNavigate(); // 페이지 이동을 위한 훅
@@ -63,6 +64,7 @@ function CategoryLayout({
   const handleStartClick = (e) => {
     setButtonIsClick(true); // 버튼 클릭 상태 true로 설정
     e.stopPropagation(); // 상태반전 외에 아무 동작도 실행하지 않음
+    onCategoryButtonClick();
   };
 
   // 결과 공유 버튼 클릭 시 호출되는 함수 (기능 추가 예정)
