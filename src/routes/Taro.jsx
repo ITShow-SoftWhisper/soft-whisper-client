@@ -53,26 +53,41 @@ const cardImages = [
   wheelOfFortune,
 ];
 
+function shuffleArray(array) {
+  const result = [...array];
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
+}
+
 function TaroAnimation({ setResultShow, setCategoryPhraseText }) {
   const [flipped, setFlipped] = useState(Array(22).fill(false));
   const [cardClasses, setCardClasses] = useState(Array(22).fill("card"));
+  const [isDisable, setIsDisable] = useState(true);
+  const [oneCardClick, setOneCardClick] = useState(false);
+
+  const [shuffledCardImages] = useState(() => shuffleArray(cardImages));
 
   useEffect(() => {
-    cardImages.forEach((_, i) => {
+    shuffledCardImages.forEach((_, i) => {
       setTimeout(() => {
         setCardClasses((prev) => {
           const updated = [...prev];
           updated[i] = `card ani${i}`;
           return updated;
         });
-        if (i === cardImages.length - 1) {
+        if (i === shuffledCardImages.length - 1) {
           setCategoryPhraseText("카드를 고르세요!");
+          setIsDisable(false);
         }
       }, 4000);
     });
-  }, [setCategoryPhraseText]);
+  }, [setCategoryPhraseText, shuffledCardImages]);
 
   const handleFlip = (i) => {
+    if (isDisable || oneCardClick) return;
     setFlipped((prev) => {
       const updated = [...prev];
       updated[i] = !updated[i];
@@ -83,11 +98,14 @@ function TaroAnimation({ setResultShow, setCategoryPhraseText }) {
   return (
     <div className="taro-animation-container">
       <div className="card-list">
-        {cardImages.map((img, i) => (
+        {shuffledCardImages.map((img, i) => (
           <div
             key={i}
             className={`${cardClasses[i]} ${flipped[i] ? "flipped" : ""}`}
-            onClick={() => handleFlip(i)}
+            onClick={() => {
+              handleFlip(i);
+              isDisable ? setOneCardClick(false) : setOneCardClick(true);
+            }}
           >
             <div className="card-inner">
               <img className="card-front" src={img} alt="taro front" />
