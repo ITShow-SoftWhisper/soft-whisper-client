@@ -86,13 +86,18 @@ function TaroAnimation({ setResultShow, setCategoryPhraseText }) {
     });
   }, [setCategoryPhraseText, shuffledCardImages]);
 
-  const handleFlip = (i) => {
+  const handleCardClick = (i) => {
     if (isDisable || oneCardClick) return;
-    setFlipped((prev) => {
-      const updated = [...prev];
-      updated[i] = !updated[i];
-      return updated;
-    });
+
+    setOneCardClick(true);
+
+    setTimeout(() => {
+      setFlipped((prev) => {
+        const updated = [...prev];
+        updated[i] = true;
+        return updated;
+      });
+    }, 0);
   };
 
   return (
@@ -101,15 +106,18 @@ function TaroAnimation({ setResultShow, setCategoryPhraseText }) {
         {shuffledCardImages.map((img, i) => (
           <div
             key={i}
-            className={`${cardClasses[i]} ${flipped[i] ? "flipped" : ""}`}
+            className={`
+              ${cardClasses[i]}
+              ${flipped[i] ? "flipped" : ""}
+              ${isDisable ? "" : "enable-hover"}`}
             onClick={() => {
-              handleFlip(i);
+              handleCardClick(i);
               isDisable ? setOneCardClick(false) : setOneCardClick(true);
             }}
           >
             <div className="card-inner">
-              <img className="card-front" src={img} alt="taro front" />
-              <img className="card-back" src={TaroBack} alt="taro back" />
+              <img className="card-front" src={img} />
+              <img className="card-back" src={TaroBack} />
             </div>
           </div>
         ))}
