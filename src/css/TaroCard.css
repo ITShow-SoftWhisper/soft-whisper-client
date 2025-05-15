@@ -9,29 +9,34 @@
 @keyframes moveLeftBig {
   0% {
     transform: translate(-50%, -50%);
-    width: 250px;
-    height: 388px;
+    width: 210px;
+    height: 325px;
   }
   100% {
-    transform: translate(-50%, -80%);
-    width: 190px;
-    height: 295px;
+    transform: translate(-50%, 40%);
+    width: 170px;
+    height: 265px;
   }
 }
 
 .card {
   position: absolute;
-  width: 250px;
-  height: 388px;
+  width: 210px;
+  height: 325px;
   perspective: 1000px;
   cursor: pointer;
-  top: 44%;
+  top: 48%;
   transform: translate(-50%, -50%);
   transform-origin: center center;
   z-index: 1;
   animation: moveLeftBig 1.5s 0.3s ease forwards;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
   animation-fill-mode: forwards;
+  border-radius: 6px;
+}
+
+.enable-hover:hover {
+  box-shadow: 2px 4px 10px 10px #ffffff76;
 }
 
 .card-inner {
@@ -66,120 +71,136 @@
   transform: rotateY(180deg);
 }
 
+/*
+@keyframes cardClickedMove {
+  100% {
+    transform: translate(-50%, -50%);
+    width: 210px;
+    height: 325px;
+  }
+}
+ 
+.cardClicked {
+  animation: cardClickedMove 0.3s ease forwards;
+} */
+
 @keyframes ani0 {
   100% {
-    transform: translate(-700px, 30px) rotate(-25deg);
+    transform: translate(-620px, 30px) rotate(-25deg);
   }
 }
 @keyframes ani1 {
   100% {
-    transform: translate(-640px, -5px) rotate(-22deg);
+    transform: translate(-570px, -5px) rotate(-22deg);
   }
 }
 @keyframes ani2 {
   100% {
-    transform: translate(-580px, -35px) rotate(-19deg);
+    transform: translate(-520px, -35px) rotate(-19deg);
   }
 }
 @keyframes ani3 {
   100% {
-    transform: translate(-520px, -60px) rotate(-16deg);
+    transform: translate(-470px, -60px) rotate(-16deg);
   }
 }
 @keyframes ani4 {
   100% {
-    transform: translate(-460px, -70px) rotate(-13deg);
+    transform: translate(-420px, -80px) rotate(-13deg);
   }
 }
 @keyframes ani5 {
   100% {
-    transform: translate(-400px, -78px) rotate(-10deg);
+    transform: translate(-370px, -97px) rotate(-10deg);
   }
 }
 @keyframes ani6 {
   100% {
-    transform: translate(-340px, -88px) rotate(-7deg);
+    transform: translate(-320px, -110px) rotate(-7deg);
   }
 }
 @keyframes ani7 {
   100% {
-    transform: translate(-280px, -98px) rotate(-4deg);
+    transform: translate(-270px, -120px) rotate(-4deg);
   }
 }
 @keyframes ani8 {
   100% {
-    transform: translate(-220px, -105px) rotate(-2deg);
+    transform: translate(-220px, -127px) rotate(-2deg);
   }
 }
 @keyframes ani9 {
   100% {
-    transform: translate(-160px, -110px) rotate(-1deg);
+    transform: translate(-170px, -130px) rotate(-1deg);
   }
 }
 @keyframes ani10 {
   100% {
-    transform: translate(-100px, -112px) rotate(0deg);
+    transform: translate(-120px, -133px) rotate(0deg);
   }
 }
 @keyframes ani11 {
   100% {
-    transform: translate(-40px, -112px) rotate(0deg);
+    transform: translate(-70px, -134px) rotate(0deg);
   }
 }
 @keyframes ani12 {
   100% {
-    transform: translate(20px, -110px) rotate(1deg);
+    transform: translate(-20px, -130px) rotate(1deg);
   }
 }
 @keyframes ani13 {
   100% {
-    transform: translate(80px, -105px) rotate(2deg);
+    transform: translate(30px, -127px) rotate(2deg);
   }
 }
 @keyframes ani14 {
   100% {
-    transform: translate(140px, -98px) rotate(4deg);
+    transform: translate(80px, -120px) rotate(4deg);
   }
 }
 @keyframes ani15 {
   100% {
-    transform: translate(200px, -88px) rotate(7deg);
+    transform: translate(130px, -110px) rotate(7deg);
   }
 }
 @keyframes ani16 {
   100% {
-    transform: translate(260px, -76px) rotate(10deg);
+    transform: translate(180px, -97px) rotate(10deg);
   }
 }
 @keyframes ani17 {
   100% {
-    transform: translate(320px, -63px) rotate(13deg);
+    transform: translate(230px, -80px) rotate(13deg);
   }
 }
 @keyframes ani18 {
   100% {
-    transform: translate(380px, -45px) rotate(16deg);
+    transform: translate(280px, -60px) rotate(16deg);
   }
 }
 @keyframes ani19 {
   100% {
-    transform: translate(440px, -25px) rotate(19deg);
+    transform: translate(330px, -35px) rotate(19deg);
   }
 }
 @keyframes ani20 {
   100% {
-    transform: translate(500px, 0px) rotate(22deg);
+    transform: translate(380px, -5px) rotate(22deg);
   }
 }
 @keyframes ani21 {
   100% {
-    transform: translate(560px, 30px) rotate(25deg);
+    transform: translate(430px, 30px) rotate(25deg);
   }
 }
 
 .card:nth-child(1) {
   animation: moveLeftBig 1.5s 0.3s ease forwards, ani0 0.8s ease forwards;
   animation-delay: 0.3s, 1.8s;
+}
+.card:nth-child(1):hover {
+  transform: translate(-650, -20px);
 }
 .card:nth-child(2) {
   animation: moveLeftBig 1.5s 0.3s ease forwards, ani1 0.8s ease forwards;
