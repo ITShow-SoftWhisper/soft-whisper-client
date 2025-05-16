@@ -30,13 +30,17 @@
   transform-origin: center center;
   z-index: 1;
   animation: moveLeftBig 1.5s 0.3s ease forwards;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   animation-fill-mode: forwards;
   border-radius: 6px;
 }
 
+.enable-hover {
+  transition: all 0.2s ease;
+}
+
 .enable-hover:hover {
-  box-shadow: 2px 4px 10px 10px #ffffff76;
+  box-shadow: 0px 0px 10px 10px #bb2aff76;
 }
 
 .card-inner {
@@ -70,19 +74,6 @@
 .card-back {
   transform: rotateY(180deg);
 }
-
-/*
-@keyframes cardClickedMove {
-  100% {
-    transform: translate(-50%, -50%);
-    width: 210px;
-    height: 325px;
-  }
-}
- 
-.cardClicked {
-  animation: cardClickedMove 0.3s ease forwards;
-} */
 
 @keyframes ani0 {
   100% {
@@ -193,6 +184,73 @@
   100% {
     transform: translate(430px, 30px) rotate(25deg);
   }
+}
+
+.enable-hover:nth-child(1):hover {
+  transform: translate(-652px, -40px) rotate(-25deg) !important;
+}
+.enable-hover:nth-child(2):hover {
+  transform: translate(-598px, -75px) rotate(-22deg) !important;
+}
+.enable-hover:nth-child(3):hover {
+  transform: translate(-544px, -105px) rotate(-19deg) !important;
+}
+.enable-hover:nth-child(4):hover {
+  transform: translate(-490px, -130px) rotate(-16deg) !important;
+}
+.enable-hover:nth-child(5):hover {
+  transform: translate(-436px, -150px) rotate(-13deg) !important;
+}
+.enable-hover:nth-child(6):hover {
+  transform: translate(-382px, -167px) rotate(-10deg) !important;
+}
+.enable-hover:nth-child(7):hover {
+  transform: translate(-328px, -180px) rotate(-7deg) !important;
+}
+.enable-hover:nth-child(8):hover {
+  transform: translate(-274px, -190px) rotate(-4deg) !important;
+}
+.enable-hover:nth-child(9):hover {
+  transform: translate(-222px, -197px) rotate(-2deg) !important;
+}
+.enable-hover:nth-child(10):hover {
+  transform: translate(-171px, -200px) rotate(-1deg) !important;
+}
+.enable-hover:nth-child(11):hover {
+  transform: translate(-120px, -203px) rotate(0deg) !important;
+}
+.enable-hover:nth-child(12):hover {
+  transform: translate(-70px, -204px) rotate(0deg) !important;
+}
+.enable-hover:nth-child(13):hover {
+  transform: translate(-19px, -200px) rotate(1deg) !important;
+}
+.enable-hover:nth-child(14):hover {
+  transform: translate(33px, -197px) rotate(2deg) !important;
+}
+.enable-hover:nth-child(15):hover {
+  transform: translate(85px, -190px) rotate(4deg) !important;
+}
+.enable-hover:nth-child(16):hover {
+  transform: translate(138px, -180px) rotate(7deg) !important;
+}
+.enable-hover:nth-child(17):hover {
+  transform: translate(193px, -167px) rotate(10deg) !important;
+}
+.enable-hover:nth-child(18):hover {
+  transform: translate(246px, -150px) rotate(13deg) !important;
+}
+.enable-hover:nth-child(19):hover {
+  transform: translate(299px, -130px) rotate(16deg) !important;
+}
+.enable-hover:nth-child(20):hover {
+  transform: translate(353px, -105px) rotate(19deg) !important;
+}
+.enable-hover:nth-child(21):hover {
+  transform: translate(408px, -75px) rotate(22deg) !important;
+}
+.enable-hover:nth-child(22):hover {
+  transform: translate(462px, -40px) rotate(25deg) !important;
 }
 
 .card:nth-child(1) {
