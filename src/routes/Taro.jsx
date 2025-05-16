@@ -6,7 +6,7 @@ import TaroBack from "../assets/taro/taro-card/taro_back.png";
 import death from "../assets/taro/taro-card/Death.png";
 import judgement from "../assets/taro/taro-card/Judgement.png";
 import justice from "../assets/taro/taro-card/Justice.png";
-import strength from "../assets/taro/taro-card/Strength.png";
+import strength from "../assets/taro/taro-card/Strength.jpg";
 import temperance from "../assets/taro/taro-card/Temperance.png";
 import theChariot from "../assets/taro/taro-card/The_Chariot.png";
 import theDevil from "../assets/taro/taro-card/The_Devil.png";
@@ -90,6 +90,7 @@ function TaroAnimation({ setResultShow, setCategoryPhraseText }) {
     if (isDisable || oneCardClick) return;
 
     setOneCardClick(true);
+    setIsDisable(true);
 
     setTimeout(() => {
       setFlipped((prev) => {
@@ -97,7 +98,7 @@ function TaroAnimation({ setResultShow, setCategoryPhraseText }) {
         updated[i] = true;
         return updated;
       });
-    }, 0);
+    }, 2000);
   };
 
   return (
