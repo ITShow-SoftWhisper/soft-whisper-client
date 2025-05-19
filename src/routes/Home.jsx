@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Book from "../assets/book.png";
-import Fortune from "../assets/fortune.png";
+import Fortune from "../assets/fortune/fortune.png";
 import Lucky from "../assets/lucky.png";
 import Taro from "../assets/taro/taro.png";
 import Weather from "../assets/weather/littleBlurry.png";
