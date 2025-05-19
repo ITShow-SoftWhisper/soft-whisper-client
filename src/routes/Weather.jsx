@@ -128,7 +128,12 @@ const fortunes = [
   "오늘은 창의력과 직관을 믿고, 새로운 아이디어를 떠올려보세요. 때로는 일상 속에서 가장 단순한 것에서 영감을 얻을 수 있습니다. 새로운 아이디어나 접근 방식이 성공적인 결과로 이어질 것입니다.",
 ];
 
-function WeatherAnimation({ setResultShow, setCategoryPhraseText }) {
+function WeatherAnimation({
+  setResultShow,
+  setCategoryPhraseText,
+  setWeatherBackgroundColor1,
+  setWeatherBackgroundColor2,
+}) {
   const [input, setInput] = useState("");
   const [weather, setWeather] = useState("");
   const [showInput, setShowInput] = useState(true);
@@ -155,6 +160,17 @@ function WeatherAnimation({ setResultShow, setCategoryPhraseText }) {
         const original = data.weather[0].description;
         console.log(data.weather);
         const mapped = weatherMap[original];
+
+        if (mapped.image === sunny) {
+          setWeatherBackgroundColor1("#fff387");
+          setWeatherBackgroundColor2("#fff9c6");
+        } else if (mapped.image === rain) {
+          setWeatherBackgroundColor1("#5372c5");
+          setWeatherBackgroundColor2("#EBEBEB");
+        } else if (mapped.image === snow) {
+          setWeatherBackgroundColor1("#98bcff");
+          setWeatherBackgroundColor2("#c3d8ff");
+        }
 
         if (mapped) {
           setWeather(mapped);
@@ -265,8 +281,6 @@ function WeatherAnimation({ setResultShow, setCategoryPhraseText }) {
   );
 }
 
-const backgroundColor = "#EBEBEB";
-const backgroundColor2 = "#D6D6D6";
 const buttonColor = "#414141";
 const buttonHoverColor = "#747474";
 
@@ -275,6 +289,11 @@ function Weather() {
   const [categoryPhraseText, setCategoryPhraseText] =
     useState("오늘의 날씨운 보기");
 
+  const [weatherBackgroundColor1, setWeatherBackgroundColor1] =
+    useState("#EBEBEB");
+  const [weatherBackgroundColor2, setWeatherBackgroundColor2] =
+    useState("#D6D6D6");
+
   return (
     <CategoryLayout
       imgSrc={WeatherImage}
@@ -282,12 +301,14 @@ function Weather() {
         <WeatherAnimation
           setResultShow={setResultShow}
           setCategoryPhraseText={setCategoryPhraseText}
+          setWeatherBackgroundColor1={setWeatherBackgroundColor1}
+          setWeatherBackgroundColor2={setWeatherBackgroundColor2}
         />
       }
       categoryPhraseText={categoryPhraseText}
       categoryButtonText="날씨운 보기"
-      backgroundColor={backgroundColor}
-      backgroundColor2={backgroundColor2}
+      backgroundColor={weatherBackgroundColor2}
+      backgroundColor2={weatherBackgroundColor1}
       buttonColor={buttonColor}
       buttonHoverColor={buttonHoverColor}
       resultShow={resultShow}
