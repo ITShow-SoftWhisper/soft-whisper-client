@@ -13,7 +13,7 @@
     height: 325px;
   }
   100% {
-    transform: translate(-50%, 40%);
+    transform: translate(-620px, 30px) rotate(-25deg);
     width: 170px;
     height: 265px;
   }
@@ -256,9 +256,6 @@
 .card:nth-child(1) {
   animation: moveLeftBig 1.5s 0.3s ease forwards, ani0 0.8s ease forwards;
   animation-delay: 0.3s, 1.8s;
-}
-.card:nth-child(1):hover {
-  transform: translate(-650, -20px);
 }
 .card:nth-child(2) {
   animation: moveLeftBig 1.5s 0.3s ease forwards, ani1 0.8s ease forwards;
