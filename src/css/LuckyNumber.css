@@ -1,0 +1,29 @@
+/* LuckyNumber.css */
+.lucky-number-container {
+  text-align: center;
+  animation: fadeIn 1s ease-in;
+  margin-bottom: 30px;
+}
+
+.lucky-number-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.lucky-number-ball {
+  width: 44px;
+  height: 44px;
+  background-color: #72da64;
+  color: white;
+  font-size: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Jua", sans-serif;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+

@@ -21,9 +21,9 @@
 }
 
 .book-animation-container img[src*="frame.png"] {
-  width: 100%; 
-  max-width: 350px; 
-  height: auto; 
+  width: 100%;
+  max-width: 350px;
+  height: auto;
 }
 
 .random-text {
@@ -34,4 +34,53 @@
   font-size: 24px;
   color: #333;
   text-align: center;
+}
+
+@keyframes bookAnimation {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(40px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.book-image {
+  animation: bookAnimation 2s ease-in-out infinite;
+}
+
+@keyframes arrowAnimation {
+  0%{
+    transform: translateY(0px);
+  }
+  50%{
+    transform: translateY(15px);
+  }
+  100%{
+    transform: translateY(0%);
+  }
+}
+
+.next-icon {
+  animation: arrowAnimation 1s ease-in-out infinite;
+}
+
+@keyframes frameAnimation {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.frame-image {
+  /* 일단 애니메이션 꺼둠 */
+  animation: frameAnimation 2s ease-in-out infinite;  
 }

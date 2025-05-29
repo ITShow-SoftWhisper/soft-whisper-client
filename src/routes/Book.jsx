@@ -61,7 +61,7 @@ const answers = [
 function BookAnimation({ currentImage, nextShow, onNextClick, randomText }) {
   return (
     <div className="book-animation-container">
-      <img src={currentImage} className="book-image" />
+      <img src={currentImage} className="book-image frame-image" />
       {nextShow && (
         <div className="next-icon" onClick={onNextClick}>
           <i className="bi bi-chevron-compact-down"></i>
