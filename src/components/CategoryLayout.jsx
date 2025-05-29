@@ -64,8 +64,8 @@ function CategoryLayout({
 
   // 시작 버튼 클릭 시 호출되는 함수
   const handleStartClick = (e) => {
-    setButtonIsClick(true); // 버튼 클릭 상태 true로 설정
     e.stopPropagation(); // 상태반전 외에 아무 동작도 실행하지 않음
+    setButtonIsClick(true); // 버튼 클릭 상태 true로 설정
     onCategoryButtonClick();
   };
 
@@ -95,7 +95,21 @@ function CategoryLayout({
 
   return (
     <>
-      {sharingButtonClick && <EmailInput input={input} setInput={setInput} />}
+      {sharingButtonClick && (
+        <EmailInput
+          input={input}
+          setInput={setInput}
+          setSharingButtonClick={setSharingButtonClick}
+          resultData={{
+            categoryPhraseText,
+            backgroundColor,
+            backgroundColor2,
+            buttonColor,
+            buttonHoverColor,
+            // animationComponent,
+          }}
+        />
+      )}
       <div
         className="container"
         style={{

@@ -1,7 +1,8 @@
 import "../css/EmailInput.css";
 
-function EmailInput({ input, setInput }) {
+function EmailInput({ input, setInput, setSharingButtonClick, resultData }) {
   const handleShareSubmit = async () => {
+    setInput("");
     try {
       const res = await fetch("http://localhost:3000/api/share", {
         method: "POST",
@@ -10,25 +11,25 @@ function EmailInput({ input, setInput }) {
         },
         body: JSON.stringify({
           email: input,
-          result: { message: "테스트 결과입니다" },
+          result: { ...resultData },
         }),
       });
 
-      const text = await res.text(); // ⚠️ text로 먼저 확인
-      console.log("🔎 서버 응답 원문:", text);
+      const text = await res.text();
+      console.log("서버 응답 원문:", text);
 
       let data;
       try {
-        data = JSON.parse(text); // 응답을 수동으로 JSON 파싱 시도
+        data = JSON.parse(text);
       } catch (e) {
         console.error("❌ JSON 파싱 실패", e);
         return;
       }
 
       if (res.ok) {
-        alert(`링크가 생성되었습니다: ${data.shareUrl}`);
+        alert("당신의 행운배달이 완료되었어요!");
       } else {
-        alert("공유에 실패했습니다");
+        alert("행운배달에 실패했어요...");
       }
     } catch (e) {
       console.error("💥 네트워크 오류:", e);
@@ -43,6 +44,13 @@ function EmailInput({ input, setInput }) {
 
   return (
     <div className="container" style={{ zIndex: 100000 }}>
+      <i
+        class="bi bi-x-lg"
+        onClick={(e) => {
+          e.stopPropagation();
+          setSharingButtonClick(false);
+        }}
+      ></i>
       <div className="email-info-input">
         <input
           className="email-input jua-regular"
@@ -55,7 +63,10 @@ function EmailInput({ input, setInput }) {
         />
         <button
           className="email-send-button jua-regular"
-          onClick={handleShareSubmit}
+          onClick={() => {
+            handleShareSubmit();
+            setInput("");
+          }}
         >
           결과 공유하기
         </button>

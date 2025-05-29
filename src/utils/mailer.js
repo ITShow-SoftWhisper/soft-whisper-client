@@ -14,7 +14,7 @@ export async function sendMail(to, link) {
   const mailOptions = {
     from: "seoyoun8879@gmail.com",
     to,
-    subject: "🔮 운세 결과 링크입니다",
+    subject: "🔮 당신의 운세가 도착했어요!!",
     html: `<p>아래 링크를 눌러 확인하세요: <a href="${link}">${link}</a></p>`,
   };
 

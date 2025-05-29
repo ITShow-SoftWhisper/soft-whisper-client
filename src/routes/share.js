@@ -9,7 +9,7 @@ router.post("/share", async (req, res) => {
   const { email, result } = req.body;
 
   const id = uuidv4().slice(0, 8);
-  const baseUrl = import.meta.env.VITE_BASE_URL || "http://localhost:5173";
+  const baseUrl = process.env.BASE_URL || "http://localhost:5173";
   const shareUrl = `${baseUrl}/result/${id}`;
 
   try {

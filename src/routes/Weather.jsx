@@ -288,7 +288,6 @@ function Weather() {
   const [resultShow, setResultShow] = useState(false);
   const [categoryPhraseText, setCategoryPhraseText] =
     useState("오늘의 날씨운 보기");
-
   const [weatherBackgroundColor1, setWeatherBackgroundColor1] =
     useState("#EBEBEB");
   const [weatherBackgroundColor2, setWeatherBackgroundColor2] =
