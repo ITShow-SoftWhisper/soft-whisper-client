@@ -63,3 +63,16 @@
 .email-send-button:hover {
   background-color: #000;
 }
+
+.bi {
+  position: absolute;
+  top: 1%;
+  right: 2%;
+  color: #fff;
+  font-size: 35px;
+  cursor: pointer;
+}
+
+.bi:hover {
+  color: #000;
+}
