@@ -65,13 +65,13 @@
 
   width: 25%;
 
-  background-color: #a4cce9;
+  background-color: #ffffff;
 }
 
 .city-input {
   text-align: center;
   height: 50px;
-  border: none;
+  border: 1px solid #000;
   outline: none;
   border-radius: 2px;
   font-size: 15px;
@@ -87,11 +87,11 @@
   color: #fff;
   font-size: 15px;
   padding-top: 5px;
-  background-color: #3eaaf7;
+  background-color: rgb(42, 42, 42);
   transition: 0.3s ease;
   cursor: pointer;
 }
 
 .submit-button:hover {
-  background-color: rgb(27, 157, 251);
+  background-color: #000;
 }
