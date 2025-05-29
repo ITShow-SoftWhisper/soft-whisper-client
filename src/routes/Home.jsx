@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Book from "../assets/book.png";
 import Fortune from "../assets/fortune/fortune.png";
-<<<<<<< Updated upstream
-import Lucky from "../assets/lucky.png";
-=======
 import Lucky from "../assets/Lucky/lucky.png";
->>>>>>> Stashed changes
 import Taro from "../assets/taro/taro.png";
 import Weather from "../assets/weather/littleBlurry.png";
 import CardMenu from "../components/CardMenu";

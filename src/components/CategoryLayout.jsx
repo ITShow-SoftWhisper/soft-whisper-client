@@ -112,7 +112,6 @@ function CategoryLayout({
           {/* 버튼을 클릭한 경우 애니메이션 컴포넌트 출력 */}
           {buttonIsClick && <>{animationComponent}</>}
 
-<<<<<<< Updated upstream
           {/* 버튼 클릭 전이면 이미지 출력 */}
           {!buttonIsClick && !resultShow && (
             <img src={imgSrc} className="image" />
@@ -151,11 +150,6 @@ function CategoryLayout({
               <p className="jua-regular">{categoryButtonText}</p>
             </StartButton>
           </div>
-=======
-        {/* 버튼 클릭 전이면 이미지 출력 */}
-        {!buttonIsClick && !resultShow && (   
-            <img src={imgSrc} className="image" />
->>>>>>> Stashed changes
         )}
       </div>
     </>
