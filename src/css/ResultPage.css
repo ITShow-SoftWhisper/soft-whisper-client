@@ -1,0 +1,67 @@
+html,
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 6%;
+}
+
+.phrase-text {
+  margin: 0;
+}
+
+.animation-content {
+  height: 50%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.test-image {
+  height: 90%;
+}
+
+.other-fortune-button-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 15%;
+}
+
+.other-fortune-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 45%;
+  width: 300px;
+}
+
+.re-start-button {
+  text-decoration: none;
+}
+
+.other-fortune-button p {
+  font-size: 145%;
+  margin-top: 8%;
+}
+
+@media (max-width: 412px) {
+  .animation-content {
+    height: 35%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
