@@ -26,7 +26,7 @@ import theTower from "../assets/taro/taro-card/The_Tower.png";
 import theWorld from "../assets/taro/taro-card/The_World.png";
 import wheelOfFortune from "../assets/taro/taro-card/Wheel_Of_Fortune.png";
 
-import "../css/TaroCard.css";
+import "../css/TaroCard.scss";
 
 const cardImages = [
   death,
@@ -65,8 +65,10 @@ function shuffleArray(array) {
 function TaroAnimation({ setResultShow, setCategoryPhraseText }) {
   const [flipped, setFlipped] = useState(Array(22).fill(false));
   const [cardClasses, setCardClasses] = useState(Array(22).fill("card"));
+  const [selectedCard, setSelectedCard] = useState(Array(22).fill(false));
   const [isDisable, setIsDisable] = useState(true);
   const [oneCardClick, setOneCardClick] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
 
   const [shuffledCardImages] = useState(() => shuffleArray(cardImages));
 
@@ -89,8 +91,16 @@ function TaroAnimation({ setResultShow, setCategoryPhraseText }) {
   const handleCardClick = (i) => {
     if (isDisable || oneCardClick) return;
 
-    setOneCardClick(true);
+    setIsClicked(true);
+
     setIsDisable(true);
+    isDisable ? setOneCardClick(false) : setOneCardClick(true);
+
+    setSelectedCard((prev) => {
+      const updated = [...prev];
+      updated[i] = true;
+      return updated;
+    });
 
     setTimeout(() => {
       setFlipped((prev) => {
@@ -109,11 +119,15 @@ function TaroAnimation({ setResultShow, setCategoryPhraseText }) {
             key={i}
             className={`
               ${cardClasses[i]}
+              card-num${[i]}
               ${flipped[i] ? "flipped" : ""}
-              ${isDisable ? "" : "enable-hover"}`}
+              ${isDisable ? "" : "enable-hover"}
+              ${selectedCard[i] ? "selected-card" : ""}
+              ${isClicked ? "click-card" : ""}
+
+            `}
             onClick={() => {
               handleCardClick(i);
-              isDisable ? setOneCardClick(false) : setOneCardClick(true);
             }}
           >
             <div className="card-inner">

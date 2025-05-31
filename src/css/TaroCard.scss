@@ -1,3 +1,7 @@
+.card-list {
+  position: relative;
+}
+
 .taro-animation-container {
   display: grid;
   place-items: center;
@@ -33,14 +37,132 @@
   transition: all 0.2s ease;
   animation-fill-mode: forwards;
   border-radius: 6px;
+
+  &.click-card {
+    &:not(.selected-card) {
+      transition: opacity 0.5s ease;
+      opacity: 0;
+    }
+
+    &.selected-card {
+      transform: translate(-50%, -45%) !important;
+      width: 235px !important;
+      height: 359px !important;
+    }
+  }
 }
 
 .enable-hover {
   transition: all 0.2s ease;
+  top: 0;
+  left: 0;
+
+  &:hover {
+    transition: all 0.2s ease;
+    top: -60px;
+  }
+  &.card-num0 {
+    &:hover {
+      left: -27px;
+    }
+  }
+  &.card-num1 {
+    &:hover {
+      left: -25px;
+    }
+  }
+  &.card-num2 {
+    &:hover {
+      left: -20px;
+    }
+  }
+  &.card-num3 {
+    &:hover {
+      left: -18px;
+    }
+  }
+  &.card-num4 {
+    &:hover {
+      left: -14px;
+    }
+  }
+  &.card-num5 {
+    &:hover {
+      left: -11px;
+    }
+  }
+  &.card-num6 {
+    &:hover {
+      left: -8px;
+    }
+  }
+  &.card-num7 {
+    &:hover {
+      left: -4px;
+    }
+  }
+  &.card-num8 {
+    &:hover {
+      left: -2px;
+    }
+  }
+  &.card-num13 {
+    &:hover {
+      left: 2px;
+    }
+  }
+  &.card-num14 {
+    &:hover {
+      left: 4px;
+    }
+  }
+  &.card-num15 {
+    &:hover {
+      left: 7px;
+    }
+  }
+  &.card-num16 {
+    &:hover {
+      left: 10px;
+    }
+  }
+  &.card-num17 {
+    &:hover {
+      left: 14px;
+    }
+  }
+  &.card-num18 {
+    &:hover {
+      left: 17px;
+    }
+  }
+  &.card-num19 {
+    &:hover {
+      left: 21px;
+    }
+  }
+  &.card-num20 {
+    &:hover {
+      left: 24px;
+    }
+  }
+  &.card-num21 {
+    &:hover {
+      left: 28px;
+    }
+  }
 }
 
-.enable-hover:hover {
+.enable-hover > .card-inner > .card-back {
+  box-shadow: none;
+  transform: rotate(0deg) rotateY(180deg);
+  transition: all 0.2s ease;
+}
+
+.enable-hover:hover > .card-inner > .card-back {
   box-shadow: 0px 0px 10px 10px #bb2aff76;
+  transform: rotate(0deg) rotateY(180deg);
+  transition: all 0.2s ease;
 }
 
 .card-inner {
@@ -77,180 +199,113 @@
 
 @keyframes ani0 {
   100% {
-    transform: translate(-620px, 30px) rotate(-25deg);
+    transform: translate(-620px, 50px) rotate(-25deg);
   }
 }
 @keyframes ani1 {
   100% {
-    transform: translate(-570px, -5px) rotate(-22deg);
+    transform: translate(-570px, 15px) rotate(-22deg);
   }
 }
 @keyframes ani2 {
   100% {
-    transform: translate(-520px, -35px) rotate(-19deg);
+    transform: translate(-520px, -15px) rotate(-19deg);
   }
 }
 @keyframes ani3 {
   100% {
-    transform: translate(-470px, -60px) rotate(-16deg);
+    transform: translate(-470px, -40px) rotate(-16deg);
   }
 }
 @keyframes ani4 {
   100% {
-    transform: translate(-420px, -80px) rotate(-13deg);
+    transform: translate(-420px, -60px) rotate(-13deg);
   }
 }
 @keyframes ani5 {
   100% {
-    transform: translate(-370px, -97px) rotate(-10deg);
+    transform: translate(-370px, -77px) rotate(-10deg);
   }
 }
 @keyframes ani6 {
   100% {
-    transform: translate(-320px, -110px) rotate(-7deg);
+    transform: translate(-320px, -90px) rotate(-7deg);
   }
 }
 @keyframes ani7 {
   100% {
-    transform: translate(-270px, -120px) rotate(-4deg);
+    transform: translate(-270px, -100px) rotate(-4deg);
   }
 }
 @keyframes ani8 {
   100% {
-    transform: translate(-220px, -127px) rotate(-2deg);
+    transform: translate(-220px, -107px) rotate(-2deg);
   }
 }
 @keyframes ani9 {
   100% {
-    transform: translate(-170px, -130px) rotate(-1deg);
+    transform: translate(-170px, -110px) rotate(-1deg);
   }
 }
 @keyframes ani10 {
   100% {
-    transform: translate(-120px, -133px) rotate(0deg);
+    transform: translate(-120px, -113px) rotate(0deg);
   }
 }
 @keyframes ani11 {
   100% {
-    transform: translate(-70px, -134px) rotate(0deg);
+    transform: translate(-70px, -114px) rotate(0deg);
   }
 }
 @keyframes ani12 {
   100% {
-    transform: translate(-20px, -130px) rotate(1deg);
+    transform: translate(-20px, -110px) rotate(1deg);
   }
 }
 @keyframes ani13 {
   100% {
-    transform: translate(30px, -127px) rotate(2deg);
+    transform: translate(30px, -107px) rotate(2deg);
   }
 }
 @keyframes ani14 {
   100% {
-    transform: translate(80px, -120px) rotate(4deg);
+    transform: translate(80px, -100px) rotate(4deg);
   }
 }
 @keyframes ani15 {
   100% {
-    transform: translate(130px, -110px) rotate(7deg);
+    transform: translate(130px, -90px) rotate(7deg);
   }
 }
 @keyframes ani16 {
   100% {
-    transform: translate(180px, -97px) rotate(10deg);
+    transform: translate(180px, -77px) rotate(10deg);
   }
 }
 @keyframes ani17 {
   100% {
-    transform: translate(230px, -80px) rotate(13deg);
+    transform: translate(230px, -60px) rotate(13deg);
   }
 }
 @keyframes ani18 {
   100% {
-    transform: translate(280px, -60px) rotate(16deg);
+    transform: translate(280px, -40px) rotate(16deg);
   }
 }
 @keyframes ani19 {
   100% {
-    transform: translate(330px, -35px) rotate(19deg);
+    transform: translate(330px, -15px) rotate(19deg);
   }
 }
 @keyframes ani20 {
   100% {
-    transform: translate(380px, -5px) rotate(22deg);
+    transform: translate(380px, 15px) rotate(22deg);
   }
 }
 @keyframes ani21 {
   100% {
-    transform: translate(430px, 30px) rotate(25deg);
+    transform: translate(430px, 50px) rotate(25deg);
   }
-}
-
-.enable-hover:nth-child(1):hover {
-  transform: translate(-652px, -40px) rotate(-25deg) !important;
-}
-.enable-hover:nth-child(2):hover {
-  transform: translate(-598px, -75px) rotate(-22deg) !important;
-}
-.enable-hover:nth-child(3):hover {
-  transform: translate(-544px, -105px) rotate(-19deg) !important;
-}
-.enable-hover:nth-child(4):hover {
-  transform: translate(-490px, -130px) rotate(-16deg) !important;
-}
-.enable-hover:nth-child(5):hover {
-  transform: translate(-436px, -150px) rotate(-13deg) !important;
-}
-.enable-hover:nth-child(6):hover {
-  transform: translate(-382px, -167px) rotate(-10deg) !important;
-}
-.enable-hover:nth-child(7):hover {
-  transform: translate(-328px, -180px) rotate(-7deg) !important;
-}
-.enable-hover:nth-child(8):hover {
-  transform: translate(-274px, -190px) rotate(-4deg) !important;
-}
-.enable-hover:nth-child(9):hover {
-  transform: translate(-222px, -197px) rotate(-2deg) !important;
-}
-.enable-hover:nth-child(10):hover {
-  transform: translate(-171px, -200px) rotate(-1deg) !important;
-}
-.enable-hover:nth-child(11):hover {
-  transform: translate(-120px, -203px) rotate(0deg) !important;
-}
-.enable-hover:nth-child(12):hover {
-  transform: translate(-70px, -204px) rotate(0deg) !important;
-}
-.enable-hover:nth-child(13):hover {
-  transform: translate(-19px, -200px) rotate(1deg) !important;
-}
-.enable-hover:nth-child(14):hover {
-  transform: translate(33px, -197px) rotate(2deg) !important;
-}
-.enable-hover:nth-child(15):hover {
-  transform: translate(85px, -190px) rotate(4deg) !important;
-}
-.enable-hover:nth-child(16):hover {
-  transform: translate(138px, -180px) rotate(7deg) !important;
-}
-.enable-hover:nth-child(17):hover {
-  transform: translate(193px, -167px) rotate(10deg) !important;
-}
-.enable-hover:nth-child(18):hover {
-  transform: translate(246px, -150px) rotate(13deg) !important;
-}
-.enable-hover:nth-child(19):hover {
-  transform: translate(299px, -130px) rotate(16deg) !important;
-}
-.enable-hover:nth-child(20):hover {
-  transform: translate(353px, -105px) rotate(19deg) !important;
-}
-.enable-hover:nth-child(21):hover {
-  transform: translate(408px, -75px) rotate(22deg) !important;
-}
-.enable-hover:nth-child(22):hover {
-  transform: translate(462px, -40px) rotate(25deg) !important;
 }
 
 .card:nth-child(1) {
