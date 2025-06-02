@@ -3,8 +3,10 @@
 }
 
 .taro-animation-container {
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 2%;
   height: 100vh;
   width: 100vw;
   overflow: hidden;
@@ -17,13 +19,14 @@
     height: 325px;
   }
   100% {
-    transform: translate(-620px, 30px) rotate(-25deg);
+    transform: translate(-620px, 50px) rotate(-25deg);
     width: 170px;
     height: 265px;
   }
 }
 
 .card {
+  display: flex;
   position: absolute;
   width: 210px;
   height: 325px;
@@ -42,12 +45,7 @@
     &:not(.selected-card) {
       transition: opacity 0.5s ease;
       opacity: 0;
-    }
-
-    &.selected-card {
-      transform: translate(-50%, -45%) !important;
-      width: 235px !important;
-      height: 359px !important;
+      pointer-events: none;
     }
   }
 }
@@ -170,7 +168,7 @@
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
-  transition: transform 0.6s;
+  transition: transform 0.9s;
   transform: rotateY(180deg);
 }
 
@@ -195,6 +193,331 @@
 
 .card-back {
   transform: rotateY(180deg);
+}
+
+@keyframes fadeInText {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fortune-message {
+  opacity: 0;
+  animation: fadeInText 1s ease forwards;
+  animation-delay: 1.3s;
+}
+
+.selected-card0 {
+  animation: moveCard0 2.7s ease-in-out forwards !important;
+}
+.selected-card1 {
+  animation: moveCard1 2.7s ease-in-out forwards !important;
+}
+.selected-card2 {
+  animation: moveCard2 2.7s ease-in-out forwards !important;
+}
+.selected-card3 {
+  animation: moveCard3 2.7s ease-in-out forwards !important;
+}
+.selected-card4 {
+  animation: moveCard4 2.7s ease-in-out forwards !important;
+}
+.selected-card5 {
+  animation: moveCard5 2.7s ease-in-out forwards !important;
+}
+.selected-card6 {
+  animation: moveCard6 2.7s ease-in-out forwards !important;
+}
+.selected-card7 {
+  animation: moveCard7 2.7s ease-in-out forwards !important;
+}
+.selected-card8 {
+  animation: moveCard8 2.7s ease-in-out forwards !important;
+}
+.selected-card9 {
+  animation: moveCard9 2.7s ease-in-out forwards !important;
+}
+.selected-card10 {
+  animation: moveCard10 2.7s ease-in-out forwards !important;
+}
+.selected-card11 {
+  animation: moveCard11 2.7s ease-in-out forwards !important;
+}
+.selected-card12 {
+  animation: moveCard12 2.7s ease-in-out forwards !important;
+}
+.selected-card13 {
+  animation: moveCard13 2.7s ease-in-out forwards !important;
+}
+.selected-card14 {
+  animation: moveCard14 2.7s ease-in-out forwards !important;
+}
+.selected-card15 {
+  animation: moveCard15 2.7s ease-in-out forwards !important;
+}
+.selected-card16 {
+  animation: moveCard16 2.7s ease-in-out forwards !important;
+}
+.selected-card17 {
+  animation: moveCard17 2.7s ease-in-out forwards !important;
+}
+.selected-card18 {
+  animation: moveCard18 2.7s ease-in-out forwards !important;
+}
+.selected-card19 {
+  animation: moveCard19 2.7s ease-in-out forwards !important;
+}
+.selected-card20 {
+  animation: moveCard20 2.7s ease-in-out forwards !important;
+}
+.selected-card21 {
+  animation: moveCard21 2.7s ease-in-out forwards !important;
+}
+
+@keyframes moveCard0 {
+  0% {
+    transform: translate(-620px, 50px) rotate(-25deg);
+  }
+  50% {
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    transform: translate(-140%, -50%);
+  }
+}
+@keyframes moveCard1 {
+  0% {
+    transform: translate(-570px, 15px) rotate(-22deg);
+  }
+  50% {
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    transform: translate(-140%, -50%);
+  }
+}
+@keyframes moveCard2 {
+  0% {
+    transform: translate(-520px, -15px) rotate(-19deg);
+  }
+  50% {
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    transform: translate(-140%, -50%);
+  }
+}
+@keyframes moveCard3 {
+  0% {
+    transform: translate(-470px, -40px) rotate(-16deg);
+  }
+  50% {
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    transform: translate(-140%, -50%);
+  }
+}
+@keyframes moveCard4 {
+  0% {
+    transform: translate(-420px, -60px) rotate(-13deg);
+  }
+  50% {
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    transform: translate(-140%, -50%);
+  }
+}
+@keyframes moveCard5 {
+  0% {
+    transform: translate(-370px, -77px) rotate(-10deg);
+  }
+  50% {
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    transform: translate(-140%, -50%);
+  }
+}
+@keyframes moveCard6 {
+  0% {
+    transform: translate(-320px, -90px) rotate(-7deg);
+  }
+  50% {
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    transform: translate(-140%, -50%);
+  }
+}
+@keyframes moveCard7 {
+  0% {
+    transform: translate(-270px, -100px) rotate(-4deg);
+  }
+  50% {
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    transform: translate(-140%, -50%);
+  }
+}
+@keyframes moveCard8 {
+  0% {
+    transform: translate(-220px, -107px) rotate(-2deg);
+  }
+  50% {
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    transform: translate(-140%, -50%);
+  }
+}
+@keyframes moveCard9 {
+  0% {
+    transform: translate(-170px, -110px) rotate(-1deg);
+  }
+  50% {
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    transform: translate(-140%, -50%);
+  }
+}
+@keyframes moveCard10 {
+  0% {
+    transform: translate(-120px, -113px) rotate(0deg);
+  }
+  50% {
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    transform: translate(-140%, -50%);
+  }
+}
+@keyframes moveCard11 {
+  0% {
+    transform: translate(-70px, -114px) rotate(0deg);
+  }
+  50% {
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    transform: translate(-140%, -50%);
+  }
+}
+@keyframes moveCard12 {
+  0% {
+    transform: translate(-20px, -110px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    transform: translate(-140%, -50%);
+  }
+}
+@keyframes moveCard13 {
+  0% {
+    transform: translate(30px, -107px) rotate(2deg);
+  }
+  50% {
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    transform: translate(-140%, -50%);
+  }
+}
+@keyframes moveCard14 {
+  0% {
+    transform: translate(80px, -100px) rotate(4deg);
+  }
+  50% {
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    transform: translate(-140%, -50%);
+  }
+}
+@keyframes moveCard15 {
+  0% {
+    transform: translate(130px, -90px) rotate(7deg);
+  }
+  50% {
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    transform: translate(-140%, -50%);
+  }
+}
+@keyframes moveCard16 {
+  0% {
+    transform: translate(180px, -77px) rotate(10deg);
+  }
+  50% {
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    transform: translate(-140%, -50%);
+  }
+}
+@keyframes moveCard17 {
+  0% {
+    transform: translate(230px, -60px) rotate(13deg);
+  }
+  50% {
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    transform: translate(-140%, -50%);
+  }
+}
+@keyframes moveCard18 {
+  0% {
+    transform: translate(280px, -40px) rotate(16deg);
+  }
+  50% {
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    transform: translate(-140%, -50%);
+  }
+}
+@keyframes moveCard19 {
+  0% {
+    transform: translate(330px, -15px) rotate(19deg);
+  }
+  50% {
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    transform: translate(-140%, -50%);
+  }
+}
+@keyframes moveCard20 {
+  0% {
+    transform: translate(380px, 15px) rotate(22deg);
+  }
+  50% {
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    transform: translate(-140%, -50%);
+  }
+}
+@keyframes moveCard21 {
+  0% {
+    transform: translate(430px, 50px) rotate(25deg);
+  }
+  50% {
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    transform: translate(-140%, -50%);
+  }
 }
 
 @keyframes ani0 {
@@ -308,91 +631,93 @@
   }
 }
 
-.card:nth-child(1) {
-  animation: moveLeftBig 1.5s 0.3s ease forwards, ani0 0.8s ease forwards;
-  animation-delay: 0.3s, 1.8s;
-}
-.card:nth-child(2) {
-  animation: moveLeftBig 1.5s 0.3s ease forwards, ani1 0.8s ease forwards;
-  animation-delay: 0.3s, 1.85s;
-}
-.card:nth-child(3) {
-  animation: moveLeftBig 1.5s 0.3s ease forwards, ani2 0.8s ease forwards;
-  animation-delay: 0.3s, 1.9s;
-}
-.card:nth-child(4) {
-  animation: moveLeftBig 1.5s 0.3s ease forwards, ani3 0.8s ease forwards;
-  animation-delay: 0.3s, 1.95s;
-}
-.card:nth-child(5) {
-  animation: moveLeftBig 1.5s 0.3s ease forwards, ani4 0.8s ease forwards;
-  animation-delay: 0.3s, 2s;
-}
-.card:nth-child(6) {
-  animation: moveLeftBig 1.5s 0.3s ease forwards, ani5 0.8s ease forwards;
-  animation-delay: 0.3s, 2.05s;
-}
-.card:nth-child(7) {
-  animation: moveLeftBig 1.5s 0.3s ease forwards, ani6 0.8s ease forwards;
-  animation-delay: 0.3s, 2.1s;
-}
-.card:nth-child(8) {
-  animation: moveLeftBig 1.5s 0.3s ease forwards, ani7 0.8s ease forwards;
-  animation-delay: 0.3s, 2.15s;
-}
-.card:nth-child(9) {
-  animation: moveLeftBig 1.5s 0.3s ease forwards, ani8 0.8s ease forwards;
-  animation-delay: 0.3s, 2.2s;
-}
-.card:nth-child(10) {
-  animation: moveLeftBig 1.5s 0.3s ease forwards, ani9 0.8s ease forwards;
-  animation-delay: 0.3s, 2.25s;
-}
-.card:nth-child(11) {
-  animation: moveLeftBig 1.5s 0.3s ease forwards, ani10 0.8s ease forwards;
-  animation-delay: 0.3s, 2.3s;
-}
-.card:nth-child(12) {
-  animation: moveLeftBig 1.5s 0.3s ease forwards, ani11 0.8s ease forwards;
-  animation-delay: 0.3s, 2.35s;
-}
-.card:nth-child(13) {
-  animation: moveLeftBig 1.5s 0.3s ease forwards, ani12 0.8s ease forwards;
-  animation-delay: 0.3s, 2.4s;
-}
-.card:nth-child(14) {
-  animation: moveLeftBig 1.5s 0.3s ease forwards, ani13 0.8s ease forwards;
-  animation-delay: 0.3s, 2.45s;
-}
-.card:nth-child(15) {
-  animation: moveLeftBig 1.5s 0.3s ease forwards, ani14 0.8s ease forwards;
-  animation-delay: 0.3s, 2.5s;
-}
-.card:nth-child(16) {
-  animation: moveLeftBig 1.5s 0.3s ease forwards, ani15 0.8s ease forwards;
-  animation-delay: 0.3s, 2.55s;
-}
-.card:nth-child(17) {
-  animation: moveLeftBig 1.5s 0.3s ease forwards, ani16 0.8s ease forwards;
-  animation-delay: 0.3s, 2.6s;
-}
-.card:nth-child(18) {
-  animation: moveLeftBig 1.5s 0.3s ease forwards, ani17 0.8s ease forwards;
-  animation-delay: 0.3s, 2.65s;
-}
-.card:nth-child(19) {
-  animation: moveLeftBig 1.5s 0.3s ease forwards, ani18 0.8s ease forwards;
-  animation-delay: 0.3s, 2.7s;
-}
-.card:nth-child(20) {
-  animation: moveLeftBig 1.5s 0.3s ease forwards, ani19 0.8s ease forwards;
-  animation-delay: 0.3s, 2.75s;
-}
-.card:nth-child(21) {
-  animation: moveLeftBig 1.5s 0.3s ease forwards, ani20 0.8s ease forwards;
-  animation-delay: 0.3s, 2.8s;
-}
-.card:nth-child(22) {
-  animation: moveLeftBig 1.5s 0.3s ease forwards, ani21 0.8s ease forwards;
-  animation-delay: 0.3s, 2.85s;
+.card {
+  &.card-num0 {
+    animation: moveLeftBig 1.5s 0.3s ease forwards, ani0 0.8s ease forwards;
+    animation-delay: 0.3s, 1.8s;
+  }
+  &.card-num1 {
+    animation: moveLeftBig 1.5s 0.3s ease forwards, ani1 0.8s ease forwards;
+    animation-delay: 0.3s, 1.85s;
+  }
+  &.card-num2 {
+    animation: moveLeftBig 1.5s 0.3s ease forwards, ani2 0.8s ease forwards;
+    animation-delay: 0.3s, 1.9s;
+  }
+  &.card-num3 {
+    animation: moveLeftBig 1.5s 0.3s ease forwards, ani3 0.8s ease forwards;
+    animation-delay: 0.3s, 1.95s;
+  }
+  &.card-num4 {
+    animation: moveLeftBig 1.5s 0.3s ease forwards, ani4 0.8s ease forwards;
+    animation-delay: 0.3s, 2s;
+  }
+  &.card-num5 {
+    animation: moveLeftBig 1.5s 0.3s ease forwards, ani5 0.8s ease forwards;
+    animation-delay: 0.3s, 2.05s;
+  }
+  &.card-num6 {
+    animation: moveLeftBig 1.5s 0.3s ease forwards, ani6 0.8s ease forwards;
+    animation-delay: 0.3s, 2.1s;
+  }
+  &.card-num7 {
+    animation: moveLeftBig 1.5s 0.3s ease forwards, ani7 0.8s ease forwards;
+    animation-delay: 0.3s, 2.15s;
+  }
+  &.card-num8 {
+    animation: moveLeftBig 1.5s 0.3s ease forwards, ani8 0.8s ease forwards;
+    animation-delay: 0.3s, 2.2s;
+  }
+  &.card-num9 {
+    animation: moveLeftBig 1.5s 0.3s ease forwards, ani9 0.8s ease forwards;
+    animation-delay: 0.3s, 2.25s;
+  }
+  &.card-num10 {
+    animation: moveLeftBig 1.5s 0.3s ease forwards, ani10 0.8s ease forwards;
+    animation-delay: 0.3s, 2.3s;
+  }
+  &.card-num11 {
+    animation: moveLeftBig 1.5s 0.3s ease forwards, ani11 0.8s ease forwards;
+    animation-delay: 0.3s, 2.35s;
+  }
+  &.card-num12 {
+    animation: moveLeftBig 1.5s 0.3s ease forwards, ani12 0.8s ease forwards;
+    animation-delay: 0.3s, 2.4s;
+  }
+  &.card-num13 {
+    animation: moveLeftBig 1.5s 0.3s ease forwards, ani13 0.8s ease forwards;
+    animation-delay: 0.3s, 2.45s;
+  }
+  &.card-num14 {
+    animation: moveLeftBig 1.5s 0.3s ease forwards, ani14 0.8s ease forwards;
+    animation-delay: 0.3s, 2.5s;
+  }
+  &.card-num15 {
+    animation: moveLeftBig 1.5s 0.3s ease forwards, ani15 0.8s ease forwards;
+    animation-delay: 0.3s, 2.55s;
+  }
+  &.card-num16 {
+    animation: moveLeftBig 1.5s 0.3s ease forwards, ani16 0.8s ease forwards;
+    animation-delay: 0.3s, 2.6s;
+  }
+  &.card-num17 {
+    animation: moveLeftBig 1.5s 0.3s ease forwards, ani17 0.8s ease forwards;
+    animation-delay: 0.3s, 2.65s;
+  }
+  &.card-num18 {
+    animation: moveLeftBig 1.5s 0.3s ease forwards, ani18 0.8s ease forwards;
+    animation-delay: 0.3s, 2.7s;
+  }
+  &.card-num19 {
+    animation: moveLeftBig 1.5s 0.3s ease forwards, ani19 0.8s ease forwards;
+    animation-delay: 0.3s, 2.75s;
+  }
+  &.card-num20 {
+    animation: moveLeftBig 1.5s 0.3s ease forwards, ani20 0.8s ease forwards;
+    animation-delay: 0.3s, 2.8s;
+  }
+  &.card-num21 {
+    animation: moveLeftBig 1.5s 0.3s ease forwards, ani21 0.8s ease forwards;
+    animation-delay: 0.3s, 2.85s;
+  }
 }

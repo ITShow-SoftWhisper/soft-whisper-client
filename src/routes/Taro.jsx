@@ -1,57 +1,11 @@
 import { useEffect, useState } from "react";
 import CategoryLayout from "../components/CategoryLayout";
 import TaroImage from "../assets/taro/taro.png";
+import TaroFortuneMessages from "../components/TaroFortuneMessages";
 
 import TaroBack from "../assets/taro/taro-card/taro_back.png";
-import death from "../assets/taro/taro-card/Death.png";
-import judgement from "../assets/taro/taro-card/Judgement.png";
-import justice from "../assets/taro/taro-card/Justice.png";
-import strength from "../assets/taro/taro-card/Strength.jpg";
-import temperance from "../assets/taro/taro-card/Temperance.png";
-import theChariot from "../assets/taro/taro-card/The_Chariot.png";
-import theDevil from "../assets/taro/taro-card/The_Devil.png";
-import theEmperor from "../assets/taro/taro-card/The_Emperor.png";
-import theEmpress from "../assets/taro/taro-card/The_Empress.png";
-import theFool from "../assets/taro/taro-card/The_Fool.png";
-import theHangedMan from "../assets/taro/taro-card/The_Hanged_Man.png";
-import theHermit from "../assets/taro/taro-card/The_Hermit.png";
-import theHierophant from "../assets/taro/taro-card/The_Hierophant.png";
-import theHighPriestess from "../assets/taro/taro-card/The_High_Priestess.png";
-import theLovers from "../assets/taro/taro-card/The_Lovers.png";
-import theMagician from "../assets/taro/taro-card/The_Magician.png";
-import theMoon from "../assets/taro/taro-card/The_Moon.png";
-import theStar from "../assets/taro/taro-card/The_Star.png";
-import theSun from "../assets/taro/taro-card/The_Sun.png";
-import theTower from "../assets/taro/taro-card/The_Tower.png";
-import theWorld from "../assets/taro/taro-card/The_World.png";
-import wheelOfFortune from "../assets/taro/taro-card/Wheel_Of_Fortune.png";
 
 import "../css/TaroCard.scss";
-
-const cardImages = [
-  death,
-  judgement,
-  justice,
-  strength,
-  temperance,
-  theChariot,
-  theDevil,
-  theEmperor,
-  theEmpress,
-  theFool,
-  theHangedMan,
-  theHermit,
-  theHierophant,
-  theHighPriestess,
-  theLovers,
-  theMagician,
-  theMoon,
-  theStar,
-  theSun,
-  theTower,
-  theWorld,
-  wheelOfFortune,
-];
 
 function shuffleArray(array) {
   const result = [...array];
@@ -62,39 +16,45 @@ function shuffleArray(array) {
   return result;
 }
 
-function TaroAnimation({ setResultShow, setCategoryPhraseText }) {
+function TaroAnimation({
+  setResultShow,
+  setCategoryPhraseText,
+  finishFlipped,
+  setFinishFlipped,
+  setImageUrl,
+  showFortune,
+  setShowFortune,
+}) {
   const [flipped, setFlipped] = useState(Array(22).fill(false));
   const [cardClasses, setCardClasses] = useState(Array(22).fill("card"));
   const [selectedCard, setSelectedCard] = useState(Array(22).fill(false));
   const [isDisable, setIsDisable] = useState(true);
   const [oneCardClick, setOneCardClick] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
-
-  const [shuffledCardImages] = useState(() => shuffleArray(cardImages));
+  const [shuffledCards] = useState(() => shuffleArray(TaroFortuneMessages));
 
   useEffect(() => {
-    shuffledCardImages.forEach((_, i) => {
+    shuffledCards.forEach((_, i) => {
       setTimeout(() => {
         setCardClasses((prev) => {
           const updated = [...prev];
           updated[i] = `card ani${i}`;
           return updated;
         });
-        if (i === shuffledCardImages.length - 1) {
+        if (i === shuffledCards.length - 1) {
           setCategoryPhraseText("카드를 고르세요!");
           setIsDisable(false);
         }
       }, 4000);
     });
-  }, [setCategoryPhraseText, shuffledCardImages]);
+  }, [setCategoryPhraseText, shuffledCards]);
 
   const handleCardClick = (i) => {
     if (isDisable || oneCardClick) return;
 
     setIsClicked(true);
-
     setIsDisable(true);
-    isDisable ? setOneCardClick(false) : setOneCardClick(true);
+    setOneCardClick(true);
 
     setSelectedCard((prev) => {
       const updated = [...prev];
@@ -108,35 +68,65 @@ function TaroAnimation({ setResultShow, setCategoryPhraseText }) {
         updated[i] = true;
         return updated;
       });
-    }, 2000);
+
+      setFinishFlipped(true);
+      setCategoryPhraseText(shuffledCards[i].text);
+      let imagePath = shuffledCards[i].src;
+      setImageUrl(imagePath);
+
+      const fortunes = shuffledCards[i].fortunes;
+      const randomFortune =
+        fortunes[Math.floor(Math.random() * fortunes.length)];
+
+      setShowFortune(randomFortune);
+
+      setTimeout(() => {
+        setResultShow(true);
+      }, 1700);
+    }, 1500);
   };
 
   return (
     <div className="taro-animation-container">
       <div className="card-list">
-        {shuffledCardImages.map((img, i) => (
+        {shuffledCards.map((card, i) => (
           <div
             key={i}
             className={`
               ${cardClasses[i]}
-              card-num${[i]}
+              card-num${i}
               ${flipped[i] ? "flipped" : ""}
               ${isDisable ? "" : "enable-hover"}
-              ${selectedCard[i] ? "selected-card" : ""}
+              ${selectedCard[i] ? `selected-card selected-card${i}` : ""}
               ${isClicked ? "click-card" : ""}
-
             `}
-            onClick={() => {
-              handleCardClick(i);
-            }}
+            onClick={() => handleCardClick(i)}
           >
             <div className="card-inner">
-              <img className="card-front" src={img} />
+              <img className="card-front" src={card.src} />
               <img className="card-back" src={TaroBack} />
             </div>
           </div>
         ))}
       </div>
+      {finishFlipped && (
+        <p
+          className="jua-regular fortune-message"
+          style={{
+            position: "absolute",
+            display: "flex",
+            alignItems: "center",
+            width: "30%",
+            height: "40%",
+            fontSize: "130%",
+            lineHeight: "1.5",
+            padding: "0",
+            marginLeft: "25%",
+          }}
+        >
+          {showFortune}
+        </p>
+      )}
     </div>
   );
 }
@@ -150,16 +140,28 @@ function Taro() {
   const [resultShow, setResultShow] = useState(false);
   const [categoryPhraseText, setCategoryPhraseText] =
     useState("오늘의 타로 확인하기");
+  const [finishFlipped, setFinishFlipped] = useState(false);
+  const [imageUrl, setImageUrl] = useState("");
+  const [showFortune, setShowFortune] = useState("");
 
   return (
     <CategoryLayout
+      category="taro"
+      showFortune={showFortune}
+      imageUrl={imageUrl}
       imgSrc={TaroImage}
       animationComponent={
         <TaroAnimation
           setResultShow={setResultShow}
           setCategoryPhraseText={setCategoryPhraseText}
+          finishFlipped={finishFlipped}
+          setFinishFlipped={setFinishFlipped}
+          setImageUrl={setImageUrl}
+          showFortune={showFortune}
+          setShowFortune={setShowFortune}
         />
       }
+      finishFlipped={finishFlipped}
       categoryPhraseText={categoryPhraseText}
       categoryButtonText="타로 보기"
       backgroundColor={backgroundColor}
