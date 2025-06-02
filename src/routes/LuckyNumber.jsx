@@ -6,11 +6,12 @@ import "../css/LuckyNumber.css";
 
 const backgroundColor = "#E0FFD8";
 const backgroundColor2 = "#B7FFA5";
-const buttonColor = "#78e670";
-const buttonHoverColor = "#4bd841";
+const buttonColor = "#57da4d";
+const buttonHoverColor = "#0ece00";
 
 function LuckyNumber() {
-  const [categoryPhraseText, setCategoryPhraseText] = useState("오늘의 행운숫자 확인하기");
+  const [categoryPhraseText, setCategoryPhraseText] =
+    useState("오늘의 행운숫자 확인하기");
   const [luckyNumbers, setLuckyNumbers] = useState([]);
   const [showResult, setShowResult] = useState(false);
   const [startScratch, setStartScratch] = useState(false);
@@ -28,7 +29,7 @@ function LuckyNumber() {
     const numbers = generateLuckyNumbers();
     setLuckyNumbers(numbers);
     setStartScratch(true); // 긁기 시작하도록 설정
-    setShowResult(false);  // 결과는 나중에 보여줘야 함!
+    setShowResult(false); // 결과는 나중에 보여줘야 함!
   };
 
   const handleScratchComplete = () => {
@@ -50,6 +51,8 @@ function LuckyNumber() {
 
   return (
     <CategoryLayout
+      category="lucky"
+      luckyNumbers={luckyNumbers}
       imgSrc={LuckyImage}
       categoryPhraseText={categoryPhraseText}
       categoryButtonText="복권긁기"

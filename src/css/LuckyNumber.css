@@ -1,5 +1,7 @@
 /* LuckyNumber.css */
 .lucky-number-container {
+  display: flex;
+  flex-direction: column;
   text-align: center;
   animation: fadeIn 1s ease-in;
   margin-bottom: 30px;
@@ -26,4 +28,3 @@
   font-family: "Jua", sans-serif;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
 }
-

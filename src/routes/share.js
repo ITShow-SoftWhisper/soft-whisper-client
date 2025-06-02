@@ -14,7 +14,7 @@ router.post("/share", async (req, res) => {
 
   try {
     await db.run(
-      "INSERT INTO sharedResult (id, email, result) VALUES (?, ?, ?)",
+      "INSERT INTO sharedResult (id, email, categoty, result) VALUES (?, ?, ?)",
       [id, email, JSON.stringify(result)]
     );
 

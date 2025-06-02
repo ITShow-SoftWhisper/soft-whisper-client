@@ -295,6 +295,7 @@ function Weather() {
 
   return (
     <CategoryLayout
+      categoty="weather"
       imgSrc={WeatherImage}
       animationComponent={
         <WeatherAnimation

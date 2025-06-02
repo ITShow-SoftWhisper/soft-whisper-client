@@ -4,6 +4,7 @@ import styled from "styled-components";
 import FortuneOpenImage from "../assets/fortune/fortuneopen.png";
 
 import "../css/ResultPage.css";
+import CategoryLayout from "./../components/CategoryLayout";
 
 function ResultPage() {
   const { id } = useParams();
@@ -19,13 +20,54 @@ function ResultPage() {
   if (!result) return <p>결과 불러오는 중...</p>;
 
   const {
+    category,
     categoryPhraseText,
     backgroundColor,
     backgroundColor2,
     buttonColor,
     buttonHoverColor,
-    // animationComponent,
+    luckyNumbers,
+    imageUrl,
+    showFortune,
   } = result;
+
+  let categoryAnimationContent = null;
+
+  console.log("imageUrl : ", imageUrl);
+
+  if (category === "book") {
+    categoryAnimationContent = <div></div>;
+  } else if (category === "fortune") {
+    categoryAnimationContent = (
+      <img src={FortuneOpenImage} className="fortune-open" />
+    );
+  } else if (category === "lucky") {
+    categoryAnimationContent = (
+      <div className="card-content">
+        <div className="number-container">
+          <h2 className="jua-regular">✨ 당신의 행운의 숫자 ✨</h2>
+          <div className="lucky-number-list">
+            {luckyNumbers.map((num, index) => (
+              <div key={index} className="lucky-number-ball">
+                {num}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  } else if (category === "taro") {
+    categoryAnimationContent = (
+      <div className="taro-content">
+        <div>
+          <img src={imageUrl} className="taro-image" />
+        </div>
+        <div className="taro-fortune">
+          <p className="jua-regular">{showFortune}</p>
+        </div>
+      </div>
+    );
+  }
 
   const Button = styled.button`
     border: none;
@@ -47,14 +89,15 @@ function ResultPage() {
         background: `linear-gradient(320deg, ${backgroundColor}, ${backgroundColor2}`,
       }}
     >
-      {/* <h1>🔮 공유된 결과</h1>
-      <pre>{JSON.stringify(result, null, 2)}</pre> */}
-      <h1 className="phrase-text jua-regular" style={{ color: "#000" }}>
+      <h1
+        className={`phrase-text ${
+          category === "taro" ? "dm-serif-display-regular" : "jua-regular"
+        }`}
+        style={{ color: "#000" }}
+      >
         {categoryPhraseText}
       </h1>
-      <div className="animation-content">
-        <img className="test-image" src={FortuneOpenImage} />
-      </div>
+      <div className="animation-content">{categoryAnimationContent}</div>
       <div className="other-fortune-button-content">
         <Link to="/" className="re-start-button">
           <Button className="other-fortune-button">

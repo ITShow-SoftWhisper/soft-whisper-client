@@ -7,6 +7,18 @@ body {
   justify-content: center;
 }
 
+.jua-regular {
+  font-family: "Jua", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.dm-serif-display-regular {
+  font-family: "DM Serif Display", serif;
+  font-weight: bold;
+  font-style: normal;
+}
+
 .container {
   height: 100vh;
   display: flex;
@@ -26,10 +38,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.test-image {
-  height: 90%;
 }
 
 .other-fortune-button-content {
@@ -64,4 +72,59 @@ body {
     align-items: center;
     justify-content: center;
   }
+}
+
+/* fortune */
+.fortune-open {
+  opacity: 1;
+}
+
+/* lucky */
+.card-content {
+  width: 30%;
+  height: 75%;
+  background: white;
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2d2d2d;
+  padding: 20px;
+  text-align: center;
+  box-sizing: border-box;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.number-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  animation: fadeIn 1s ease-in;
+  margin-bottom: 30px;
+}
+
+/* taro */
+.taro-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 5%;
+}
+
+.taro-image {
+  width: 210px;
+  height: 325px;
+  border-radius: 6px;
+}
+
+.taro-fortune {
+  display: flex;
+  align-items: center;
+  width: 30%;
+  height: 40%;
+  font-size: 130%;
+  line-height: 1.5;
+  padding: 0;
 }

@@ -55,7 +55,7 @@ const answers = [
   "계속 의심하지 마세요.",
   "모든 것이 제자리를 찾을 것입니다.",
   "먼저 용서를 구하세요.",
-  "모든 것은 이유가 있습니다."
+  "모든 것은 이유가 있습니다.",
 ];
 
 function BookAnimation({ currentImage, nextShow, onNextClick, randomText }) {
@@ -80,7 +80,8 @@ const buttonHoverColor = "#96BBFF";
 function Book() {
   const [resultShow, setResultShow] = useState(false);
   const [currentImage, setCurrentImage] = useState(BookImage);
-  const [categoryPhraseText, setCategoryPhraseText] = useState("오늘의 책 운세 확인하기");
+  const [categoryPhraseText, setCategoryPhraseText] =
+    useState("오늘의 책 운세 확인하기");
   const [nextShow, setNextShow] = useState(true);
 
   const [randomText, setRandomText] = useState("");
@@ -103,6 +104,7 @@ function Book() {
 
   return (
     <CategoryLayout
+      category="book"
       imgSrc={BookImage}
       animationComponent={
         <BookAnimation

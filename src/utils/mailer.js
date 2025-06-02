@@ -1,7 +1,7 @@
 import nodemailer from "nodemailer";
 
 export async function sendMail(to, link) {
-  console.log("📤 보내는 대상 이메일:", to);
+  console.log("보내는 대상 이메일:", to);
 
   const transporter = nodemailer.createTransport({
     service: "gmail",

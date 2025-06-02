@@ -46,8 +46,13 @@ const StartButton = styled.button`
 
 // 카테고리별 페이지 레이아웃 컴포넌트
 function CategoryLayout({
+  category,
+  luckyNumbers,
+  showFortune,
+  imageUrl,
   imgSrc, // 페이지별 image 경로
   animationComponent, // 페이지별 애니메이션 컴포넌트 (Weather.jsx 참고)
+  finishFlipped,
   categoryPhraseText, // 페이지 카테고리별 문구
   categoryButtonText, // 페이지 카테고리별 버튼 문구
   backgroundColor, // 페이지 카테고리별 배경색
@@ -101,12 +106,15 @@ function CategoryLayout({
           setInput={setInput}
           setSharingButtonClick={setSharingButtonClick}
           resultData={{
+            category,
             categoryPhraseText,
             backgroundColor,
             backgroundColor2,
             buttonColor,
             buttonHoverColor,
-            // animationComponent,
+            luckyNumbers,
+            imageUrl,
+            showFortune,
           }}
         />
       )}
@@ -116,11 +124,14 @@ function CategoryLayout({
           background: `linear-gradient(320deg, ${backgroundColor}, ${backgroundColor2}`,
         }}
       >
-        {/* 카테고리별 문구 출력 */}
-        <h1 className="phrase-text jua-regular" style={{ color: "#000" }}>
+        <h1
+          className={`phrase-text ${
+            finishFlipped ? "dm-serif-display-regular" : "jua-regular"
+          }`}
+          style={{ color: "#000" }}
+        >
           {categoryPhraseText}
         </h1>
-
         {/* 애니메이션 또는 이미지 보여주는 영역 */}
         <div className="animation-content">
           {/* 버튼을 클릭한 경우 애니메이션 컴포넌트 출력 */}

@@ -22,7 +22,7 @@ function EmailInput({ input, setInput, setSharingButtonClick, resultData }) {
       try {
         data = JSON.parse(text);
       } catch (e) {
-        console.error("❌ JSON 파싱 실패", e);
+        console.error("JSON 파싱 실패", e);
         return;
       }
 
@@ -32,7 +32,7 @@ function EmailInput({ input, setInput, setSharingButtonClick, resultData }) {
         alert("행운배달에 실패했어요...");
       }
     } catch (e) {
-      console.error("💥 네트워크 오류:", e);
+      console.error("네트워크 오류:", e);
     }
   };
 

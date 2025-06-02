@@ -6,6 +6,12 @@
   font-style: normal;
 }
 
+.dm-serif-display-regular {
+  font-family: "DM Serif Display", serif;
+  font-weight: bold;
+  font-style: normal;
+}
+
 .container {
   height: 100vh;
   display: flex;
