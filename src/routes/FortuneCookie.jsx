@@ -9,7 +9,7 @@ import CategorySelector from "../components/CategorySelector";
 const backgroundColor = "#FFFBDB";
 const backgroundColor2 = "#FFF6B2";
 const buttonColor = "#FFC037";
-const buttonHoverColor = "#FFDD94";
+const buttonHoverColor = "#e5962e";
 
 function FortuneCookie() {
   const [step, setStep] = useState("start"); // start → select → result

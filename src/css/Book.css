@@ -13,16 +13,20 @@
   align-items: center;
 }
 
+.book-image{
+  width: 80%;
+}
+
 .next-icon {
   position: absolute;
-  bottom: -250px;
-  font-size: 50px;
+  bottom: -150px;
+  font-size: 50px; /* 이전보다 크게 조정 */
   color: #444;
 }
 
 .book-animation-container img[src*="frame.png"] {
   width: 100%;
-  max-width: 350px;
+  max-width: 250px;
   height: auto;
 }
 
@@ -31,7 +35,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 24px;
+  font-size: 20px;
   color: #333;
   text-align: center;
 }

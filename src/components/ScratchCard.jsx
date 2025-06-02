@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import "../css/ScratchCard.css";
 
-const ScratchCard = ({ width = 500, height = 350, onScratchComplete, children }) => {
+const ScratchCard = ({ width = 450, height = 270, onScratchComplete, children }) => {
   const canvasRef = useRef(null);
   const isDrawing = useRef(false);
   const [scratched, setScratched] = useState(false);
@@ -53,7 +53,7 @@ const ScratchCard = ({ width = 500, height = 350, onScratchComplete, children })
     }
 
     const percent = (transparentPixels / total) * 100;
-    if (percent > 50) {
+    if (percent > 30) {
       setScratched(true);
       onScratchComplete?.();
     }
