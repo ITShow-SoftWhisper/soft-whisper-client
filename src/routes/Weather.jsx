@@ -146,11 +146,6 @@ function WeatherAnimation({
   const fetchWeather = () => {
     if (!input) return;
 
-    setIsFadingOut(true);
-    setTimeout(() => {
-      setShowInput(false);
-    }, 5000);
-
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=792ff3066b1a91e7e54aabf9de16f2ee&units=metric&lang=en`
     )
@@ -162,28 +157,33 @@ function WeatherAnimation({
         const original = data.weather[0].description;
         const mapped = weatherMap[original];
 
-        if (mapped.image === sunny) {
-          setWeatherBackgroundColor1("#fff387");
-          setWeatherBackgroundColor2("#fff9c6");
-        } else if (mapped.image === rain) {
-          setWeatherBackgroundColor1("#5372c5");
-          setWeatherBackgroundColor2("#EBEBEB");
-        } else if (mapped.image === snow) {
-          setWeatherBackgroundColor1("#98bcff");
-          setWeatherBackgroundColor2("#c3d8ff");
-        }
-
         if (mapped) {
+          if (mapped.image === sunny) {
+            setWeatherBackgroundColor1("#fff387");
+            setWeatherBackgroundColor2("#fff9c6");
+          } else if (mapped.image === rain) {
+            setWeatherBackgroundColor1("#5372c5");
+            setWeatherBackgroundColor2("#EBEBEB");
+          } else if (mapped.image === snow) {
+            setWeatherBackgroundColor1("#98bcff");
+            setWeatherBackgroundColor2("#c3d8ff");
+          }
+
           setWeather(mapped);
           setCategoryPhraseText(mapped.phrase);
           setWeatherImageUrl(mapped.image);
+
+          setIsFadingOut(true);
+          setTimeout(() => {
+            setShowInput(false);
+          }, 5000);
         } else {
-          setWeather("unsupported");
-          setCategoryPhraseText("날씨를 알 수 없어요.");
+          throw new Error("지원하지 않는 날씨 유형입니다.");
         }
       })
       .catch((err) => {
         alert(err.message);
+        setInput("");
         resetState();
       });
   };
