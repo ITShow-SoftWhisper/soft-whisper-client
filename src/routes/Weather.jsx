@@ -133,13 +133,15 @@ function WeatherAnimation({
   setCategoryPhraseText,
   setWeatherBackgroundColor1,
   setWeatherBackgroundColor2,
+  fortune,
+  setFortune,
+  setWeatherImageUrl,
 }) {
   const [input, setInput] = useState("");
   const [weather, setWeather] = useState("");
   const [showInput, setShowInput] = useState(true);
   const [isFadingOut, setIsFadingOut] = useState(false);
   const [showFortune, setShowFortune] = useState(false);
-  const [fortune, setFortune] = useState("");
 
   const fetchWeather = () => {
     if (!input) return;
@@ -158,7 +160,6 @@ function WeatherAnimation({
       })
       .then((data) => {
         const original = data.weather[0].description;
-        console.log(data.weather);
         const mapped = weatherMap[original];
 
         if (mapped.image === sunny) {
@@ -175,6 +176,7 @@ function WeatherAnimation({
         if (mapped) {
           setWeather(mapped);
           setCategoryPhraseText(mapped.phrase);
+          setWeatherImageUrl(mapped.image);
         } else {
           setWeather("unsupported");
           setCategoryPhraseText("날씨를 알 수 없어요.");
@@ -281,8 +283,8 @@ function WeatherAnimation({
   );
 }
 
-const buttonColor = "#414141";
-const buttonHoverColor = "#747474";
+const buttonColor = "#545454";
+const buttonHoverColor = "#000000";
 
 function Weather() {
   const [resultShow, setResultShow] = useState(false);
@@ -292,10 +294,14 @@ function Weather() {
     useState("#EBEBEB");
   const [weatherBackgroundColor2, setWeatherBackgroundColor2] =
     useState("#D6D6D6");
+  const [fortune, setFortune] = useState("");
+  const [weatherImageUrl, setWeatherImageUrl] = useState("");
 
   return (
     <CategoryLayout
       categoty="weather"
+      weatherImageUrl={weatherImageUrl}
+      fortune={fortune}
       imgSrc={WeatherImage}
       animationComponent={
         <WeatherAnimation
@@ -303,6 +309,9 @@ function Weather() {
           setCategoryPhraseText={setCategoryPhraseText}
           setWeatherBackgroundColor1={setWeatherBackgroundColor1}
           setWeatherBackgroundColor2={setWeatherBackgroundColor2}
+          fortune={fortune}
+          setFortune={setFortune}
+          setWeatherImageUrl={setWeatherImageUrl}
         />
       }
       categoryPhraseText={categoryPhraseText}

@@ -75,7 +75,7 @@ function BookAnimation({ currentImage, nextShow, onNextClick, randomText }) {
 const backgroundColor = "#CFE0FF";
 const backgroundColor2 = "#ABC9FF";
 const buttonColor = "#5C95FF";
-const buttonHoverColor = "#96BBFF";
+const buttonHoverColor = "#2772ff";
 
 function Book() {
   const [resultShow, setResultShow] = useState(false);
