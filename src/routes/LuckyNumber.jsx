@@ -34,11 +34,12 @@ function LuckyNumber() {
 
   const handleScratchComplete = () => {
     setShowResult(true); // 긁기 완료 후에 결과 보여주기
+    setCategoryPhraseText("오늘의 복권 당첨 숫자 입니다!");
   };
 
   const LuckyNumberResult = (
     <div className="lucky-number-container">
-      <h2 className="jua-regular">✨ 당신의 행운의 숫자 ✨</h2>
+      <h2 className="jua-regular">당신의 행운의 숫자</h2>
       <div className="lucky-number-list">
         {luckyNumbers.map((num, index) => (
           <div key={index} className="lucky-number-ball">

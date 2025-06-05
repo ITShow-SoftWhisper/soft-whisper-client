@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import "../css/ScratchCard.css";
 
-const ScratchCard = ({ width = 450, height = 270, onScratchComplete, children }) => {
+const ScratchCard = ({ width = 550, height = 300, onScratchComplete, children }) => {
   const canvasRef = useRef(null);
   const isDrawing = useRef(false);
   const [scratched, setScratched] = useState(false);

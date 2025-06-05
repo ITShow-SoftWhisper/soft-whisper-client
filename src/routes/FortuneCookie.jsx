@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import CategoryLayout from "../components/CategoryLayout";
 import FortuneImage from "../assets/fortune/fortune.png";
 import FortuneOpenImage from "../assets/fortune/fortuneopen.png";
+import FortuneOpenLeft from "../assets/fortune/fortuneopen_left.png";
+import FortuneOpenRight from "../assets/fortune/fortuneopen_right.png";
 import fortuneMessages from "../components/fortuneMessages";
 import "../css/CategorySelector.css";
 import CategorySelector from "../components/CategorySelector";
@@ -40,7 +42,10 @@ function FortuneCookie() {
     step === "select" ? (
       <CategorySelector onSelect={handleCategorySelect} />
     ) : (
-      <img src={FortuneOpenImage} className="fortune-open" />
+      <div className="fortune-crack-container">
+        <img src={FortuneOpenLeft} className="fortune-half left-half" />
+        <img src={FortuneOpenRight} className="fortune-half right-half" />
+      </div>
     );
 
   return (

@@ -51,14 +51,14 @@
 
 .selected-emoji,
 .selected-image {
-  width: 160px;
-  height: 160px;
+  width: 130px;
+  height: 130px;
   animation: emojiBounce 1.2s ease forwards;
 }
 
 .category-transition-text {
-  margin-top: 24px;
-  font-size: 22px;
+  margin-top: 50px;
+  font-size: 20px;
   color: #444;
   opacity: 0;
   animation: messageFadeIn 1s ease forwards;
@@ -70,10 +70,9 @@
   width: auto;
 }
 
-/* Animations */
 @keyframes fadeInPop {
   0% {
-    transform: scale(0.3) rotate(-10deg);
+    transform: scale(0.5) rotate(-10deg);
     opacity: 0;
   }
   60% {
@@ -113,3 +112,51 @@
     transform: translateY(0);
   }
 }
+
+.fortune-crack-container {
+  position: relative;
+  width: 350px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fortune-half {
+  width: 50%;
+  height: auto;
+  transition: transform 0.8s ease, opacity 0.8s ease;
+}
+
+.left-half {
+  transform: translateX(0);
+  animation: crack-left 0.8s forwards;
+}
+
+.right-half {
+  transform: translateX(0);
+  animation: crack-right 0.8s forwards;
+}
+
+@keyframes crack-left {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(-20px) rotate(-10deg);
+    opacity: 1;
+  }
+}
+
+@keyframes crack-right {
+  0% {
+    transform: translateX(0) translateY(0);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(20px) translateY(20px) rotate(10deg);
+    opacity: 1;
+  }
+}
+
