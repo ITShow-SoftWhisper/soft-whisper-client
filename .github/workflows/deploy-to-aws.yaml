@@ -34,7 +34,7 @@ jobs:
           port: 22
           script: |
             # 애플리케이션 디렉토리로 이동
-            cd /home/ubuntu/your-app-name
+            cd /home/ubuntu/soft-whisper-client
 
             # 기존 프로세스 중지 (포트 기준으로 찾아서 종료)
             sudo lsof -ti:3000 | xargs sudo kill -9 || true
