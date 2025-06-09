@@ -1,8 +1,7 @@
+// Book.jsx
 import CategoryLayout from "../components/CategoryLayout";
 import BookImage from "../assets/book.png";
-import BookOpenImage from "../assets/bookopen.png";
-import Frame from "../assets/frame.png";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../css/Book.css";
 
 const answers = [
@@ -55,51 +54,101 @@ const answers = [
   "계속 의심하지 마세요.",
   "모든 것이 제자리를 찾을 것입니다.",
   "먼저 용서를 구하세요.",
-  "모든 것은 이유가 있습니다.",
+  "모든 것은 이유가 있습니다."
 ];
 
-function BookAnimation({ currentImage, nextShow, onNextClick, randomText }) {
+function FlyingPapers({ currentPage, onClick }) {
+  const directionsRef = useRef([]);
+
+  const getInitialTransform = (dir) => {
+    switch (dir) {
+      case "left":
+        return "translateX(-400px) skewY(-5deg) rotate(-10deg)";
+      case "right":
+        return "translateX(400px) skewX(-5deg) rotate(10deg)";
+      default:
+        return "translateY(-200px)";
+    }
+  };
+
+  // directions 고정
+  if (directionsRef.current.length < currentPage) {
+    const newDirs = Array(currentPage - directionsRef.current.length)
+      .fill(null)
+      .map(() => (Math.random() < 0.5 ? "left" : "right"));
+    directionsRef.current = [...directionsRef.current, ...newDirs];
+  }
+
   return (
-    <div className="book-animation-container">
-      <img src={currentImage} className="book-image frame-image" />
-      {nextShow && (
-        <div className="next-icon" onClick={onNextClick}>
-          <i className="bi bi-chevron-compact-down"></i>
-        </div>
-      )}
-      <div className="random-text">{randomText}</div>
+    <div className="paper-stack-container" onClick={onClick}>
+      {[...Array(currentPage)].map((_, i) => {
+        const direction = directionsRef.current[i];
+        const delay = `${i * 0.5}s`;
+        const initialTransform = getInitialTransform(direction);
+
+        return (
+          <div
+            key={i}
+            className="flying-paper"
+            style={{
+              zIndex: i,
+              animationDelay: delay,
+              animationDuration: "3s",
+              "--start-transform": initialTransform,
+              transform: "translate(0, 0) rotate(0deg)",
+            }}
+          >
+            <div className="paper-content">{answers[i] || ""}</div>
+          </div>
+        );
+      })}
     </div>
   );
 }
 
-const backgroundColor = "#CFE0FF";
-const backgroundColor2 = "#ABC9FF";
-const buttonColor = "#5C95FF";
-const buttonHoverColor = "#2772ff";
-
 function Book() {
+  const totalPages = 50;
   const [resultShow, setResultShow] = useState(false);
-  const [currentImage, setCurrentImage] = useState(BookImage);
-  const [categoryPhraseText, setCategoryPhraseText] =
-    useState("오늘의 책 운세 확인하기");
-  const [nextShow, setNextShow] = useState(true);
+  const [categoryPhraseText, setCategoryPhraseText] = useState("오늘의 책 운세 확인하기");
+  const [currentPage, setCurrentPage] = useState(0);
+  const [isFlipping, setIsFlipping] = useState(false);
+  const intervalRef = useRef(null);
 
-  const [randomText, setRandomText] = useState("");
-
-  const handleCategoryButtonClick = () => {
-    setCategoryPhraseText("책 펼치는 중..");
-    setCurrentImage(BookOpenImage);
+  const stopFlipping = () => {
+    clearInterval(intervalRef.current);
+    setIsFlipping(false);
   };
 
-  const handleNextClick = (event) => {
-    event.stopPropagation();
-    setNextShow(false);
-    setCategoryPhraseText("오늘 인생의 해답은?");
-    setCurrentImage(Frame);
-    setResultShow(true);
+  useEffect(() => {
+    if (isFlipping && currentPage < totalPages) {
+      intervalRef.current = setInterval(() => {
+        setCurrentPage((prev) => {
+          if (prev < totalPages) {
+            return prev + 1;
+          } else {
+            stopFlipping();
+            return prev;
+          }
+        });
+      }, 500);
+    }
+    return () => clearInterval(intervalRef.current);
+  }, [isFlipping, currentPage]);
 
-    const randomIndex = Math.floor(Math.random() * answers.length);
-    setRandomText(answers[randomIndex]);
+  const handleCategoryButtonClick = () => {
+    setCategoryPhraseText("날아오는 종이를 클릭해주세요!");
+    setIsFlipping(true);
+    setCurrentPage(1);
+    setResultShow(false);
+  };
+
+  const handleStopFlipping = (e) => {
+    e.stopPropagation();
+    if (isFlipping) {
+      stopFlipping();
+      setResultShow(true);
+      setCategoryPhraseText("오늘 인생의 해답은?");
+    }
   };
 
   return (
@@ -107,19 +156,16 @@ function Book() {
       category="book"
       imgSrc={BookImage}
       animationComponent={
-        <BookAnimation
-          currentImage={currentImage}
-          nextShow={nextShow}
-          onNextClick={handleNextClick}
-          randomText={randomText}
-        />
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <FlyingPapers currentPage={currentPage} onClick={handleStopFlipping} />
+        </div>
       }
       categoryPhraseText={categoryPhraseText}
-      categoryButtonText="책 펼치기"
-      backgroundColor={backgroundColor}
-      backgroundColor2={backgroundColor2}
-      buttonColor={buttonColor}
-      buttonHoverColor={buttonHoverColor}
+      categoryButtonText="종이 날리기"
+      backgroundColor="#CFE0FF"
+      backgroundColor2="#ABC9FF"
+      buttonColor="#5C95FF"
+      buttonHoverColor="#2772ff"
       resultShow={resultShow}
       onCategoryButtonClick={handleCategoryButtonClick}
     />
