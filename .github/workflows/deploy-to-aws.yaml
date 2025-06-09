@@ -1,60 +1,92 @@
+# .github/workflows/deploy-ssh-only.yml
 name: Deploy to EC2 (SSH Only)
 
 on:
   push:
-    branches: [main, master]
+    branches: [ main, master ]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
+    
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      # 로컬에서 빌드 (선택사항)
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: "18"
-          cache: "npm"
+    # 로컬에서 빌드 (선택사항)
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies and build
+      run: |
+        npm ci
+        npm run build
 
-      - name: Install dependencies and build
-        run: |
+    # SSH로 EC2에 접속해서 배포
+    - name: Deploy to EC2 via SSH
+      uses: appleboy/ssh-action@v0.1.7
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ${{ secrets.EC2_USERNAME }}
+        key: ${{ secrets.EC2_SSH_KEY }}
+        port: 22
+        script: |
+          # 애플리케이션 디렉토리로 이동
+          APP_DIR="/home/ubuntu/soft-whisper-client"
+          cd $APP_DIR
+          
+          # 기존 프로세스 중지 (더 안전한 방법)
+          echo "Stopping existing processes..."
+          PIDS=$(sudo lsof -ti:3000 2>/dev/null || true)
+          if [ -n "$PIDS" ]; then
+            echo "Found processes: $PIDS"
+            echo $PIDS | xargs sudo kill -9
+          else
+            echo "No processes found on port 3000"
+          fi
+          
+          # 최신 코드 가져오기
+          echo "Pulling latest code..."
+          git pull origin main
+          
+          # Node.js 버전 확인 및 업데이트 (필요시)
+          echo "Current Node.js version:"
+          node --version
+          
+          # 의존성 설치 (dev 의존성 포함)
+          echo "Installing dependencies..."
           npm ci
+          
+          # 빌드 실행
+          echo "Building application..."
           npm run build
-
-      # SSH로 EC2에 접속해서 배포 (PM2 없이)
-      - name: Deploy to EC2 via SSH
-        uses: appleboy/ssh-action@v0.1.7
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USERNAME }}
-          key: ${{ secrets.EC2_SSH_KEY }}
-          port: 22
-          script: |
-            # 애플리케이션 디렉토리로 이동
-            cd /home/ubuntu/soft-whisper-client
-
-            # 기존 프로세스 중지 (포트 기준으로 찾아서 종료)
-            sudo lsof -ti:3000 | xargs sudo kill -9 || true
-
-            # 최신 코드 가져오기
-            git pull origin main
-
-            # 의존성 설치
-            npm ci --production
-
-            # 빌드 (필요한 경우)
-            npm run build
-
-            # 백그라운드에서 애플리케이션 시작
+          
+          # 애플리케이션 시작 (dev 모드가 아닌 경우)
+          echo "Starting application..."
+          if [ -f "dist/index.html" ] || [ -d "build" ]; then
+            # 정적 파일 서빙용 서버 시작
+            npx serve -s dist -l 3000 > app.log 2>&1 &
+          else
+            # 일반 Node.js 앱 시작
             nohup npm start > app.log 2>&1 &
+          fi
+          
+          # 프로세스 확인
+          sleep 5
+          echo "Checking running processes..."
+          ps aux | grep -E "(node|serve)" | grep -v grep
+          
+          # 포트 확인
+          echo "Checking port 3000..."
+          sudo netstat -tlnp | grep :3000 || echo "Port 3000 not listening"
+          
+          # 로그 확인
+          echo "Recent logs:"
+          tail -n 20 app.log 2>/dev/null || echo "No logs found yet"
 
-            # 프로세스 확인
-            sleep 3
-            ps aux | grep node
-
-      # 배포 완료 알림 (선택사항)
-      - name: Deployment Status
-        run: echo "✅ Deployment completed successfully!"
+    # 배포 완료 알림
+    - name: Deployment Status
+      run: echo "✅ Deployment completed successfully!"
