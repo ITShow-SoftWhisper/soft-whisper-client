@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import CategoryLayout from "../components/CategoryLayout";
-import FortuneImage from "../assets/fortune/fortune.png";
-import FortuneOpenImage from "../assets/fortune/fortuneopen.png";
-import FortuneOpenLeft from "../assets/fortune/fortuneopen_left.png";
-import FortuneOpenRight from "../assets/fortune/fortuneopen_right.png";
-import fortuneMessages from "../components/fortuneMessages";
-import "../css/CategorySelector.css";
-import CategorySelector from "../components/CategorySelector";
+import CategoryLayout from "@/components/CategoryLayout";
+import FortuneImage from "@/assets/fortune/fortune.png";
+import FortuneOpenImage from "@/assets/fortune/fortuneopen.png";
+import FortuneOpenLeft from "@/assets/fortune/fortuneopen_left.png";
+import FortuneOpenRight from "@/assets/fortune/fortuneopen_right.png";
+import fortuneMessages from "@/components/fortuneMessages";
+import "@/css/CategorySelector.css";
+import CategorySelector from "@/components/CategorySelector";
 
 const backgroundColor = "#FFFBDB";
 const backgroundColor2 = "#FFF6B2";

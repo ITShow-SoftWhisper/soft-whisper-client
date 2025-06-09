@@ -1,4 +1,4 @@
-import "../css/EmailInput.css";
+import "@/css/EmailInput.css";
 
 function EmailInput({ input, setInput, setSharingButtonClick, resultData }) {
   const handleShareSubmit = async () => {

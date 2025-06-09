@@ -1,7 +1,7 @@
 import express from "express";
 import { v4 as uuidv4 } from "uuid";
-import db from "../db/sharedResult.js";
-import { sendMail } from "../utils/mailer.js";
+import db from "@/db/sharedResult.js";
+import { sendMail } from "2/utils/mailer.js";
 
 const router = express.Router();
 
@@ -14,7 +14,7 @@ router.post("/share", async (req, res) => {
 
   try {
     await db.run(
-      "INSERT INTO sharedResult (id, email, categoty, result) VALUES (?, ?, ?)",
+      "INSERT INTO sharedResult (id, email, result) VALUES (?, ?, ?)",
       [id, email, JSON.stringify(result)]
     );
 

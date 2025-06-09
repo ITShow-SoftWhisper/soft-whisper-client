@@ -1,8 +1,8 @@
 // Book.jsx
-import CategoryLayout from "../components/CategoryLayout";
-import BookImage from "../assets/book.png";
+import CategoryLayout from "@/components/CategoryLayout";
+import BookImage from "@/assets/book.png";
 import React, { useState, useEffect, useRef } from "react";
-import "../css/Book.css";
+import "@/css/Book.css";
 
 const answers = [
   "지금은 때가 아닙니다.",
@@ -54,7 +54,7 @@ const answers = [
   "계속 의심하지 마세요.",
   "모든 것이 제자리를 찾을 것입니다.",
   "먼저 용서를 구하세요.",
-  "모든 것은 이유가 있습니다."
+  "모든 것은 이유가 있습니다.",
 ];
 
 function FlyingPapers({ currentPage, onClick }) {
@@ -109,7 +109,8 @@ function FlyingPapers({ currentPage, onClick }) {
 function Book() {
   const totalPages = 50;
   const [resultShow, setResultShow] = useState(false);
-  const [categoryPhraseText, setCategoryPhraseText] = useState("오늘의 책 운세 확인하기");
+  const [categoryPhraseText, setCategoryPhraseText] =
+    useState("오늘의 책 운세 확인하기");
   const [currentPage, setCurrentPage] = useState(0);
   const [isFlipping, setIsFlipping] = useState(false);
   const intervalRef = useRef(null);
@@ -157,7 +158,10 @@ function Book() {
       imgSrc={BookImage}
       animationComponent={
         <div style={{ display: "flex", justifyContent: "center" }}>
-          <FlyingPapers currentPage={currentPage} onClick={handleStopFlipping} />
+          <FlyingPapers
+            currentPage={currentPage}
+            onClick={handleStopFlipping}
+          />
         </div>
       }
       categoryPhraseText={categoryPhraseText}

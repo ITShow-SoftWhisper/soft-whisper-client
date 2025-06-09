@@ -1,10 +1,11 @@
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import FortuneOpenImage from "../assets/fortune/fortuneopen.png";
+import FortuneOpenLeft from "@/assets/fortune/fortuneopen_left.png";
+import FortuneOpenRight from "@/assets/fortune/fortuneopen_right.png";
+import Frame from "@/assets/frame.png";
 
-import "../css/ResultPage.css";
-import CategoryLayout from "./../components/CategoryLayout";
+import "@/css/ResultPage.css";
 
 function ResultPage() {
   const { id } = useParams();
@@ -29,23 +30,35 @@ function ResultPage() {
     luckyNumbers,
     imageUrl,
     showFortune,
+    fortune,
+    // weatherImageUrl,
+    bookRandomFortune,
   } = result;
 
   let categoryAnimationContent = null;
 
-  console.log("imageUrl : ", imageUrl);
+  // console.log("weatherImageUrl : ", weatherImageUrl);
+  console.log("fortune : ", fortune);
 
   if (category === "book") {
-    categoryAnimationContent = <div></div>;
+    categoryAnimationContent = (
+      <div className="book-content">
+        <img src={Frame} className="frame-image" />
+        <div className="random-text">{bookRandomFortune}</div>
+      </div>
+    );
   } else if (category === "fortune") {
     categoryAnimationContent = (
-      <img src={FortuneOpenImage} className="fortune-open" />
+      <div className="fortune-content">
+        <img src={FortuneOpenLeft} className="fortune-half left-half" />
+        <img src={FortuneOpenRight} className="fortune-half right-half" />
+      </div>
     );
   } else if (category === "lucky") {
     categoryAnimationContent = (
       <div className="card-content">
         <div className="number-container">
-          <h2 className="jua-regular">✨ 당신의 행운의 숫자 ✨</h2>
+          <h2 className="jua-regular">당신의 행운의 숫자</h2>
           <div className="lucky-number-list">
             {luckyNumbers.map((num, index) => (
               <div key={index} className="lucky-number-ball">
@@ -64,6 +77,17 @@ function ResultPage() {
         </div>
         <div className="taro-fortune">
           <p className="jua-regular">{showFortune}</p>
+        </div>
+      </div>
+    );
+  } else if (category === "weather") {
+    categoryAnimationContent = (
+      <div className="weather-content">
+        <div className="weather-image-content">
+          {/* <img src={weatherImageUrl} className="weather-image" /> */}
+        </div>
+        <div className="weather-fortune-content">
+          <p className="jua-regular">{fortune}</p>
         </div>
       </div>
     );

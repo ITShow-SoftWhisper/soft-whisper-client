@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import Book from "../assets/book.png";
-import Fortune from "../assets/fortune/fortune.png";
-import Lucky from "../assets/Lucky/lucky.png";
-import Taro from "../assets/taro/taro.png";
-import Weather from "../assets/weather/littleBlurry.png";
-import CardMenu from "../components/CardMenu";
-import "../css/App.css";
+import Book from "@/assets/book.png";
+import Fortune from "@/assets/fortune/fortune.png";
+import Lucky from "@/assets/Lucky/lucky.png";
+import Taro from "@/assets/taro/taro.png";
+import Weather from "@/assets/weather/littleBlurry.png";
+import CardMenu from "@/components/CardMenu";
+import "@/css/App.css";
 
 const cardData = [
   { id: "book", title: "오늘의 책 운세", imgSrc: Book, backgroundImage: Book },

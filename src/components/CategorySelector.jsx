@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import "../css/CategorySelector.css";
-import Love from "../assets/fortune/love.png";
-import Comfort from "../assets/fortune/comfort.png";
-import Fun from "../assets/fortune/fun.png";
-import Grown from "../assets/fortune/grown.png";
-import Positive from "../assets/fortune/Positive.png"
+import "@/css/CategorySelector.css";
+import Love from "@/assets/fortune/love.png";
+import Comfort from "@/assets/fortune/comfort.png";
+import Fun from "@/assets/fortune/fun.png";
+import Grown from "@/assets/fortune/grown.png";
+import Positive from "@/assets/fortune/positive.png";
 
 const categories = [
   { key: "positive", emoji: Positive, label: "긍정" },
@@ -37,7 +37,8 @@ function CategorySelector({ onSelect }) {
           >
             {typeof cat.emoji === "string" && cat.emoji.startsWith("data") ? (
               <img src={cat.emoji} alt={cat.label} className="emoji-image" />
-            ) : typeof cat.emoji === "string" && cat.emoji.startsWith("http") ? (
+            ) : typeof cat.emoji === "string" &&
+              cat.emoji.startsWith("http") ? (
               <img src={cat.emoji} alt={cat.label} className="emoji-image" />
             ) : typeof cat.emoji === "string" && cat.emoji.length === 2 ? (
               <div className="emoji">{cat.emoji}</div>
@@ -55,7 +56,9 @@ function CategorySelector({ onSelect }) {
             alt={selected}
             className="selected-image bounce"
           />
-          <div className="category-transition-text">포춘쿠키가 열리는 중...</div>
+          <div className="category-transition-text">
+            포춘쿠키가 열리는 중...
+          </div>
         </div>
       )}
     </div>
