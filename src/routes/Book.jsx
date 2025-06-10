@@ -57,98 +57,89 @@ const answers = [
   "모든 것은 이유가 있습니다.",
 ];
 
-function FlyingPapers({ currentPage, onClick }) {
-  const directionsRef = useRef([]);
-
-  const getInitialTransform = (dir) => {
-    switch (dir) {
-      case "left":
-        return "translateX(-400px) skewY(-5deg) rotate(-10deg)";
-      case "right":
-        return "translateX(400px) skewX(-5deg) rotate(10deg)";
-      default:
-        return "translateY(-200px)";
-    }
-  };
-
-  // directions 고정
-  if (directionsRef.current.length < currentPage) {
-    const newDirs = Array(currentPage - directionsRef.current.length)
-      .fill(null)
-      .map(() => (Math.random() < 0.5 ? "left" : "right"));
-    directionsRef.current = [...directionsRef.current, ...newDirs];
-  }
+function BookAnimation({ currentPage, isFlipping, onClick }) {
+  const totalPages = 50;
+  // 렌더링할 총 페이지 수
+  const pagesToRender = totalPages * 2;
 
   return (
-    <div className="paper-stack-container" onClick={onClick}>
-      {[...Array(currentPage)].map((_, i) => {
-        const direction = directionsRef.current[i];
-        const delay = `${i * 0.5}s`;
-        const initialTransform = getInitialTransform(direction);
+    <div className="book-animation-container" onClick={onClick}>
+      <div className="book-wrapper">
+        {[...Array(pagesToRender)].map((_, i) => {
+          const isLeft = i % 2 === 0;
+          // i번째 페이지가 플립된 상태인지
+          const flipped = i <= currentPage;
+          // 명언 보여줄 활성 페이지 판단
+          const isActive = !isFlipping && i === currentPage;
 
-        return (
-          <div
-            key={i}
-            className="flying-paper"
-            style={{
-              zIndex: i,
-              animationDelay: delay,
-              animationDuration: "3s",
-              "--start-transform": initialTransform,
-              transform: "translate(0, 0) rotate(0deg)",
-            }}
-          >
-            <div className="paper-content">{answers[i] || ""}</div>
-          </div>
-        );
-      })}
+          return (
+            <div
+              key={i}
+              className={[
+                "page",
+                isLeft ? "page-left" : "page-right",
+                flipped && "flipped-page",
+                isActive && "active-page",
+              ]
+                .filter(Boolean)
+                .join(" ")}
+              style={{ zIndex: pagesToRender - i }}
+            >
+              <div className="page-content">
+                {!isLeft && i > 0 ? answers[Math.floor((i - 1) / 2)] : ""}
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
 
-function Book() {
-  const totalPages = 50;
-  const [resultShow, setResultShow] = useState(false);
+export default function Book() {
+  const totalPages = 100; // 앞뒤 합쳐 100장
+  const [currentPage, setCurrentPage] = useState(-1);
+  const [isFlipping, setIsFlipping] = useState(false);
   const [categoryPhraseText, setCategoryPhraseText] =
     useState("오늘의 책 운세 확인하기");
-  const [currentPage, setCurrentPage] = useState(0);
-  const [isFlipping, setIsFlipping] = useState(false);
+  const [resultShow, setResultShow] = useState(false);
   const intervalRef = useRef(null);
 
-  const stopFlipping = () => {
-    clearInterval(intervalRef.current);
-    setIsFlipping(false);
-  };
-
   useEffect(() => {
-    if (isFlipping && currentPage < totalPages) {
+    if (isFlipping) {
       intervalRef.current = setInterval(() => {
         setCurrentPage((prev) => {
-          if (prev < totalPages) {
-            return prev + 1;
-          } else {
-            stopFlipping();
+          // totalPages는 “앞뒤 합쳐 총 페이지 수”(여기선 100)
+          // 마지막으로 실제 뒤집힐 인덱스 = totalPages - 2 (즉 98)
+          const lastIndex = totalPages - 2;
+          if (prev + 1 > lastIndex) {
+            clearInterval(intervalRef.current);
+            setIsFlipping(false);
+            setResultShow(true);
+            setCategoryPhraseText("오늘 나는?");
             return prev;
           }
+          return prev + 1;
         });
-      }, 500);
+      }, 50);
     }
     return () => clearInterval(intervalRef.current);
   }, [isFlipping, currentPage]);
 
   const handleCategoryButtonClick = () => {
-    setCategoryPhraseText("날아오는 종이를 클릭해주세요!");
+    setCategoryPhraseText("책을 클릭해 멈춰주세요!");
     setIsFlipping(true);
-    setCurrentPage(1);
+    setCurrentPage(-1);
     setResultShow(false);
   };
 
   const handleStopFlipping = (e) => {
     e.stopPropagation();
     if (isFlipping) {
-      stopFlipping();
+      clearInterval(intervalRef.current);
+      setIsFlipping(false);
       setResultShow(true);
-      setCategoryPhraseText("오늘 인생의 해답은?");
+      setCategoryPhraseText("오늘 나는?");
     }
   };
 
@@ -158,14 +149,15 @@ function Book() {
       imgSrc={BookImage}
       animationComponent={
         <div style={{ display: "flex", justifyContent: "center" }}>
-          <FlyingPapers
+          <BookAnimation
             currentPage={currentPage}
+            isFlipping={isFlipping}
             onClick={handleStopFlipping}
           />
         </div>
       }
       categoryPhraseText={categoryPhraseText}
-      categoryButtonText="종이 날리기"
+      categoryButtonText="책 펼치기"
       backgroundColor="#CFE0FF"
       backgroundColor2="#ABC9FF"
       buttonColor="#5C95FF"
@@ -175,5 +167,3 @@ function Book() {
     />
   );
 }
-
-export default Book;
