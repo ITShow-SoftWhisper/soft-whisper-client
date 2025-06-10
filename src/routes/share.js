@@ -11,7 +11,7 @@ router.post("/share", async (req, res) => {
   const id = uuidv4().slice(0, 8);
   const baseUrl =
     process.env.NEXT_PUBLIC_BASE_URL ||
-    process.env.BASE_URL ||
+    // process.env.BASE_URL ||
     "http://localhost:3000";
   const shareUrl = `${baseUrl}/result/${id}`;
 
