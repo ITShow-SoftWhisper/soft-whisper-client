@@ -4,9 +4,9 @@ function EmailInput({ input, setInput, setSharingButtonClick, resultData }) {
   const handleShareSubmit = async () => {
     setInput("");
     try {
-      const BASE_URL =
+      const NEXT_PUBLIC_BASE_URL =
         process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
-      const res = await fetch(`${BASE_URL}/api/share`, {
+      const res = await fetch(`${NEXT_PUBLIC_BASE_URL}/api/share`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
