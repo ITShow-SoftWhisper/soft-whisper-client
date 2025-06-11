@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import CategoryLayout from "@/components/CategoryLayout";
-import TaroImage from "@/assets/taro/taro.png";
-import TaroFortuneMessages from "@/components/TaroFortuneMessages";
+import CategoryLayout from "../components/CategoryLayout";
+import TaroImage from "../assets/taro/taro.png";
+import TaroFortuneMessages from "../components/TaroFortuneMessages";
 
-import TaroBack from "@/assets/taro/taro-card/taro_back.png";
+import TaroBack from "../assets/taro/taro-card/taro_back.png";
 
-import "@/css/TaroCard.scss";
+import "../css/TaroCard.scss";
 
 function shuffleArray(array) {
   const result = [...array];

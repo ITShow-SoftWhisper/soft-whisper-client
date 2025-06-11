@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-import "@/css/ScratchCard.css";
+import "../css/ScratchCard.css";
 
 const ScratchCard = ({
   width = 550,

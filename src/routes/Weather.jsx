@@ -1,14 +1,14 @@
-import CategoryLayout from "@/components/CategoryLayout";
-import WeatherInfoInput from "@/components/WeatherInfoInput";
-import WeatherImage from "@/assets/weather/littleBlurry.png";
-import sunny from "@/assets/weather/sunny.png";
-import rain from "@/assets/weather/rain.png";
-import blurry from "@/assets/weather/blurry.png";
-import littleBlurry from "@/assets/weather/littleBlurry.png";
-import snow from "@/assets/weather/snow.png";
+import CategoryLayout from "../components/CategoryLayout";
+import WeatherInfoInput from "../components/WeatherInfoInput";
+import WeatherImage from "../assets/weather/littleBlurry.png";
+import sunny from "../assets/weather/sunny.png";
+import rain from "../assets/weather/rain.png";
+import blurry from "../assets/weather/blurry.png";
+import littleBlurry from "../assets/weather/littleBlurry.png";
+import snow from "../assets/weather/snow.png";
 import { useState, useEffect } from "react";
-import "@/css/CategoryLayout.css";
-import "@/css/WeatherAnimation.css";
+import "../css/CategoryLayout.css";
+import "../css/WeatherAnimation.css";
 
 const weatherMap = {
   "clear sky": { image: sunny, phrase: "오늘의 날씨는 맑아요!" },

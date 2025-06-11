@@ -1,11 +1,11 @@
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import FortuneOpenLeft from "@/assets/fortune/fortuneopen_left.png";
-import FortuneOpenRight from "@/assets/fortune/fortuneopen_right.png";
-import Frame from "@/assets/frame.png";
+import FortuneOpenLeft from "../assets/fortune/fortuneopen_left.png";
+import FortuneOpenRight from "../assets/fortune/fortuneopen_right.png";
+import Frame from "../assets/frame.png";
 
-import "@/css/ResultPage.css";
+import "../css/ResultPage.css";
 
 function ResultPage() {
   const { id } = useParams();

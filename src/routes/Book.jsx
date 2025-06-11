@@ -1,8 +1,8 @@
 // Book.jsx
-import CategoryLayout from "@/components/CategoryLayout";
-import BookImage from "@/assets/book.png";
+import CategoryLayout from "../components/CategoryLayout";
+import BookImage from "../assets/book.png";
 import React, { useState, useEffect, useRef } from "react";
-import "@/css/Book.css";
+import "../css/Book.css";
 
 const answers = [
   "지금은 때가 아닙니다.",

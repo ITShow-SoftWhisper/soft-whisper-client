@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import "@/css/CategoryLayout.css";
+import "../css/CategoryLayout.css";
 import EmailInput from "./EmailInput";
 
 // 내가 이 파일 코드 바꿔도 너가 작업하는 페이지에 영향 안감 걱정ㄴㄴ

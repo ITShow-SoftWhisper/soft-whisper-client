@@ -1,4 +1,4 @@
-import "@/css/WeatherInfoInput.css";
+import "../css/WeatherInfoInput.css";
 
 function WeatherInfoInput({ input, setInput, onSubmit, isFadingOut }) {
   const handleKeyDown = (e) => {
