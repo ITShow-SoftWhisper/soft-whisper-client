@@ -52,7 +52,6 @@ function CategoryLayout({
   fortune,
   luckyNumbers,
   showFortune,
-  imageUrl,
   imgSrc, // 페이지별 image 경로
   animationComponent, // 페이지별 애니메이션 컴포넌트 (Weather.jsx 참고)
   finishFlipped,
@@ -116,7 +115,6 @@ function CategoryLayout({
             buttonColor,
             buttonHoverColor,
             luckyNumbers,
-            imageUrl,
             showFortune,
             fortune,
             weatherImageUrl,

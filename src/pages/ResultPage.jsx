@@ -4,6 +4,7 @@ import styled from "styled-components";
 import FortuneOpenLeft from "../assets/fortune/fortuneopen_left.png";
 import FortuneOpenRight from "../assets/fortune/fortuneopen_right.png";
 import Frame from "../assets/frame.png";
+import TaroFortuneMessages from "../components/TaroFortuneMessages";
 
 import "../css/ResultPage.css";
 
@@ -28,7 +29,6 @@ function ResultPage() {
     buttonColor,
     buttonHoverColor,
     luckyNumbers,
-    imageUrl,
     showFortune,
     fortune,
     // weatherImageUrl,
@@ -70,11 +70,16 @@ function ResultPage() {
       </div>
     );
   } else if (category === "taro") {
+    const selectedCard = TaroFortuneMessages.find(
+      (card) => card.text.toLowerCase() === categoryPhraseText.toLowerCase()
+    );
     categoryAnimationContent = (
       <div className="taro-content">
-        <div>
-          <img src={imageUrl} className="taro-image" />
-        </div>
+        {selectedCard && (
+          <div>
+            <img src={selectedCard.src} className="taro-image" />
+          </div>
+        )}
         <div className="taro-fortune">
           <p className="jua-regular">{showFortune}</p>
         </div>

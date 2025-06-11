@@ -21,7 +21,6 @@ function TaroAnimation({
   setCategoryPhraseText,
   finishFlipped,
   setFinishFlipped,
-  setImageUrl,
   showFortune,
   setShowFortune,
 }) {
@@ -71,8 +70,6 @@ function TaroAnimation({
 
       setFinishFlipped(true);
       setCategoryPhraseText(shuffledCards[i].text);
-      let imagePath = shuffledCards[i].src;
-      setImageUrl(imagePath);
 
       const fortunes = shuffledCards[i].fortunes;
       const randomFortune =
@@ -141,14 +138,12 @@ function Taro() {
   const [categoryPhraseText, setCategoryPhraseText] =
     useState("오늘의 타로 확인하기");
   const [finishFlipped, setFinishFlipped] = useState(false);
-  const [imageUrl, setImageUrl] = useState("");
   const [showFortune, setShowFortune] = useState("");
 
   return (
     <CategoryLayout
       category="taro"
       showFortune={showFortune}
-      imageUrl={imageUrl}
       imgSrc={TaroImage}
       animationComponent={
         <TaroAnimation
@@ -156,7 +151,6 @@ function Taro() {
           setCategoryPhraseText={setCategoryPhraseText}
           finishFlipped={finishFlipped}
           setFinishFlipped={setFinishFlipped}
-          setImageUrl={setImageUrl}
           showFortune={showFortune}
           setShowFortune={setShowFortune}
         />
