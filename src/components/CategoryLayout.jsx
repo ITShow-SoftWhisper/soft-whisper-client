@@ -125,7 +125,7 @@ function CategoryLayout({
       <div
         className="container"
         style={{
-          background: `linear-gradient(320deg, ${backgroundColor}, ${backgroundColor2}`,
+          background: `linear-gradient(320deg, ${backgroundColor}, ${backgroundColor2})`,
         }}
       >
         <h1
