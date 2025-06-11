@@ -1,12 +1,14 @@
-import "@/css/EmailInput.css";
+import "../css/EmailInput.css";
 
 function EmailInput({ input, setInput, setSharingButtonClick, resultData }) {
   const handleShareSubmit = async () => {
     setInput("");
     try {
-      const NEXT_PUBLIC_BASE_URL =
-        process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
-      const res = await fetch(`${NEXT_PUBLIC_BASE_URL}/api/share`, {
+      // const VITE_BASE_URL =
+      //   import.meta.env.VITE_BASE_URL || import.meta.env.BASE_URL;
+      const url = "/api/share";
+      console.log("요청 URL:", url);
+      const res = await fetch(url, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -50,7 +52,7 @@ function EmailInput({ input, setInput, setSharingButtonClick, resultData }) {
         class="bi bi-x-lg"
         onClick={(e) => {
           e.stopPropagation();
-          setSharingButtonClick(false);
+          setSharingButtonClick(true);
         }}
       ></i>
       <div className="email-info-input">
@@ -66,7 +68,7 @@ function EmailInput({ input, setInput, setSharingButtonClick, resultData }) {
         <button
           className="email-send-button jua-regular"
           onClick={() => {
-            handleShareSubmit();
+            handleShareSubmit;
             setInput("");
           }}
         >

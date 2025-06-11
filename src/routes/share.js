@@ -1,7 +1,7 @@
 import express from "express";
 import { v4 as uuidv4 } from "uuid";
-import db from "@/db/sharedResult.js";
-import { sendMail } from "2/utils/mailer.js";
+import db from "../db/sharedResult.js";
+import { sendMail } from "../utils/mailer.js";
 
 const router = express.Router();
 
@@ -9,10 +9,7 @@ router.post("/share", async (req, res) => {
   const { email, result } = req.body;
 
   const id = uuidv4().slice(0, 8);
-  const baseUrl =
-    process.env.BASE_URL ||
-    // process.env.BASE_URL ||
-    "http://localhost:3000";
+  const baseUrl = process.env.VITE_BASE_URL || "http://localhost:3000";
   const shareUrl = `${baseUrl}/result/${id}`;
 
   try {

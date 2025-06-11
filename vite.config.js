@@ -1,14 +1,12 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { resolve } from "path";
-import { fileURLToPath, URL } from "node:url";
 
 export default defineConfig({
   plugins: [react()],
-  // ✅ resolve는 최상위 레벨에 위치해야 함
   resolve: {
     alias: {
-      "@": fileURLToPath(new URL("./src", import.meta.url)),
+      "@": resolve("src"),
     },
   },
   server: {

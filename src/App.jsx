@@ -5,7 +5,7 @@ import Taro from "./routes/Taro.jsx";
 import FortuneCookie from "./routes/FortuneCookie.jsx";
 import LuckyNumber from "./routes/LuckyNumber.jsx";
 import Weather from "./routes/Weather.jsx";
-import ResultPage from "./pages/ResultPage"; // ✅ 새로 만들 페이지
+import ResultPage from "./pages/ResultPage";
 
 function App() {
   return (

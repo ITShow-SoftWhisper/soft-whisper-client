@@ -1,5 +1,5 @@
 import express from "express";
-import db from "@/db/sharedResult.js";
+import db from "../db/sharedResult.js";
 
 const router = express.Router();
 
