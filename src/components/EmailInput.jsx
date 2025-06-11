@@ -49,10 +49,10 @@ function EmailInput({ input, setInput, setSharingButtonClick, resultData }) {
   return (
     <div className="container" style={{ zIndex: 100000 }}>
       <i
-        class="bi bi-x-lg"
+        className="bi bi-x-lg"
         onClick={(e) => {
           e.stopPropagation();
-          setSharingButtonClick(true);
+          setSharingButtonClick(false);
         }}
       ></i>
       <div className="email-info-input">
