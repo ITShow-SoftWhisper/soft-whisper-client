@@ -68,7 +68,7 @@ function EmailInput({ input, setInput, setSharingButtonClick, resultData }) {
         <button
           className="email-send-button jua-regular"
           onClick={() => {
-            handleShareSubmit;
+            handleShareSubmit();
             setInput("");
           }}
         >
