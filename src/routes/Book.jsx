@@ -4,8 +4,6 @@ import BookImage from "../assets/book.png";
 import React, { useState, useEffect, useRef } from "react";
 import "../css/Book.css";
 
-import BookImage from "@/assets/book.png";
-
 const answers = [
   "지금은 때가 아닙니다.",
   "계속 밀고 나가세요.",
@@ -109,9 +107,9 @@ const answers = [
   "더 큰 그림을 그릴 시간입니다.",
 ];
 
-const totalAnswers = answers.length;            
-const pagesToRender = totalAnswers * 2;         // 총 페이지 수 (왼쪽 + 오른쪽)
-const lastPageIndex = pagesToRender - 2;        // 마지막 오른쪽 페이지 인덱스 (멈출 조건용)
+const totalAnswers = answers.length;
+const pagesToRender = totalAnswers * 2; // 총 페이지 수 (왼쪽 + 오른쪽)
+const lastPageIndex = pagesToRender - 2; // 마지막 오른쪽 페이지 인덱스 (멈출 조건용)
 
 function BookAnimation({ currentPage, isFlipping, onClick }) {
   return (
@@ -138,9 +136,7 @@ function BookAnimation({ currentPage, isFlipping, onClick }) {
             >
               <div className="page-content">
                 {/* 오른쪽 페이지에만 문장 표시(i가 홀수일때만) */}
-                {!isLeft && i > 0
-                  ? answers[Math.floor((i - 1) / 2)]
-                  : ""}
+                {!isLeft && i > 0 ? answers[Math.floor((i - 1) / 2)] : ""}
               </div>
             </div>
           );
@@ -153,7 +149,8 @@ function BookAnimation({ currentPage, isFlipping, onClick }) {
 export default function Book() {
   const [currentPage, setCurrentPage] = useState(-1);
   const [isFlipping, setIsFlipping] = useState(false);
-  const [categoryPhraseText, setCategoryPhraseText] = useState("오늘의 책 운세 확인하기");
+  const [categoryPhraseText, setCategoryPhraseText] =
+    useState("오늘의 책 운세 확인하기");
   const [resultShow, setResultShow] = useState(false);
   const intervalRef = useRef(null);
 

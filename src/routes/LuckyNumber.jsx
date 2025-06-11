@@ -4,8 +4,6 @@ import LuckyImage from "../assets/Lucky/luckycoin.png";
 import ScratchCard from "../components/ScratchCard";
 import "../css/LuckyNumber.css";
 
-import LuckyImage from "@/assets/Lucky/luckycoin.png";
-
 const backgroundColor = "#E0FFD8";
 const backgroundColor2 = "#B7FFA5";
 const buttonColor = "#57da4d";
