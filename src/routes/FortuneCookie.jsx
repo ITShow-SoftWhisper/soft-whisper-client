@@ -14,14 +14,14 @@ const buttonColor = "#ffd744";
 const buttonHoverColor = "#ffc800";
 
 function FortuneCookie() {
-  const [step, setStep] = useState("start"); // start → select → result
+  const [step, setStep] = useState("start"); // 상태: start → select → result
   const [category, setCategory] = useState(null);
   const [categoryPhraseText, setCategoryPhraseText] =
     useState("오늘의 포춘쿠키 확인하기");
 
   const handleStart = () => {
     setStep("select");
-    setCategory(null); // 이미지 초기화
+    setCategory(null); // 이전 카테고리 초기화
     setCategoryPhraseText("원하는 카테고리를 골라주세요!");
   };
 
@@ -35,7 +35,6 @@ function FortuneCookie() {
     setStep("result");
   };
 
-  // ✅ category가 선택되었으면 열린 쿠키 이미지 보여주기
   const displayedImage = category !== null ? FortuneOpenImage : FortuneImage;
 
   const SelectedComponent =

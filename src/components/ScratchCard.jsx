@@ -4,11 +4,11 @@ import "../css/ScratchCard.css";
 const ScratchCard = ({
   width = 550,
   height = 300,
-  onScratchComplete,
-  children,
+  onScratchComplete,  // 긁기 완료 시 실행되는 콜백
+  children, // 긁힌 뒤에 보일 내용
 }) => {
   const canvasRef = useRef(null);
-  const isDrawing = useRef(false);
+  const isDrawing = useRef(false);  // 마우스/터치가 눌린 상태 여부
   const [scratched, setScratched] = useState(false);
 
   const handleStart = (e) => {
@@ -17,20 +17,22 @@ const ScratchCard = ({
   };
 
   const handleMove = (e) => {
-    if (!isDrawing.current || scratched) return;
+    if (!isDrawing.current || scratched) return;  // 긁기 끝났으면 무시
     draw(e);
   };
 
   const handleEnd = () => {
     isDrawing.current = false;
-    checkScratchPercent();
+    checkScratchPercent();  // 긁힌 비율 계산
   };
 
+  // 마우스 또는 터치 위치 기준으로 원형 긁기
   const draw = (e) => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     const rect = canvas.getBoundingClientRect();
 
+    // 마우스 또는 터치 위치 구하기
     const clientX = e.clientX ?? e.touches?.[0]?.clientX;
     const clientY = e.clientY ?? e.touches?.[0]?.clientY;
 
@@ -46,6 +48,7 @@ const ScratchCard = ({
     ctx.fill();
   };
 
+  // 긁힌 픽셀 비율 계산
   const checkScratchPercent = () => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
@@ -59,11 +62,12 @@ const ScratchCard = ({
 
     const percent = (transparentPixels / total) * 100;
     if (percent > 30) {
-      setScratched(true);
-      onScratchComplete?.();
+      setScratched(true); // 긁기 완료 처리
+      onScratchComplete?.();  // 콜백 호출
     }
   };
 
+  // 최초 렌더링 시 → 복권 배경 그리기
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
@@ -78,6 +82,7 @@ const ScratchCard = ({
 
   return (
     <div className="scratch-card-container" style={{ width, height }}>
+      {/* 긁기 완료 전까지만 canvas 표시 */}
       {!scratched && (
         <canvas
           ref={canvasRef}
@@ -93,6 +98,7 @@ const ScratchCard = ({
           onTouchEnd={handleEnd}
         />
       )}
+      {/* 항상 보여지는 긁힌 뒤 콘텐츠 */}
       <div className="scratch-card-content">{children}</div>
     </div>
   );

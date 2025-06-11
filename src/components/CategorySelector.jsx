@@ -17,6 +17,7 @@ const categories = [
 function CategorySelector({ onSelect }) {
   const [selected, setSelected] = useState(null);
 
+  // 카테고리 클릭 시 실행되는 함수
   const handleClick = (key) => {
     setSelected(key);
 
@@ -27,24 +28,15 @@ function CategorySelector({ onSelect }) {
 
   return (
     <div className="category-selector">
+      {/* 아무것도 선택되지 않았을 때만 선택 UI 표시 */}
       {!selected &&
-        categories.map((cat, index) => (
+        categories.map((cat) => (
           <div
-            key={cat.key}
+            key={cat.key} // 각 항목 고유 key
             className="category-card"
-            style={{ animationDelay: `${index * 0.1}s` }}
             onClick={() => handleClick(cat.key)}
           >
-            {typeof cat.emoji === "string" && cat.emoji.startsWith("data") ? (
-              <img src={cat.emoji} alt={cat.label} className="emoji-image" />
-            ) : typeof cat.emoji === "string" &&
-              cat.emoji.startsWith("http") ? (
-              <img src={cat.emoji} alt={cat.label} className="emoji-image" />
-            ) : typeof cat.emoji === "string" && cat.emoji.length === 2 ? (
-              <div className="emoji">{cat.emoji}</div>
-            ) : (
-              <img src={cat.emoji} alt={cat.label} className="emoji-image" />
-            )}
+            <img src={cat.emoji} alt={cat.label} className="emoji-image" />
             <div className="label">{cat.label}</div>
           </div>
         ))}

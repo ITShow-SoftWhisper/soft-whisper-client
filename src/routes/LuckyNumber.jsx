@@ -4,6 +4,8 @@ import LuckyImage from "../assets/Lucky/luckycoin.png";
 import ScratchCard from "../components/ScratchCard";
 import "../css/LuckyNumber.css";
 
+import LuckyImage from "@/assets/Lucky/luckycoin.png";
+
 const backgroundColor = "#E0FFD8";
 const backgroundColor2 = "#B7FFA5";
 const buttonColor = "#57da4d";
@@ -28,15 +30,16 @@ function LuckyNumber() {
     setCategoryPhraseText("복권을 긁어주세요!!");
     const numbers = generateLuckyNumbers();
     setLuckyNumbers(numbers);
-    setStartScratch(true); // 긁기 시작하도록 설정
-    setShowResult(false); // 결과는 나중에 보여줘야 함!
+    setStartScratch(true); // 긁기 애니메이션 시작
+    setShowResult(false); // 결과는 아직 보여주지 않음
   };
 
   const handleScratchComplete = () => {
-    setShowResult(true); // 긁기 완료 후에 결과 보여주기
+    setShowResult(true); // 긁기 완료 후 결과 보여주기
     setCategoryPhraseText("오늘의 복권 당첨 숫자 입니다!");
   };
 
+  // 행운 숫자 결과 UI
   const LuckyNumberResult = (
     <div className="lucky-number-container">
       <h2 className="jua-regular">당신의 행운의 숫자</h2>
@@ -64,6 +67,7 @@ function LuckyNumber() {
       onCategoryButtonClick={handleCategoryButtonClick}
       animationComponent={
         startScratch ? (
+          // 긁기 시작 후 ScratchCard 렌더링
           <ScratchCard onScratchComplete={handleScratchComplete}>
             {LuckyNumberResult}
           </ScratchCard>
