@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import FortuneOpenLeft from "../assets/fortune/fortuneopen_left.png";
 import FortuneOpenRight from "../assets/fortune/fortuneopen_right.png";
-import Frame from "../assets/frame.png";
 import TaroFortuneMessages from "../components/TaroFortuneMessages";
 
 import "../css/ResultPage.css";
@@ -31,20 +30,27 @@ function ResultPage() {
     luckyNumbers,
     showFortune,
     fortune,
-    // weatherImageUrl,
-    bookRandomFortune,
+    weatherImageUrl,
+    bookFortune,
   } = result;
 
   let categoryAnimationContent = null;
 
-  // console.log("weatherImageUrl : ", weatherImageUrl);
+  console.log("weatherImageUrl : ", weatherImageUrl);
   console.log("fortune : ", fortune);
+  console.log("문장 : ", bookFortune);
 
   if (category === "book") {
     categoryAnimationContent = (
       <div className="book-content">
-        <img src={Frame} className="frame-image" />
-        <div className="random-text">{bookRandomFortune}</div>
+        <div className="book-cover book-cover-left" />
+        <div className="book-cover book-cover-right" />
+        <div className="book-page-content">
+          <div className="book-page" />
+          <div className="book-page">
+            <p className="book-fortune">{bookFortune}</p>
+          </div>
+        </div>
       </div>
     );
   } else if (category === "fortune") {
@@ -58,7 +64,7 @@ function ResultPage() {
     categoryAnimationContent = (
       <div className="card-content">
         <div className="number-container">
-          <h2 className="jua-regular">당신의 행운의 숫자</h2>
+          <h2 className="card-text jua-regular">당신의 행운의 숫자</h2>
           <div className="lucky-number-list">
             {luckyNumbers.map((num, index) => (
               <div key={index} className="lucky-number-ball">
@@ -81,7 +87,7 @@ function ResultPage() {
           </div>
         )}
         <div className="taro-fortune">
-          <p className="jua-regular">{showFortune}</p>
+          <p className="taro-fortune-text jua-regular">{showFortune}</p>
         </div>
       </div>
     );
@@ -89,10 +95,10 @@ function ResultPage() {
     categoryAnimationContent = (
       <div className="weather-content">
         <div className="weather-image-content">
-          {/* <img src={weatherImageUrl} className="weather-image" /> */}
+          <img src={weatherImageUrl} className="weather-image" />
         </div>
         <div className="weather-fortune-content">
-          <p className="jua-regular">{fortune}</p>
+          <p className="weather-fortune jua-regular">{fortune}</p>
         </div>
       </div>
     );
@@ -113,20 +119,30 @@ function ResultPage() {
 
   return (
     <div
-      className="container"
+      className={`
+        container
+        ${category === "taro" ? "taro-container" : ""}
+      `}
       style={{
         background: `linear-gradient(320deg, ${backgroundColor}, ${backgroundColor2}`,
       }}
     >
       <h1
-        className={`phrase-text ${
-          category === "taro" ? "dm-serif-display-regular" : "jua-regular"
-        }`}
+        className={`
+          phrase-text 
+          ${category === "taro" ? "dm-serif-display-regular" : "jua-regular"}`}
         style={{ color: "#000" }}
       >
         {categoryPhraseText}
       </h1>
-      <div className="animation-content">{categoryAnimationContent}</div>
+      <div
+        className={`
+          animation-content 
+          ${category === "taro" ? "taro-animation-content" : ""}
+        `}
+      >
+        {categoryAnimationContent}
+      </div>
       <div className="other-fortune-button-content">
         <Link to="/" className="re-start-button">
           <Button className="other-fortune-button">

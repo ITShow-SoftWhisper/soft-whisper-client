@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import "../css/CategorySelector.css";
 import Love from "../assets/fortune/love.png";
 import Comfort from "../assets/fortune/comfort.png";
 import Fun from "../assets/fortune/fun.png";
 import Grown from "../assets/fortune/grown.png";
 import Positive from "../assets/fortune/positive.png";
+import "../css/CategorySelector.css";
 
 const categories = [
   { key: "positive", emoji: Positive, label: "긍정" },

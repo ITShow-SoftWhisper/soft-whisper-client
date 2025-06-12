@@ -1,6 +1,12 @@
 import "../css/WeatherInfoInput.css";
 
-function WeatherInfoInput({ input, setInput, onSubmit, isFadingOut }) {
+function WeatherInfoInput({
+  input,
+  setInput,
+  onSubmit,
+  isFadingOut,
+  setInputCancel,
+}) {
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       onSubmit();
@@ -9,6 +15,13 @@ function WeatherInfoInput({ input, setInput, onSubmit, isFadingOut }) {
 
   return (
     <div className={`container ${isFadingOut ? "fade-out" : ""}`}>
+      <i
+        className="bi bi-x-lg"
+        onClick={(e) => {
+          e.stopPropagation();
+          setInputCancel(true);
+        }}
+      ></i>
       <div className="weather-info-input">
         <input
           className="city-input jua-regular"
