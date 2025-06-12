@@ -146,7 +146,6 @@ function WeatherAnimation({
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          columnGap: "5%",
         }}
       >
         <div
@@ -176,7 +175,7 @@ function WeatherAnimation({
             style={{
               display: "flex",
               alignItems: "center",
-              width: "30%",
+              width: "25%",
               height: "80%",
               fontSize: "130%",
               lineHeight: "1.5",
