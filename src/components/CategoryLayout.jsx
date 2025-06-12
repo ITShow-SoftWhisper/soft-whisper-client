@@ -54,6 +54,8 @@ function CategoryLayout({
   buttonHoverColor,
   resultShow,
   onCategoryButtonClick = () => {},
+  inputCancel,
+  setInputCancel,
 }) {
   const [buttonIsClick, setButtonIsClick] = useState(false);
   const navigate = useNavigate();
@@ -64,6 +66,7 @@ function CategoryLayout({
     e.stopPropagation();
     setButtonIsClick(true);
     onCategoryButtonClick();
+    setInputCancel(false);
   };
 
   const handleShareClick = (e) => {
@@ -114,7 +117,7 @@ function CategoryLayout({
         </h1>
 
         <div className="animation-content">
-          {buttonIsClick && showInput && inputComponent}
+          {buttonIsClick && showInput && !inputCancel && inputComponent}
 
           {buttonIsClick && !showInput && animationComponent}
 

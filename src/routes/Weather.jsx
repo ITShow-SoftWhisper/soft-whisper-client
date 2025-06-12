@@ -210,6 +210,7 @@ function Weather() {
     useState("#D6D6D6");
   const [fortune, setFortune] = useState("");
   const [weatherImageUrl, setWeatherImageUrl] = useState("");
+  const [inputCancel, setInputCancel] = useState(true);
 
   const fetchWeather = () => {
     if (!input) return;
@@ -284,6 +285,7 @@ function Weather() {
           setInput={setInput}
           onSubmit={fetchWeather}
           isFadingOut={isFadingOut}
+          setInputCancel={setInputCancel}
         />
       }
       showInput={showInput}
@@ -303,6 +305,8 @@ function Weather() {
       buttonHoverColor={buttonHoverColor}
       resultShow={resultShow}
       onCategoryButtonClick={() => setShowInput(true)}
+      inputCancel={inputCancel}
+      setInputCancel={setInputCancel}
     />
   );
 }
