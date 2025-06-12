@@ -115,6 +115,8 @@ function BookAnimation({ currentPage, isFlipping, onClick }) {
     <div className="book-animation-container" onClick={onClick}>
       <div className="book-wrapper">
         {/* 페이지 수만큼 생성 (짝수는 왼쪽, 홀수는 오른쪽) */}
+        <div className="book-back-shadow shadow-left" />
+        <div className="book-back-shadow shadow-right" />
         {Array.from({ length: pagesToRender }).map((_, i) => {
           const isLeft = i % 2 === 0;
           const flipped = i <= currentPage;
