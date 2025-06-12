@@ -128,109 +128,17 @@ const fortunes = [
   "오늘은 창의력과 직관을 믿고, 새로운 아이디어를 떠올려보세요. 때로는 일상 속에서 가장 단순한 것에서 영감을 얻을 수 있습니다. 새로운 아이디어나 접근 방식이 성공적인 결과로 이어질 것입니다.",
 ];
 
+const getRandomFortune = () =>
+  fortunes[Math.floor(Math.random() * fortunes.length)];
+
 function WeatherAnimation({
-  setResultShow,
-  setCategoryPhraseText,
-  setWeatherBackgroundColor1,
-  setWeatherBackgroundColor2,
+  weatherImageUrl,
+  isFadingOut,
   fortune,
-  setFortune,
-  setWeatherImageUrl,
+  showFortune,
 }) {
-  const [input, setInput] = useState("");
-  const [weather, setWeather] = useState("");
-  const [showInput, setShowInput] = useState(true);
-  const [isFadingOut, setIsFadingOut] = useState(false);
-  const [showFortune, setShowFortune] = useState(false);
-
-  const fetchWeather = () => {
-    if (!input) return;
-
-    fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=792ff3066b1a91e7e54aabf9de16f2ee&units=metric&lang=en`
-    )
-      .then((res) => {
-        if (!res.ok) throw new Error("정확한 도시명을 입력해 주세요.");
-        return res.json();
-      })
-      .then((data) => {
-        const original = data.weather[0].description;
-        const mapped = weatherMap[original];
-
-        if (mapped) {
-          if (mapped.image === sunny) {
-            setWeatherBackgroundColor1("#fff387");
-            setWeatherBackgroundColor2("#fff9c6");
-          } else if (mapped.image === rain) {
-            setWeatherBackgroundColor1("#5372c5");
-            setWeatherBackgroundColor2("#EBEBEB");
-          } else if (mapped.image === snow) {
-            setWeatherBackgroundColor1("#98bcff");
-            setWeatherBackgroundColor2("#c3d8ff");
-          }
-
-          setWeather(mapped);
-          setCategoryPhraseText(mapped.phrase);
-          setWeatherImageUrl(mapped.image);
-
-          setIsFadingOut(true);
-          setTimeout(() => {
-            setShowInput(false);
-          }, 5000);
-        } else {
-          throw new Error("지원하지 않는 날씨 유형입니다.");
-        }
-      })
-      .catch((err) => {
-        alert(err.message);
-        setInput("");
-        resetState();
-      });
-  };
-
-  const resetState = () => {
-    setIsFadingOut(false);
-    setShowInput(true);
-    setWeather("");
-    setResultShow(false);
-    setInput("");
-    setCategoryPhraseText("오늘의 날씨운 보기");
-    setShowFortune(false);
-  };
-
-  const getrandomFortune = () => {
-    const randomIndex = Math.floor(Math.random() * fortunes.length);
-    return fortunes[randomIndex];
-  };
-
-  useEffect(() => {
-    if (weather && isFadingOut) {
-      const timeout = setTimeout(() => {
-        setFortune(getrandomFortune());
-        setShowFortune(true);
-      }, 1000);
-
-      return () => clearTimeout(timeout);
-    }
-  }, [weather, isFadingOut]);
-
-  useEffect(() => {
-    if (showFortune) {
-      setResultShow(true);
-    }
-  }, [showFortune, setResultShow]);
-
   return (
     <>
-      {showInput && (
-        <WeatherInfoInput
-          input={input}
-          setInput={setInput}
-          onSubmit={fetchWeather}
-          isFadingOut={isFadingOut}
-          setShowInput={setShowInput}
-        />
-      )}
       <div
         className={`weather-animation-container ${isFadingOut && "fade-in"}`}
         style={{
@@ -249,14 +157,14 @@ function WeatherAnimation({
             width: "30%",
           }}
         ></div>
-        {weather && (
+        {weatherImageUrl && (
           <div
             className="moveContent"
             style={{ display: "grid", placeItems: "center", height: "100%" }}
           >
             <img
               className={`image ${isFadingOut && "fade-in-image"}`}
-              src={weather.image}
+              src={weatherImageUrl}
               alt="weather"
               style={{ height: "40%", width: "auto" }}
             />
@@ -273,7 +181,7 @@ function WeatherAnimation({
               fontSize: "130%",
               lineHeight: "1.5",
               padding: "1% 0 0",
-              margin: "0",
+              margin: 0,
             }}
           >
             {fortune}
@@ -288,6 +196,11 @@ const buttonColor = "#545454";
 const buttonHoverColor = "#000000";
 
 function Weather() {
+  const [input, setInput] = useState("");
+  const [showInput, setShowInput] = useState(false);
+  const [isFadingOut, setIsFadingOut] = useState(false);
+  const [showFortune, setShowFortune] = useState(false);
+
   const [resultShow, setResultShow] = useState(false);
   const [categoryPhraseText, setCategoryPhraseText] =
     useState("오늘의 날씨운 보기");
@@ -298,21 +211,88 @@ function Weather() {
   const [fortune, setFortune] = useState("");
   const [weatherImageUrl, setWeatherImageUrl] = useState("");
 
+  const fetchWeather = () => {
+    if (!input) return;
+
+    fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=792ff3066b1a91e7e54aabf9de16f2ee&units=metric&lang=en`
+    )
+      .then((res) => {
+        if (!res.ok) throw new Error("정확한 도시명을 입력해 주세요.");
+        return res.json();
+      })
+      .then((data) => {
+        const original = data.weather[0].description;
+        const mapped = weatherMap[original];
+        if (!mapped) throw new Error("지원하지 않는 날씨 유형입니다.");
+
+        if (mapped.image === sunny) {
+          setWeatherBackgroundColor1("#fff387");
+          setWeatherBackgroundColor2("#fff9c6");
+        } else if (mapped.image === rain) {
+          setWeatherBackgroundColor1("#5372c5");
+          setWeatherBackgroundColor2("#EBEBEB");
+        } else if (mapped.image === snow) {
+          setWeatherBackgroundColor1("#98bcff");
+          setWeatherBackgroundColor2("#c3d8ff");
+        }
+
+        setCategoryPhraseText(mapped.phrase);
+        setWeatherImageUrl(mapped.image);
+
+        setIsFadingOut(true);
+        setShowInput(false);
+      })
+      .catch((err) => {
+        alert(err.message);
+        setInput("");
+        setIsFadingOut(false);
+        setShowInput(true);
+        setResultShow(false);
+        setCategoryPhraseText("오늘의 날씨운 보기");
+        setShowFortune(false);
+      });
+  };
+
+  useEffect(() => {
+    if (weatherImageUrl && isFadingOut) {
+      const t = setTimeout(() => {
+        setFortune(getRandomFortune());
+        setShowFortune(true);
+      }, 1000);
+      return () => clearTimeout(t);
+    }
+  }, [weatherImageUrl, isFadingOut]);
+
+  useEffect(() => {
+    if (showFortune) {
+      setResultShow(true);
+    }
+  }, [showFortune]);
+
   return (
     <CategoryLayout
       categoty="weather"
       weatherImageUrl={weatherImageUrl}
       fortune={fortune}
+      luckyNumbers={[]}
+      showFortune={showFortune}
       imgSrc={WeatherImage}
+      inputComponent={
+        <WeatherInfoInput
+          input={input}
+          setInput={setInput}
+          onSubmit={fetchWeather}
+          isFadingOut={isFadingOut}
+        />
+      }
+      showInput={showInput}
       animationComponent={
         <WeatherAnimation
-          setResultShow={setResultShow}
-          setCategoryPhraseText={setCategoryPhraseText}
-          setWeatherBackgroundColor1={setWeatherBackgroundColor1}
-          setWeatherBackgroundColor2={setWeatherBackgroundColor2}
+          weatherImageUrl={weatherImageUrl}
+          isFadingOut={isFadingOut}
           fortune={fortune}
-          setFortune={setFortune}
-          setWeatherImageUrl={setWeatherImageUrl}
+          showFortune={showFortune}
         />
       }
       categoryPhraseText={categoryPhraseText}
@@ -322,6 +302,7 @@ function Weather() {
       buttonColor={buttonColor}
       buttonHoverColor={buttonHoverColor}
       resultShow={resultShow}
+      onCategoryButtonClick={() => setShowInput(true)}
     />
   );
 }
