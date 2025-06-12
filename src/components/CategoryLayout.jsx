@@ -47,7 +47,7 @@ const StartButton = styled.button`
 // 카테고리별 페이지 레이아웃 컴포넌트
 function CategoryLayout({
   category,
-  bookRandomFortune,
+  bookFortune,
   weatherImageUrl,
   fortune,
   luckyNumbers,
@@ -118,7 +118,7 @@ function CategoryLayout({
             showFortune,
             fortune,
             weatherImageUrl,
-            bookRandomFortune,
+            bookFortune,
           }}
         />
       )}
