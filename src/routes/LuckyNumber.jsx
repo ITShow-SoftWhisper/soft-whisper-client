@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import CategoryLayout from "../components/CategoryLayout";
-import LuckyImage from "../assets/Lucky/luckycoin.png";
 import ScratchCard from "../components/ScratchCard";
+import LuckyImage from "../assets/Lucky/luckycoin.png";
 import "../css/LuckyNumber.css";
 
 const backgroundColor = "#E0FFD8";

@@ -1,7 +1,6 @@
-// Book.jsx
+import React, { useState, useEffect, useRef } from "react";
 import CategoryLayout from "../components/CategoryLayout";
 import BookImage from "../assets/book.png";
-import React, { useState, useEffect, useRef } from "react";
 import "../css/Book.css";
 
 const answers = [
