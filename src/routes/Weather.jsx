@@ -260,14 +260,16 @@ function Weather() {
       const t = setTimeout(() => {
         setFortune(getRandomFortune());
         setShowFortune(true);
-      }, 1000);
+      }, 0);
       return () => clearTimeout(t);
     }
   }, [weatherImageUrl, isFadingOut]);
 
   useEffect(() => {
     if (showFortune) {
-      setResultShow(true);
+      setTimeout(() => {
+        setResultShow(true);
+      }, 2000);
     }
   }, [showFortune]);
 
