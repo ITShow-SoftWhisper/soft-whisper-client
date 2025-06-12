@@ -9,7 +9,9 @@ router.post("/share", async (req, res) => {
   const { email, result } = req.body;
 
   const id = uuidv4().slice(0, 8);
-  const baseUrl = process.env.VITE_BASE_URL || "http://localhost:3000";
+  const { protocol, hostname, port } = window.location;
+  const baseUrl = `${protocol}//${hostname}${port ? `:${port}` : ""}`;
+  // const baseUrl = process.env.VITE_BASE_URL || "http://localhost:3000";
   const shareUrl = `${baseUrl}/result/${id}`;
 
   try {
