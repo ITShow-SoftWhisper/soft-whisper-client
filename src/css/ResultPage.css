@@ -76,11 +76,54 @@ body {
 
 /* book */
 .book-content {
+  width: 630px;
+  height: 360px;
+  position: relative;
+  overflow: visible;
+}
+
+.book-cover {
+  position: absolute;
+  top: 0;
+  height: 101%;
+  border-radius: 5px;
+  background: #456fbd;
+  z-index: 0;
+  width: 100%;
+}
+
+.book-cover.book-cover-left {
+  left: 2%;
+}
+
+.book-cover.book-cover-right {
+  right: 2%;
+}
+
+.book-page-content {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  z-index: 100;
+  width: 100%;
+  height: 99%;
+}
+
+.book-page {
+  width: 50%;
+  height: 100%;
+  background-color: #fff;
+  border: 1px solid #797979;
+  border-radius: 4px;
   display: grid;
   place-items: center;
 }
 
-.frame-image {
+.book-fortune {
+  color: #333;
+  font-weight: bold;
+  font-size: 18px;
+  margin: 0;
 }
 
 /* fortune */
@@ -184,4 +227,106 @@ body {
 /* weather */
 .weather-content {
   display: flex;
+}
+
+@media (max-width: 440px) {
+  .container {
+    row-gap: 0%;
+  }
+  .animation-content {
+    height: 40%;
+  }
+  .phrase-text {
+    font-size: 30px;
+  }
+  .other-fortune-button-content {
+    height: auto;
+  }
+  .other-fortune-button {
+    height: 60px;
+  }
+
+  /* book */
+  .book-content {
+    width: 300px;
+    height: 50%;
+  }
+
+  .book-fortune {
+    color: #333;
+    font-weight: bold;
+    font-size: 12px;
+    width: 90%;
+    white-space: normal;
+    overflow-wrap: break-word;
+  }
+
+  /* taro */
+  .taro-container {
+    row-gap: 7%;
+  }
+
+  .taro-animation-content {
+    height: auto;
+  }
+
+  .taro-content {
+    flex-direction: column;
+    row-gap: 20%;
+  }
+
+  .taro-image {
+    width: 150px;
+    height: 225px;
+    border-radius: 3px;
+  }
+
+  .taro-fortune {
+    display: flex;
+    align-items: center;
+    width: 70%;
+    height: auto;
+    line-height: 1.5;
+    padding: 0;
+  }
+
+  .taro-fortune-text {
+    font-weight: lighter;
+    font-size: 17px;
+    margin: 6% 0 0;
+  }
+
+  /* fortune */
+  .fortune-content {
+    width: 250px;
+  }
+
+  /* lucky */
+  .card-content {
+    width: 70%;
+    height: 45%;
+    font-size: 15px;
+    border-radius: 15px;
+  }
+
+  .number-container {
+    margin: 0;
+    row-gap: 25px;
+  }
+
+  .card-text {
+    margin: 0;
+  }
+
+  .lucky-number-list {
+    width: 100%;
+    margin: 0;
+  }
+
+  .lucky-number-ball {
+    width: 30px;
+    height: 30px;
+    font-size: 15px;
+    font-weight: lighter;
+  }
 }
