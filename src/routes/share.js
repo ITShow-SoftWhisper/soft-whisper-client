@@ -7,19 +7,17 @@ const router = express.Router();
 
 router.post("/share", async (req, res) => {
   const { email, result } = req.body;
-
   const id = uuidv4().slice(0, 8);
-  const { protocol, hostname, port } = window.location;
-  const baseUrl = `${protocol}//${hostname}${port ? `:${port}` : ""}`;
-  // const baseUrl = process.env.VITE_BASE_URL || "http://localhost:3000";
-  const shareUrl = `${baseUrl}/result/${id}`;
+
+  // 요청 헤더의 Origin이 있으면 그걸, 없으면 protocol+host 조합을 사용
+  const origin = req.get("origin") || `${req.protocol}://${req.get("host")}`;
+  const shareUrl = `${origin}/result/${id}`;
 
   try {
     await db.run(
       "INSERT INTO sharedResult (id, email, result) VALUES (?, ?, ?)",
       [id, email, JSON.stringify(result)]
     );
-
     await sendMail(email, shareUrl);
     res.status(200).json({ id, shareUrl });
   } catch (err) {

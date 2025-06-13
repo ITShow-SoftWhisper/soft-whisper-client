@@ -11,13 +11,22 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      "/api": "ec2-43-201-95-227.ap-northeast-2.compute.amazonaws.com",
+      "/api": {
+        target:
+          "http://ec2-43-201-95-227.ap-northeast-2.compute.amazonaws.com:3000",
+        changeOrigin: true,
+        secure: false,
+      },
     },
     fs: {
       strict: false,
     },
     host: true,
     port: 3000,
-    allowedHosts: ["ec2-43-201-95-227.ap-northeast-2.compute.amazonaws.com"],
+    allowedHosts: [
+      "ec2-43-201-95-227.ap-northeast-2.compute.amazonaws.com",
+      "localhost",
+      "127.0.0.1",
+    ],
   },
 });

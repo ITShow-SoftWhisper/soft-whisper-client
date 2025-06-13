@@ -10,11 +10,19 @@ const app = express();
 
 app.use(
   cors({
-    origin: [
-      "http://localhost:3000",
-      "http://192.168.1.174:3000",
-      "http://ec2-43-201-95-227.ap-northeast-2.compute.amazonaws.com:3000",
-    ],
+    origin: (origin, callback) => {
+      const allowedOrigins = [
+        /^http:\/\/localhost(:\d+)?$/,
+        /^http:\/\/192\.168\.1\.174(:\d+)?$/,
+        /^http:\/\/ec2-43-201-95-227\.ap-northeast-2\.compute\.amazonaws\.com(:\d+)?$/,
+      ];
+
+      if (!origin || allowedOrigins.some((regex) => regex.test(origin))) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
   })
 );
 
