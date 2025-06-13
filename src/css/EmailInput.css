@@ -12,6 +12,7 @@
   height: 100vh;
   z-index: 9999;
   background-color: #00000059;
+  backdrop-filter: blur(9px);
   opacity: 1;
 }
 
@@ -75,4 +76,9 @@
 
 .bi:hover {
   color: #000;
+}
+
+.cancel-focus {
+  border: 1px solid #fff;
+  border-radius: 2px;
 }

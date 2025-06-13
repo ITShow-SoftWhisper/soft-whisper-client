@@ -1,6 +1,8 @@
 import "../css/EmailInput.css";
+import { useState, useEffect } from "react";
 
 function EmailInput({ input, setInput, setSharingButtonClick, resultData }) {
+  const [isInputCancel, setIsInputCancel] = useState(false);
   const handleShareSubmit = async () => {
     setInput("");
     try {
@@ -41,9 +43,7 @@ function EmailInput({ input, setInput, setSharingButtonClick, resultData }) {
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      handleShareSubmit();
-    }
+    if (e.key === "Enter") handleShareSubmit();
   };
 
   return (
