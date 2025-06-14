@@ -4,11 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "BASE_URL=http://ec2-43-201-95-227.ap-northeast-2.compute.amazonaws.com:3000 vite",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "start": "vite"
+    "start": "BASE_URL=http://ec2-43-201-95-227.ap-northeast-2.compute.amazonaws.com:3000 vite",
+    "server": "BASE_URL=http://ec2-43-201-95-227.ap-northeast-2.compute.amazonaws.com:3000 API_PORT=3001 node src/server.js"
   },
   "dependencies": {
     "bootstrap-icons": "^1.13.1",

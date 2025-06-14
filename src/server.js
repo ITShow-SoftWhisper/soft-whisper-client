@@ -21,6 +21,8 @@ app.use(express.json());
 app.use("/api", shareRouter);
 app.use("/api", resultRouter);
 
-app.listen(3000, () => {
-  console.log("서버 실행 중: http://localhost:3000");
+const PORT = process.env.API_PORT || 3001;
+
+app.listen(PORT, () => {
+  console.log(`API 서버 실행 중: http://localhost:${PORT}`);
 });
