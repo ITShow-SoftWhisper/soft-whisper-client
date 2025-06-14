@@ -9,9 +9,8 @@ router.post("/share", async (req, res) => {
   const { email, result } = req.body;
 
   const id = uuidv4().slice(0, 8);
-  const { protocol, hostname, port } = window.location;
   const baseUrl =
-    "http//http://ec2-43-201-95-227.ap-northeast-2.compute.amazonaws.com:3000";
+    "http://ec2-43-201-95-227.ap-northeast-2.compute.amazonaws.com:3000";
   // const baseUrl = process.env.VITE_BASE_URL || "http://localhost:3000";
   const shareUrl = `${baseUrl}/result/${id}`;
 
