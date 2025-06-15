@@ -36,14 +36,21 @@ jobs:
             node src/db/init.js || true
 
             echo "🧹 PM2 프로세스 정리"
-            pm2 delete soft-whisper-frontend || true
             pm2 delete soft-whisper-backend || true
+            pm2 delete soft-whisper-frontend || true
 
-            echo "🚀 백엔드 API 서버 시작"
+            echo "🔌 사용 중인 포트 확인 및 정리"
+            sudo fuser -k 3000/tcp || true
+            sudo fuser -k 3001/tcp || true
+
+            echo "🚀 백엔드 API 서버 시작 (포트 3001)"
             pm2 start src/server.js --name soft-whisper-backend
 
-            echo "🚀 프론트엔드 서버 시작"
+            echo "🚀 프론트엔드 서버 시작 (포트 3000)"
             pm2 start "npx serve -s dist -l 3000" --name soft-whisper-frontend
+
+            echo "💾 PM2 설정 저장"
+            pm2 save
 
             echo "✅ PM2 상태 확인"
             pm2 list

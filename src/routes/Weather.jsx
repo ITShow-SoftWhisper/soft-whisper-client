@@ -274,11 +274,12 @@ function Weather() {
 
   return (
     <CategoryLayout
-      categoty="weather"
+      category="weather"
       weatherImageUrl={weatherImageUrl}
       fortune={fortune}
       luckyNumbers={[]}
       showFortune={showFortune}
+      bookFortune=""
       imgSrc={WeatherImage}
       inputComponent={
         <WeatherInfoInput

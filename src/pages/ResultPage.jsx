@@ -12,7 +12,8 @@ function ResultPage() {
   const [result, setResult] = useState(null);
 
   useEffect(() => {
-    fetch(`/api/result/${id}`)
+    const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://ec2-43-201-95-227.ap-northeast-2.compute.amazonaws.com:3001";
+    fetch(`${API_BASE_URL}/api/result/${id}`)
       .then((res) => res.json())
       .then((data) => setResult(data))
       .catch((err) => console.error("결과 불러오기 실패:", err));

@@ -68,6 +68,8 @@ function LuckyNumber() {
     <CategoryLayout
       category="lucky"
       luckyNumbers={luckyNumbers}
+      showFortune=""
+      bookFortune=""
       imgSrc={LuckyImage}
       categoryPhraseText={categoryPhraseText}
       categoryButtonText="복권긁기"

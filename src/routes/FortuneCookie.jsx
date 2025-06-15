@@ -50,6 +50,8 @@ function FortuneCookie() {
   return (
     <CategoryLayout
       category="fortune"
+      showFortune={categoryPhraseText}
+      bookFortune=""
       imgSrc={displayedImage}
       animationComponent={SelectedComponent}
       categoryPhraseText={categoryPhraseText}

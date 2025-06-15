@@ -144,6 +144,7 @@ function Taro() {
     <CategoryLayout
       category="taro"
       showFortune={showFortune}
+      bookFortune=""
       imgSrc={TaroImage}
       animationComponent={
         <TaroAnimation

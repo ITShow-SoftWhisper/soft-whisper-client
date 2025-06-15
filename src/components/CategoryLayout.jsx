@@ -37,10 +37,12 @@ const StartButton = styled.button`
 `;
 
 function CategoryLayout({
+  category,
   weatherImageUrl,
   fortune,
   luckyNumbers,
   showFortune,
+  bookFortune,
   imgSrc,
   animationComponent,
   inputComponent,
@@ -53,7 +55,7 @@ function CategoryLayout({
   buttonColor,
   buttonHoverColor,
   resultShow,
-  onCategoryButtonClick = () => {},
+  onCategoryButtonClick = () => { },
   inputCancel,
   setInputCancel,
 }) {
@@ -89,10 +91,12 @@ function CategoryLayout({
           setInput={setInput}
           setSharingButtonClick={setSharingButtonClick}
           resultData={{
+            category,
             weatherImageUrl,
             fortune,
             luckyNumbers,
             showFortune,
+            bookFortune,
             categoryPhraseText,
             backgroundColor,
             backgroundColor2,
@@ -108,9 +112,8 @@ function CategoryLayout({
         }}
       >
         <h1
-          className={`phrase-text ${
-            finishFlipped ? "dm-serif-display-regular" : "jua-regular"
-          }`}
+          className={`phrase-text ${finishFlipped ? "dm-serif-display-regular" : "jua-regular"
+            }`}
           style={{ color: "#000" }}
         >
           {categoryPhraseText}
@@ -142,9 +145,8 @@ function CategoryLayout({
           </div>
         ) : (
           <div
-            className={`start-content ${
-              buttonIsClick && !showInput ? "hide-content" : ""
-            }`}
+            className={`start-content ${buttonIsClick && !showInput ? "hide-content" : ""
+              }`}
           >
             <StartButton
               className="start-button"
