@@ -227,6 +227,22 @@ body {
 /* weather */
 .weather-content {
   display: flex;
+  column-gap: 5%;
+}
+
+.weather-image-content .weather-fortune-content {
+  display: grid;
+  place-items: center;
+}
+
+.weather-image-content {
+  height: 100%;
+  width: 30%;
+}
+
+.weather-fortune-content {
+  height: 80%;
+  width: 25%;
 }
 
 @media (max-width: 440px) {
