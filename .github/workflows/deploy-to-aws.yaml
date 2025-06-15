@@ -43,7 +43,7 @@ jobs:
               pm2 restart soft-whisper-backend
             else
               echo "백엔드 새로 시작 중..."
-              pm2 start src/server.js --name soft-whisper-backend
+              pm2 start "npm run server" --name soft-whisper-backend
             fi
 
             # 프론트엔드 재시작 (존재하면 restart, 없으면 start)  
