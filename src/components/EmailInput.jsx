@@ -4,7 +4,11 @@ function EmailInput({ input, setInput, setSharingButtonClick, resultData }) {
   const handleShareSubmit = async () => {
     setInput("");
     try {
-      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://ec2-43-201-95-227.ap-northeast-2.compute.amazonaws.com:3001";
+      const API_BASE_URL =
+        import.meta.env.VITE_API_BASE_URL ||
+        (import.meta.env.MODE === "development"
+          ? "http://localhost:3001"
+          : "http://ec2-43-201-95-227.ap-northeast-2.compute.amazonaws.com:3001");
       const url = `${API_BASE_URL}/api/share`;
       console.log("요청 URL:", url);
       const res = await fetch(url, {

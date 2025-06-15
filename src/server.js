@@ -12,6 +12,7 @@ app.use(
   cors({
     origin: [
       "http://ec2-43-201-95-227.ap-northeast-2.compute.amazonaws.com:3000",
+      "http://localhost:3000",
     ],
   })
 );

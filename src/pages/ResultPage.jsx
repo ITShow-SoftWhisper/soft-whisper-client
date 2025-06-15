@@ -12,7 +12,11 @@ function ResultPage() {
   const [result, setResult] = useState(null);
 
   useEffect(() => {
-    const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://ec2-43-201-95-227.ap-northeast-2.compute.amazonaws.com:3001";
+    const API_BASE_URL =
+      import.meta.env.VITE_API_BASE_URL ||
+      (import.meta.env.MODE === "development"
+        ? "http://localhost:3001"
+        : "http://ec2-43-201-95-227.ap-northeast-2.compute.amazonaws.com:3001");
     fetch(`${API_BASE_URL}/api/result/${id}`)
       .then((res) => res.json())
       .then((data) => setResult(data))
