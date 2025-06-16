@@ -261,7 +261,7 @@ body {
     overflow: scroll;
   }
   .phrase-text {
-    font-size: 27px;
+    font-size: 24px;
     width: 80%;
     white-space: normal;
     overflow-wrap: break-word;
@@ -352,7 +352,7 @@ body {
 
   .card-content {
     width: 75%;
-    height: 50%;
+    height: 55%;
     font-size: 15px;
     border-radius: 15px;
     padding: 10px;
@@ -365,6 +365,7 @@ body {
 
   .card-text {
     margin: 0;
+    font-size: 19px;
   }
 
   .lucky-number-list {
@@ -408,6 +409,6 @@ body {
     height: auto;
     line-height: 1.5;
     padding: 0;
-    font-size: 18px;
+    font-size: 17px;
   }
 }
