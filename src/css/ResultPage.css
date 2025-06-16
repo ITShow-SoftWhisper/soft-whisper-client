@@ -339,6 +339,17 @@ body {
   }
 
   /* lucky */
+  @keyframes bounce {
+    0%,
+    15%,
+    100% {
+      transform: translateY(0);
+    }
+    7.5% {
+      transform: translateY(-8px);
+    }
+  }
+
   .card-content {
     width: 75%;
     height: 50%;
@@ -366,10 +377,10 @@ body {
     height: 30px;
     font-size: 15px;
     font-weight: lighter;
+    animation: bounce 3.6s ease infinite;
   }
 
   /* weather */
-
   .weather-animation-content {
     height: auto;
   }

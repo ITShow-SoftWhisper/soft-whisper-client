@@ -72,7 +72,11 @@ function ResultPage() {
           <h2 className="card-text jua-regular">당신의 행운의 숫자</h2>
           <div className="lucky-number-list">
             {luckyNumbers.map((num, index) => (
-              <div key={index} className="lucky-number-ball">
+              <div
+                key={index}
+                className="lucky-number-ball"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
                 {num}
               </div>
             ))}
