@@ -340,15 +340,16 @@ body {
 
   /* lucky */
   .card-content {
-    width: 70%;
-    height: 45%;
+    width: 75%;
+    height: 50%;
     font-size: 15px;
     border-radius: 15px;
+    padding: 10px;
   }
 
   .number-container {
     margin: 0;
-    row-gap: 25px;
+    row-gap: 35px;
   }
 
   .card-text {
