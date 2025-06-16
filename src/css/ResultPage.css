@@ -225,9 +225,23 @@ body {
 }
 
 /* weather */
+@keyframes floatImage {
+  0% {
+    transform: translateY(10px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(10px);
+  }
+}
+
 .weather-content {
   display: flex;
-  column-gap: 5%;
+  align-items: center;
+  justify-content: center;
+  column-gap: 3%;
 }
 
 .weather-image-content .weather-fortune-content {
@@ -235,31 +249,34 @@ body {
   place-items: center;
 }
 
-.weather-image-content {
-  height: 100%;
-  width: 30%;
+.weather-image {
+  height: auto;
+  width: 90%;
+  animation: floatImage 2.5s ease-in-out infinite;
 }
 
-.weather-fortune-content {
-  height: 80%;
+.weather-fortune {
+  height: 100%;
   width: 25%;
+  margin: 0;
+  font-size: 20px;
 }
 
 @media (max-width: 440px) {
   .container {
-    row-gap: 0%;
+    row-gap: 10%;
   }
   .animation-content {
     height: 40%;
   }
   .phrase-text {
-    font-size: 30px;
+    font-size: 27px;
   }
   .other-fortune-button-content {
     height: auto;
   }
   .other-fortune-button {
-    height: 60px;
+    height: 50px;
   }
 
   /* book */
@@ -304,6 +321,7 @@ body {
     height: auto;
     line-height: 1.5;
     padding: 0;
+    font-size: 18px;
   }
 
   .taro-fortune-text {
@@ -344,5 +362,37 @@ body {
     height: 30px;
     font-size: 15px;
     font-weight: lighter;
+  }
+
+  /* weather */
+
+  .weather-animation-content {
+    height: auto;
+  }
+
+  .weather-content {
+    flex-direction: column;
+    row-gap: 20px;
+    justify-content: space-between;
+  }
+
+  .weather-image-content {
+    display: grid;
+    place-items: center;
+  }
+
+  .weather-image {
+    height: auto;
+    width: 55%;
+  }
+
+  .weather-fortune {
+    display: flex;
+    align-items: center;
+    width: 70%;
+    height: auto;
+    line-height: 1.5;
+    padding: 0;
+    font-size: 18px;
   }
 }

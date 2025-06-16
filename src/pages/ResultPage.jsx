@@ -102,9 +102,7 @@ function ResultPage() {
         <div className="weather-image-content">
           <img src={weatherImageUrl} className="weather-image" />
         </div>
-        <div className="weather-fortune-content">
-          <p className="weather-fortune jua-regular">{fortune}</p>
-        </div>
+        <p className="weather-fortune jua-regular">{fortune}</p>
       </div>
     );
   }
@@ -126,7 +124,13 @@ function ResultPage() {
     <div
       className={`
         container
-        ${category === "taro" ? "taro-container" : ""}
+        ${
+          category === "taro"
+            ? "taro-container"
+            : category === "weather"
+            ? "weather-container"
+            : ""
+        }
       `}
       style={{
         background: `linear-gradient(320deg, ${backgroundColor}, ${backgroundColor2}`,
@@ -143,7 +147,13 @@ function ResultPage() {
       <div
         className={`
           animation-content 
-          ${category === "taro" ? "taro-animation-content" : ""}
+          ${
+            category === "taro"
+              ? "taro-animation-content"
+              : category === "weather"
+              ? "weather-animation-content"
+              : ""
+          }
         `}
       >
         {categoryAnimationContent}
