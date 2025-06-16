@@ -264,12 +264,15 @@ body {
 
 @media (max-width: 440px) {
   .container {
+    padding-top: 40px;
     row-gap: 10%;
   }
   .animation-content {
     height: 40%;
   }
   .phrase-text {
+    position: absolute;
+    top: 60px;
     font-size: 27px;
   }
   .other-fortune-button-content {
@@ -372,7 +375,7 @@ body {
 
   .weather-content {
     flex-direction: column;
-    row-gap: 20px;
+    row-gap: 40px;
     justify-content: space-between;
   }
 
