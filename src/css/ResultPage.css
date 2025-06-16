@@ -264,7 +264,8 @@ body {
 
 @media (max-width: 440px) {
   .container {
-    padding-top: 40px;
+    height: 100vh;
+    padding: 40px 0;
     row-gap: 10%;
     overflow: scroll;
   }
