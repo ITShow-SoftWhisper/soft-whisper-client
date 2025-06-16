@@ -269,13 +269,17 @@ body {
     row-gap: 10%;
     overflow: scroll;
   }
-  .animation-content {
-    height: 40%;
-  }
   .phrase-text {
     position: absolute;
-    top: 60px;
+    top: 80px;
     font-size: 27px;
+    width: 80%;
+    white-space: normal;
+    overflow-wrap: break-word;
+    text-align: center;
+  }
+  .animation-content {
+    height: 40%;
   }
   .other-fortune-button-content {
     height: auto;
@@ -338,6 +342,10 @@ body {
   /* fortune */
   .fortune-content {
     width: 250px;
+  }
+
+  .fortune-half {
+    width: 40%;
   }
 
   /* lucky */
