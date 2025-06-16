@@ -371,6 +371,7 @@ body {
   .lucky-number-list {
     width: 100%;
     margin: 0;
+    column-gap: 10px;
   }
 
   .lucky-number-ball {
