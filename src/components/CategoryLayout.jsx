@@ -55,7 +55,7 @@ function CategoryLayout({
   buttonColor,
   buttonHoverColor,
   resultShow,
-  onCategoryButtonClick = () => { },
+  onCategoryButtonClick = () => {},
   inputCancel,
   setInputCancel,
 }) {
@@ -112,8 +112,9 @@ function CategoryLayout({
         }}
       >
         <h1
-          className={`phrase-text ${finishFlipped ? "dm-serif-display-regular" : "jua-regular"
-            }`}
+          className={`phrase-text ${
+            finishFlipped ? "dm-serif-display-regular" : "jua-regular"
+          }`}
           style={{ color: "#000" }}
         >
           {categoryPhraseText}
@@ -145,8 +146,9 @@ function CategoryLayout({
           </div>
         ) : (
           <div
-            className={`start-content ${buttonIsClick && !showInput ? "hide-content" : ""
-              }`}
+            className={`start-content ${
+              buttonIsClick && !showInput ? "hide-content" : ""
+            }`}
           >
             <StartButton
               className="start-button"
