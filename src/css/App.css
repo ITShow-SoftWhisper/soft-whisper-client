@@ -59,10 +59,10 @@ body {
   border: 2px solid #ffffff;
   border-radius: 40px;
   width: 30%;
-  height: 55%;
+  height: 50%;
   background: rgba(255, 255, 255, 0.245);
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.186);
-  backdrop-filter: blur(9px);
+  backdrop-filter: blur(11px);
   text-decoration: none;
   color: inherit;
   transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
