@@ -5,6 +5,7 @@ import ShareCompletionToast from "./ShareCompletionToast";
 
 function EmailInput({ input, setInput, setSharingButtonClick, resultData }) {
   const [isShareButtonClick, setIsShareButtonClick] = useState(false);
+  const [isInputNone, setIsInputNone] = useState(true);
 
   const handleShareSubmit = async () => {
     // 버튼 클릭 또는 Enter 시 즉시 토스트 표시
@@ -50,12 +51,25 @@ function EmailInput({ input, setInput, setSharingButtonClick, resultData }) {
     if (e.key === "Enter") handleShareSubmit();
   };
 
+  if (isShareButtonClick) {
+    setTimeout(() => {
+      setIsInputNone(false);
+    }, 2000);
+  }
+
+  if (isShareButtonClick) {
+    setTimeout(() => {
+      setSharingButtonClick(false);
+    }, 3500);
+  }
+
   return (
     <>
       {isShareButtonClick && (
         <ShareCompletionToast
           onClose={() => setIsShareButtonClick(false)}
           style={{ zIndex: 100001 }}
+          setSharingButtonClick={setSharingButtonClick}
         />
       )}
 
@@ -66,8 +80,12 @@ function EmailInput({ input, setInput, setSharingButtonClick, resultData }) {
             e.stopPropagation();
             setSharingButtonClick(false);
           }}
+          style={{ display: `${!isInputNone ? "none" : ""}` }}
         ></i>
-        <div className="email-info-input">
+        <div
+          className="email-info-input"
+          style={{ display: `${!isInputNone ? "none" : ""}` }}
+        >
           <input
             className="email-input jua-regular"
             type="email"
