@@ -233,17 +233,20 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  column-gap: 3%;
+  column-gap: 5%;
+  height: 100%;
 }
 
-.weather-image-content .weather-fortune-content {
-  display: grid;
-  place-items: center;
+.weather-image-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
 .weather-image {
   height: auto;
-  width: 90%;
+  height: 80%;
   animation: floatImage 2.5s ease-in-out infinite;
 }
 
@@ -251,7 +254,10 @@ body {
   height: 100%;
   width: 25%;
   margin: 0;
-  font-size: 20px;
+  font-size: 21px;
+  display: flex;
+  align-items: center;
+  line-height: 1.5;
 }
 
 @media (max-width: 440px) {
@@ -298,7 +304,7 @@ body {
 
   /* taro */
   .taro-container {
-    row-gap: 8%;
+    row-gap: 75px;
   }
 
   .taro-animation-content {
@@ -386,6 +392,10 @@ body {
   }
 
   /* weather */
+  .weather-container {
+    row-gap: 75px;
+  }
+
   .weather-animation-content {
     height: auto;
   }
