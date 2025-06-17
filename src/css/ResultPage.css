@@ -276,6 +276,9 @@ body {
   .other-fortune-button {
     height: 50px;
   }
+  .re-start-button {
+    pointer-events: none;
+  }
 
   /* book */
   .book-content {
