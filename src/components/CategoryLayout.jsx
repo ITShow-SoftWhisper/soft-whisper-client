@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import "../css/CategoryLayout.css";
 import EmailInput from "./EmailInput";
@@ -109,8 +109,20 @@ function CategoryLayout({
         className="container"
         style={{
           background: `linear-gradient(320deg, ${backgroundColor}, ${backgroundColor2})`,
+          position: "relative",
         }}
       >
+        {!buttonIsClick && (
+          <Link to="/">
+            <div className="back-content">
+              <i
+                class="bi bi-caret-left-fill"
+                id="back"
+                style={{ color: `${buttonColor}` }}
+              ></i>
+            </div>
+          </Link>
+        )}
         <h1
           className={`phrase-text ${
             finishFlipped ? "dm-serif-display-regular" : "jua-regular"

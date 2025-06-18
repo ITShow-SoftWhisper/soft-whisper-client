@@ -12,7 +12,41 @@
   font-style: normal;
 }
 
+@keyframes backIconMove {
+  0%,
+  100% {
+    top: 50%;
+    left: 4%;
+  }
+  50% {
+    top: 50%;
+    left: 5%;
+  }
+}
+
+.back-content {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 50%;
+  left: 4%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  animation: backIconMove 1s ease-in-out infinite;
+}
+
+#back {
+  font-size: 40px;
+  transition: all 0.3s ease;
+}
+
+#back:hover {
+  text-shadow: 0 0 20px rgb(255, 255, 255), 0 0 20px rgba(255, 255, 255, 0.6),
+    0 0 20px rgba(255, 255, 255, 0.4);
+}
+
 .container {
+  position: relative;
   height: 100vh;
   display: flex;
   flex-direction: column;
