@@ -8,8 +8,8 @@ import FortuneOpenLeft from "../assets/fortune/fortuneopen_left.png";
 import FortuneOpenRight from "../assets/fortune/fortuneopen_right.png";
 import "../css/CategorySelector.css";
 
-const backgroundColor = "#FFFBDB";
-const backgroundColor2 = "#FFF6B2";
+const backgroundColor = "#fff9c2";
+const backgroundColor2 = "#fff7ae";
 const buttonColor = "#ffd744";
 const buttonHoverColor = "#ffc800";
 

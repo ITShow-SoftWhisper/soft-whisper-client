@@ -49,10 +49,10 @@ function Home() {
   }, [isManualHover]);
 
   const backgroundColors = [
-    "#BED5FF",
-    "#D6B7FF",
-    "#FFF9C7",
-    "#CCFFBF",
+    "#a9c7ff",
+    "#c89fff",
+    "#fff7ae",
+    "#baffa9",
     "#EBEBEB",
   ];
 

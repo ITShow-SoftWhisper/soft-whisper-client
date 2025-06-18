@@ -109,8 +109,8 @@ export default function Book() {
       }
       categoryPhraseText={categoryPhraseText}
       categoryButtonText="책 펼치기"
-      backgroundColor="#CFE0FF"
-      backgroundColor2="#ABC9FF"
+      backgroundColor="#c1d7ff"
+      backgroundColor2="#a9c7ff"
       buttonColor="#5C95FF"
       buttonHoverColor="#2772ff"
       resultShow={resultShow}

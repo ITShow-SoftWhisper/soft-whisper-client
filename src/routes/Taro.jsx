@@ -128,8 +128,8 @@ function TaroAnimation({
   );
 }
 
-const backgroundColor = "#E4CFFF";
-const backgroundColor2 = "#C79CFF";
+const backgroundColor = "#d8bbff";
+const backgroundColor2 = "#c89fff";
 const buttonColor = "#D468FF";
 const buttonHoverColor = "#c039f5";
 

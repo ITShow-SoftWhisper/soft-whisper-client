@@ -5,13 +5,14 @@ import LuckyImage from "../assets/Lucky/luckycoin.png";
 import Coin from "../assets/Lucky/coin.png";
 import "../css/LuckyNumber.css";
 
-const backgroundColor = "#E0FFD8";
-const backgroundColor2 = "#B7FFA5";
+const backgroundColor = "#ccffbf";
+const backgroundColor2 = "#baffa9";
 const buttonColor = "#57da4d";
 const buttonHoverColor = "#0ece00";
 
 function LuckyNumber() {
-  const [categoryPhraseText, setCategoryPhraseText] = useState("오늘의 행운숫자 확인하기");
+  const [categoryPhraseText, setCategoryPhraseText] =
+    useState("오늘의 행운숫자 확인하기");
   const [luckyNumbers, setLuckyNumbers] = useState([]);
   const [showResult, setShowResult] = useState(false);
   const [startScratch, setStartScratch] = useState(false);
