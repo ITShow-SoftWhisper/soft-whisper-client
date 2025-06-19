@@ -72,6 +72,7 @@
   color: #fff;
   font-size: 35px;
   cursor: pointer;
+  transition: color 0.2s ease;
 }
 
 .bi:hover {
