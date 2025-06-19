@@ -26,7 +26,7 @@ function WeatherInfoInput({
         <input
           className="city-input jua-regular"
           type="text"
-          placeholder="지역 이름을 입력하세요 (예 : 서울특별시, 관악구, 신림동)"
+          placeholder="지역 이름을 입력하세요 (예 : 신림동)"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleKeyDown}
