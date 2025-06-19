@@ -76,8 +76,9 @@ function EmailInput({ input, setInput, setSharingButtonClick, resultData }) {
       <div className="container" style={{ zIndex: 100000 }}>
         <i
           className="bi bi-x-lg close-button"
-          onClick={(e) => {
+          onClick={() => {
             setSharingButtonClick(false);
+            setInput("");
           }}
           style={{ display: `${!isInputNone ? "none" : ""}` }}
         ></i>

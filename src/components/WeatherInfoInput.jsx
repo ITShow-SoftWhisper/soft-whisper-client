@@ -17,8 +17,9 @@ function WeatherInfoInput({
     <div className={`container ${isFadingOut ? "fade-out" : ""}`}>
       <i
         className="bi bi-x-lg"
-        onClick={(e) => {
+        onClick={() => {
           setInputCancel(true);
+          setInput("");
         }}
       ></i>
       <div className="weather-info-input">
