@@ -63,13 +63,13 @@ function CategoryLayout({
   const [sharingButtonClick, setSharingButtonClick] = useState(false);
   const [input, setInput] = useState("");
 
-  const handleStartClick = (e) => {
+  const handleStartClick = () => {
     setButtonIsClick(true);
     onCategoryButtonClick();
     setInputCancel(false);
   };
 
-  const handleShareClick = (e) => {
+  const handleShareClick = () => {
     setSharingButtonClick(true);
   };
 
@@ -102,7 +102,7 @@ function CategoryLayout({
           position: "relative",
         }}
       >
-        {!buttonIsClick && (
+        {(!buttonIsClick || inputCancel) && (
           <Link to="/">
             <div className="back-content">
               <i
