@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import "../css/CategoryLayout.css";
 import EmailInput from "./EmailInput";
@@ -60,28 +60,18 @@ function CategoryLayout({
   setInputCancel,
 }) {
   const [buttonIsClick, setButtonIsClick] = useState(false);
-  const navigate = useNavigate();
   const [sharingButtonClick, setSharingButtonClick] = useState(false);
   const [input, setInput] = useState("");
 
   const handleStartClick = (e) => {
-    e.stopPropagation();
     setButtonIsClick(true);
     onCategoryButtonClick();
     setInputCancel(false);
   };
 
   const handleShareClick = (e) => {
-    e.stopPropagation();
     setSharingButtonClick(true);
   };
-
-  useEffect(() => {
-    if (!buttonIsClick || !resultShow || sharingButtonClick) return;
-    const handleAnywhereClick = () => navigate("/");
-    window.addEventListener("click", handleAnywhereClick);
-    return () => window.removeEventListener("click", handleAnywhereClick);
-  }, [buttonIsClick, resultShow, navigate, sharingButtonClick]);
 
   return (
     <>
@@ -154,7 +144,11 @@ function CategoryLayout({
                 이메일로 결과 공유하기
               </p>
             </ResultSharingButton>
-            <p className="back-home">아무곳이나 클릭하여 홈으로 돌아가기</p>
+            <div className="back-home-content">
+              <Link to="/" className="back-home">
+                <p>클릭하여 홈으로 돌아가기</p>
+              </Link>
+            </div>
           </div>
         ) : (
           <div

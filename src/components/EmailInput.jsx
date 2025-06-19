@@ -77,7 +77,6 @@ function EmailInput({ input, setInput, setSharingButtonClick, resultData }) {
         <i
           className="bi bi-x-lg close-button"
           onClick={(e) => {
-            e.stopPropagation();
             setSharingButtonClick(false);
           }}
           style={{ display: `${!isInputNone ? "none" : ""}` }}

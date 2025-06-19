@@ -18,7 +18,6 @@ function WeatherInfoInput({
       <i
         className="bi bi-x-lg"
         onClick={(e) => {
-          e.stopPropagation();
           setInputCancel(true);
         }}
       ></i>
